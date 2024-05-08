@@ -1,0 +1,14 @@
+E:\CONTATA\TRAINING-CONTATA\.NET\LockSynchronization\LockSynchronization\bin\Debug\LockSynchronization.exe.config
+E:\CONTATA\TRAINING-CONTATA\.NET\LockSynchronization\LockSynchronization\bin\Debug\LockSynchronization.exe
+E:\CONTATA\TRAINING-CONTATA\.NET\LockSynchronization\LockSynchronization\bin\Debug\LockSynchronization.pdb
+E:\CONTATA\TRAINING-CONTATA\.NET\LockSynchronization\LockSynchronization\obj\Debug\LockSynchronization.csproj.AssemblyReference.cache
+E:\CONTATA\TRAINING-CONTATA\.NET\LockSynchronization\LockSynchronization\obj\Debug\LockSynchronization.csproj.CoreCompileInputs.cache
+E:\CONTATA\TRAINING-CONTATA\.NET\LockSynchronization\LockSynchronization\obj\Debug\LockSynchronization.exe
+E:\CONTATA\TRAINING-CONTATA\.NET\LockSynchronization\LockSynchronization\obj\Debug\LockSynchronization.pdb
+C:\TRAINING\.NET\LockSynchronization\LockSynchronization\bin\Debug\LockSynchronization.exe.config
+C:\TRAINING\.NET\LockSynchronization\LockSynchronization\bin\Debug\LockSynchronization.exe
+C:\TRAINING\.NET\LockSynchronization\LockSynchronization\bin\Debug\LockSynchronization.pdb
+C:\TRAINING\.NET\LockSynchronization\LockSynchronization\obj\Debug\LockSynchronization.csproj.AssemblyReference.cache
+C:\TRAINING\.NET\LockSynchronization\LockSynchronization\obj\Debug\LockSynchronization.csproj.CoreCompileInputs.cache
+C:\TRAINING\.NET\LockSynchronization\LockSynchronization\obj\Debug\LockSynchronization.exe
+C:\TRAINING\.NET\LockSynchronization\LockSynchronization\obj\Debug\LockSynchronization.pdb

@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\TRAINING\\.NET\\ManualResetSynchronization\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D7DAEBCD-CA4C-4631-89C4-97367E383ECE}|ManualResetSynchronization\\ManualResetSynchronization.csproj|c:\\training\\.net\\manualresetsynchronization\\manualresetsynchronization\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D7DAEBCD-CA4C-4631-89C4-97367E383ECE}|ManualResetSynchronization\\ManualResetSynchronization.csproj|solutionrelative:manualresetsynchronization\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\TRAINING\\.NET\\ManualResetSynchronization\\ManualResetSynchronization\\Program.cs",
+              "RelativeDocumentMoniker": "ManualResetSynchronization\\Program.cs",
+              "ToolTip": "C:\\TRAINING\\.NET\\ManualResetSynchronization\\ManualResetSynchronization\\Program.cs",
+              "RelativeToolTip": "ManualResetSynchronization\\Program.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwDsAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T05:57:25.321Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

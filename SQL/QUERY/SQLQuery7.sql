@@ -1,0 +1,30 @@
+
+
+
+--5.1)
+CREATE CLUSTERED INDEX CL
+ON EMPLOYEE(ID)
+
+insert into  employee values
+('E012','RAJU','D001',1,'M','R001')
+
+insert into  employee values
+('E011','VISHAL','D001',1,'M','R002')
+
+SELECT * FROM EMPLOYEE
+
+
+--5.2)
+CREATE NONCLUSTERED INDEX NCL
+ON EMPLOYEE(NAME DESC,ROLE_ID DESC)
+
+
+--5.3)
+DROP INDEX CL
+ON EMPLOYEE
+
+DROP INDEX NCL
+ON EMPLOYEE
+
+sp_helpindex 'EMPLOYEE'
+

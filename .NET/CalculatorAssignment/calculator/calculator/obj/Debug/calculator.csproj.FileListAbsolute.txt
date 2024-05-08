@@ -1,0 +1,7 @@
+C:\TRAINING\.NET\calculator\calculator\bin\Debug\calculator.exe.config
+C:\TRAINING\.NET\calculator\calculator\bin\Debug\calculator.exe
+C:\TRAINING\.NET\calculator\calculator\bin\Debug\calculator.pdb
+C:\TRAINING\.NET\calculator\calculator\obj\Debug\calculator.csproj.AssemblyReference.cache
+C:\TRAINING\.NET\calculator\calculator\obj\Debug\calculator.csproj.CoreCompileInputs.cache
+C:\TRAINING\.NET\calculator\calculator\obj\Debug\calculator.exe
+C:\TRAINING\.NET\calculator\calculator\obj\Debug\calculator.pdb

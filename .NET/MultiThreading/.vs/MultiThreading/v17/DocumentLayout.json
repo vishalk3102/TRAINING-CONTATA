@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\MultiThreading\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0B5E0A4F-52C4-4F3A-9AC9-8209CFBA7ADF}|MultiThreading\\MultiThreading.csproj|e:\\contata\\training-contata\\.net\\multithreading\\multithreading\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0B5E0A4F-52C4-4F3A-9AC9-8209CFBA7ADF}|MultiThreading\\MultiThreading.csproj|solutionrelative:multithreading\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\MultiThreading\\MultiThreading\\Program.cs",
+              "RelativeDocumentMoniker": "MultiThreading\\Program.cs",
+              "ToolTip": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\MultiThreading\\MultiThreading\\Program.cs",
+              "RelativeToolTip": "MultiThreading\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-23T19:22:44.633Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

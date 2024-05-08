@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "\\webapp",
+    "\\webapp\\Controllers",
+    "\\webapp\\Data",
+    "\\webapp\\Models",
+    "\\webapp\\Views",
+    "\\webapp\\Views\\Category",
+    "\\webapp\\Views\\Shared"
+  ],
+  "PreviewInSolutionExplorer": false
+}

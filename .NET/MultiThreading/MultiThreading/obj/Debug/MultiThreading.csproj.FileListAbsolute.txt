@@ -1,0 +1,7 @@
+E:\CONTATA\TRAINING-CONTATA\.NET\MultiThreading\MultiThreading\bin\Debug\MultiThreading.exe.config
+E:\CONTATA\TRAINING-CONTATA\.NET\MultiThreading\MultiThreading\bin\Debug\MultiThreading.exe
+E:\CONTATA\TRAINING-CONTATA\.NET\MultiThreading\MultiThreading\bin\Debug\MultiThreading.pdb
+E:\CONTATA\TRAINING-CONTATA\.NET\MultiThreading\MultiThreading\obj\Debug\MultiThreading.csproj.AssemblyReference.cache
+E:\CONTATA\TRAINING-CONTATA\.NET\MultiThreading\MultiThreading\obj\Debug\MultiThreading.csproj.CoreCompileInputs.cache
+E:\CONTATA\TRAINING-CONTATA\.NET\MultiThreading\MultiThreading\obj\Debug\MultiThreading.exe
+E:\CONTATA\TRAINING-CONTATA\.NET\MultiThreading\MultiThreading\obj\Debug\MultiThreading.pdb

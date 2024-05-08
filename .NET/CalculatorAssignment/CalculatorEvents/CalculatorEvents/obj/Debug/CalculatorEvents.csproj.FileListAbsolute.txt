@@ -1,0 +1,14 @@
+C:\TRAINING\.NET\CalculatorEvents\CalculatorEvents\bin\Debug\CalculatorEvents.exe.config
+C:\TRAINING\.NET\CalculatorEvents\CalculatorEvents\bin\Debug\CalculatorEvents.exe
+C:\TRAINING\.NET\CalculatorEvents\CalculatorEvents\bin\Debug\CalculatorEvents.pdb
+C:\TRAINING\.NET\CalculatorEvents\CalculatorEvents\obj\Debug\CalculatorEvents.csproj.AssemblyReference.cache
+C:\TRAINING\.NET\CalculatorEvents\CalculatorEvents\obj\Debug\CalculatorEvents.csproj.CoreCompileInputs.cache
+C:\TRAINING\.NET\CalculatorEvents\CalculatorEvents\obj\Debug\CalculatorEvents.exe
+C:\TRAINING\.NET\CalculatorEvents\CalculatorEvents\obj\Debug\CalculatorEvents.pdb
+C:\TRAINING\.NET\CalculatorAssignment\CalculatorEvents\CalculatorEvents\bin\Debug\CalculatorEvents.exe.config
+C:\TRAINING\.NET\CalculatorAssignment\CalculatorEvents\CalculatorEvents\bin\Debug\CalculatorEvents.exe
+C:\TRAINING\.NET\CalculatorAssignment\CalculatorEvents\CalculatorEvents\bin\Debug\CalculatorEvents.pdb
+C:\TRAINING\.NET\CalculatorAssignment\CalculatorEvents\CalculatorEvents\obj\Debug\CalculatorEvents.csproj.AssemblyReference.cache
+C:\TRAINING\.NET\CalculatorAssignment\CalculatorEvents\CalculatorEvents\obj\Debug\CalculatorEvents.csproj.CoreCompileInputs.cache
+C:\TRAINING\.NET\CalculatorAssignment\CalculatorEvents\CalculatorEvents\obj\Debug\CalculatorEvents.exe
+C:\TRAINING\.NET\CalculatorAssignment\CalculatorEvents\CalculatorEvents\obj\Debug\CalculatorEvents.pdb

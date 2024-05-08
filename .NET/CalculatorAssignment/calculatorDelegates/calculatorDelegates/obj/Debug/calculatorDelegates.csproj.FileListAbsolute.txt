@@ -1,0 +1,14 @@
+C:\TRAINING\.NET\calculatorDelegates\calculatorDelegates\bin\Debug\calculatorDelegates.exe.config
+C:\TRAINING\.NET\calculatorDelegates\calculatorDelegates\bin\Debug\calculatorDelegates.exe
+C:\TRAINING\.NET\calculatorDelegates\calculatorDelegates\bin\Debug\calculatorDelegates.pdb
+C:\TRAINING\.NET\calculatorDelegates\calculatorDelegates\obj\Debug\calculatorDelegates.csproj.AssemblyReference.cache
+C:\TRAINING\.NET\calculatorDelegates\calculatorDelegates\obj\Debug\calculatorDelegates.csproj.CoreCompileInputs.cache
+C:\TRAINING\.NET\calculatorDelegates\calculatorDelegates\obj\Debug\calculatorDelegates.exe
+C:\TRAINING\.NET\calculatorDelegates\calculatorDelegates\obj\Debug\calculatorDelegates.pdb
+C:\TRAINING\.NET\CalculatorAssignment\calculatorDelegates\calculatorDelegates\bin\Debug\calculatorDelegates.exe.config
+C:\TRAINING\.NET\CalculatorAssignment\calculatorDelegates\calculatorDelegates\bin\Debug\calculatorDelegates.exe
+C:\TRAINING\.NET\CalculatorAssignment\calculatorDelegates\calculatorDelegates\bin\Debug\calculatorDelegates.pdb
+C:\TRAINING\.NET\CalculatorAssignment\calculatorDelegates\calculatorDelegates\obj\Debug\calculatorDelegates.csproj.AssemblyReference.cache
+C:\TRAINING\.NET\CalculatorAssignment\calculatorDelegates\calculatorDelegates\obj\Debug\calculatorDelegates.csproj.CoreCompileInputs.cache
+C:\TRAINING\.NET\CalculatorAssignment\calculatorDelegates\calculatorDelegates\obj\Debug\calculatorDelegates.exe
+C:\TRAINING\.NET\CalculatorAssignment\calculatorDelegates\calculatorDelegates\obj\Debug\calculatorDelegates.pdb

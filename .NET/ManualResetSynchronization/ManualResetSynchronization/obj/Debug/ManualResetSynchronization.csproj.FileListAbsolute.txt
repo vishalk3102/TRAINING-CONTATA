@@ -1,0 +1,14 @@
+E:\CONTATA\TRAINING-CONTATA\.NET\ManualResetSynchronization\ManualResetSynchronization\bin\Debug\ManualResetSynchronization.exe.config
+E:\CONTATA\TRAINING-CONTATA\.NET\ManualResetSynchronization\ManualResetSynchronization\bin\Debug\ManualResetSynchronization.exe
+E:\CONTATA\TRAINING-CONTATA\.NET\ManualResetSynchronization\ManualResetSynchronization\bin\Debug\ManualResetSynchronization.pdb
+E:\CONTATA\TRAINING-CONTATA\.NET\ManualResetSynchronization\ManualResetSynchronization\obj\Debug\ManualResetSynchronization.csproj.AssemblyReference.cache
+E:\CONTATA\TRAINING-CONTATA\.NET\ManualResetSynchronization\ManualResetSynchronization\obj\Debug\ManualResetSynchronization.csproj.CoreCompileInputs.cache
+E:\CONTATA\TRAINING-CONTATA\.NET\ManualResetSynchronization\ManualResetSynchronization\obj\Debug\ManualResetSynchronization.exe
+E:\CONTATA\TRAINING-CONTATA\.NET\ManualResetSynchronization\ManualResetSynchronization\obj\Debug\ManualResetSynchronization.pdb
+C:\TRAINING\.NET\ManualResetSynchronization\ManualResetSynchronization\bin\Debug\ManualResetSynchronization.exe.config
+C:\TRAINING\.NET\ManualResetSynchronization\ManualResetSynchronization\bin\Debug\ManualResetSynchronization.exe
+C:\TRAINING\.NET\ManualResetSynchronization\ManualResetSynchronization\bin\Debug\ManualResetSynchronization.pdb
+C:\TRAINING\.NET\ManualResetSynchronization\ManualResetSynchronization\obj\Debug\ManualResetSynchronization.csproj.AssemblyReference.cache
+C:\TRAINING\.NET\ManualResetSynchronization\ManualResetSynchronization\obj\Debug\ManualResetSynchronization.csproj.CoreCompileInputs.cache
+C:\TRAINING\.NET\ManualResetSynchronization\ManualResetSynchronization\obj\Debug\ManualResetSynchronization.exe
+C:\TRAINING\.NET\ManualResetSynchronization\ManualResetSynchronization\obj\Debug\ManualResetSynchronization.pdb

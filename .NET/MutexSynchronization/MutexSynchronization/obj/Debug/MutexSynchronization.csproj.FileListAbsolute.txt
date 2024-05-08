@@ -1,0 +1,14 @@
+E:\CONTATA\TRAINING-CONTATA\.NET\MutexSynchronization\MutexSynchronization\bin\Debug\MutexSynchronization.exe.config
+E:\CONTATA\TRAINING-CONTATA\.NET\MutexSynchronization\MutexSynchronization\bin\Debug\MutexSynchronization.exe
+E:\CONTATA\TRAINING-CONTATA\.NET\MutexSynchronization\MutexSynchronization\bin\Debug\MutexSynchronization.pdb
+E:\CONTATA\TRAINING-CONTATA\.NET\MutexSynchronization\MutexSynchronization\obj\Debug\MutexSynchronization.csproj.AssemblyReference.cache
+E:\CONTATA\TRAINING-CONTATA\.NET\MutexSynchronization\MutexSynchronization\obj\Debug\MutexSynchronization.csproj.CoreCompileInputs.cache
+E:\CONTATA\TRAINING-CONTATA\.NET\MutexSynchronization\MutexSynchronization\obj\Debug\MutexSynchronization.exe
+E:\CONTATA\TRAINING-CONTATA\.NET\MutexSynchronization\MutexSynchronization\obj\Debug\MutexSynchronization.pdb
+C:\TRAINING\.NET\MutexSynchronization\MutexSynchronization\bin\Debug\MutexSynchronization.exe.config
+C:\TRAINING\.NET\MutexSynchronization\MutexSynchronization\bin\Debug\MutexSynchronization.exe
+C:\TRAINING\.NET\MutexSynchronization\MutexSynchronization\bin\Debug\MutexSynchronization.pdb
+C:\TRAINING\.NET\MutexSynchronization\MutexSynchronization\obj\Debug\MutexSynchronization.csproj.AssemblyReference.cache
+C:\TRAINING\.NET\MutexSynchronization\MutexSynchronization\obj\Debug\MutexSynchronization.csproj.CoreCompileInputs.cache
+C:\TRAINING\.NET\MutexSynchronization\MutexSynchronization\obj\Debug\MutexSynchronization.exe
+C:\TRAINING\.NET\MutexSynchronization\MutexSynchronization\obj\Debug\MutexSynchronization.pdb

@@ -1,0 +1,7 @@
+C:\TRAINING\.NET\ExceptionHandling\ExceptionHandling\bin\Debug\ExceptionHandling.exe.config
+C:\TRAINING\.NET\ExceptionHandling\ExceptionHandling\bin\Debug\ExceptionHandling.exe
+C:\TRAINING\.NET\ExceptionHandling\ExceptionHandling\bin\Debug\ExceptionHandling.pdb
+C:\TRAINING\.NET\ExceptionHandling\ExceptionHandling\obj\Debug\ExceptionHandling.csproj.AssemblyReference.cache
+C:\TRAINING\.NET\ExceptionHandling\ExceptionHandling\obj\Debug\ExceptionHandling.csproj.CoreCompileInputs.cache
+C:\TRAINING\.NET\ExceptionHandling\ExceptionHandling\obj\Debug\ExceptionHandling.exe
+C:\TRAINING\.NET\ExceptionHandling\ExceptionHandling\obj\Debug\ExceptionHandling.pdb

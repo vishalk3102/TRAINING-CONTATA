@@ -1,0 +1,14 @@
+E:\CONTATA\TRAINING-CONTATA\.NET\AutoResetSynchronization\AutoResetSynchronization\obj\Debug\AutoResetSynchronization.csproj.AssemblyReference.cache
+E:\CONTATA\TRAINING-CONTATA\.NET\AutoResetSynchronization\AutoResetSynchronization\obj\Debug\AutoResetSynchronization.csproj.CoreCompileInputs.cache
+E:\CONTATA\TRAINING-CONTATA\.NET\AutoResetSynchronization\AutoResetSynchronization\bin\Debug\AutoResetSynchronization.exe.config
+E:\CONTATA\TRAINING-CONTATA\.NET\AutoResetSynchronization\AutoResetSynchronization\bin\Debug\AutoResetSynchronization.exe
+E:\CONTATA\TRAINING-CONTATA\.NET\AutoResetSynchronization\AutoResetSynchronization\bin\Debug\AutoResetSynchronization.pdb
+E:\CONTATA\TRAINING-CONTATA\.NET\AutoResetSynchronization\AutoResetSynchronization\obj\Debug\AutoResetSynchronization.exe
+E:\CONTATA\TRAINING-CONTATA\.NET\AutoResetSynchronization\AutoResetSynchronization\obj\Debug\AutoResetSynchronization.pdb
+C:\TRAINING\.NET\AutoResetSynchronization\AutoResetSynchronization\bin\Debug\AutoResetSynchronization.exe.config
+C:\TRAINING\.NET\AutoResetSynchronization\AutoResetSynchronization\bin\Debug\AutoResetSynchronization.exe
+C:\TRAINING\.NET\AutoResetSynchronization\AutoResetSynchronization\bin\Debug\AutoResetSynchronization.pdb
+C:\TRAINING\.NET\AutoResetSynchronization\AutoResetSynchronization\obj\Debug\AutoResetSynchronization.csproj.AssemblyReference.cache
+C:\TRAINING\.NET\AutoResetSynchronization\AutoResetSynchronization\obj\Debug\AutoResetSynchronization.csproj.CoreCompileInputs.cache
+C:\TRAINING\.NET\AutoResetSynchronization\AutoResetSynchronization\obj\Debug\AutoResetSynchronization.exe
+C:\TRAINING\.NET\AutoResetSynchronization\AutoResetSynchronization\obj\Debug\AutoResetSynchronization.pdb

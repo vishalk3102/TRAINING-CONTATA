@@ -1,0 +1,15 @@
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\bin\Debug\net8.0\JsonToCsv.exe
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\bin\Debug\net8.0\JsonToCsv.deps.json
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\bin\Debug\net8.0\JsonToCsv.runtimeconfig.json
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\bin\Debug\net8.0\JsonToCsv.dll
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\bin\Debug\net8.0\JsonToCsv.pdb
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\obj\Debug\net8.0\JsonToCsv.GeneratedMSBuildEditorConfig.editorconfig
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\obj\Debug\net8.0\JsonToCsv.AssemblyInfoInputs.cache
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\obj\Debug\net8.0\JsonToCsv.AssemblyInfo.cs
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\obj\Debug\net8.0\JsonToCsv.csproj.CoreCompileInputs.cache
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\obj\Debug\net8.0\JsonToCsv.sourcelink.json
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\obj\Debug\net8.0\JsonToCsv.dll
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\obj\Debug\net8.0\refint\JsonToCsv.dll
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\obj\Debug\net8.0\JsonToCsv.pdb
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\obj\Debug\net8.0\JsonToCsv.genruntimeconfig.cache
+E:\CONTATA\TRAINING-CONTATA\.NET\JsonToCsv\JsonToCsv\obj\Debug\net8.0\ref\JsonToCsv.dll

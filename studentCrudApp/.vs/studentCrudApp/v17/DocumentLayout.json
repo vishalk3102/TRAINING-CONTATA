@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\TRAINING\\studentCrudApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{88301E9A-A92C-4A7F-8EC6-2EAD19924AC1}|studentCrudApp\\studentCrudApp.csproj|c:\\training\\studentcrudapp\\studentcrudapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88301E9A-A92C-4A7F-8EC6-2EAD19924AC1}|studentCrudApp\\studentCrudApp.csproj|solutionrelative:studentcrudapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88301E9A-A92C-4A7F-8EC6-2EAD19924AC1}|studentCrudApp\\studentCrudApp.csproj|c:\\training\\studentcrudapp\\studentcrudapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88301E9A-A92C-4A7F-8EC6-2EAD19924AC1}|studentCrudApp\\studentCrudApp.csproj|solutionrelative:studentcrudapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88301E9A-A92C-4A7F-8EC6-2EAD19924AC1}|studentCrudApp\\studentCrudApp.csproj|c:\\training\\studentcrudapp\\studentcrudapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{88301E9A-A92C-4A7F-8EC6-2EAD19924AC1}|studentCrudApp\\studentCrudApp.csproj|solutionrelative:studentcrudapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{88301E9A-A92C-4A7F-8EC6-2EAD19924AC1}|studentCrudApp\\studentCrudApp.csproj|c:\\training\\studentcrudapp\\studentcrudapp\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88301E9A-A92C-4A7F-8EC6-2EAD19924AC1}|studentCrudApp\\studentCrudApp.csproj|solutionrelative:studentcrudapp\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\TRAINING\\studentCrudApp\\studentCrudApp\\App.xaml.cs",
+              "RelativeDocumentMoniker": "studentCrudApp\\App.xaml.cs",
+              "ToolTip": "C:\\TRAINING\\studentCrudApp\\studentCrudApp\\App.xaml.cs",
+              "RelativeToolTip": "studentCrudApp\\App.xaml.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-15T12:38:00.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "student.cs",
+              "DocumentMoniker": "C:\\TRAINING\\studentCrudApp\\studentCrudApp\\student.cs",
+              "RelativeDocumentMoniker": "studentCrudApp\\student.cs",
+              "ToolTip": "C:\\TRAINING\\studentCrudApp\\studentCrudApp\\student.cs",
+              "RelativeToolTip": "studentCrudApp\\student.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-15T12:29:02.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\TRAINING\\studentCrudApp\\studentCrudApp\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "studentCrudApp\\MainWindow.xaml",
+              "ToolTip": "C:\\TRAINING\\studentCrudApp\\studentCrudApp\\MainWindow.xaml",
+              "RelativeToolTip": "studentCrudApp\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-04-15T06:35:53.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\TRAINING\\studentCrudApp\\studentCrudApp\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "studentCrudApp\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\TRAINING\\studentCrudApp\\studentCrudApp\\MainWindow.xaml.cs*",
+              "RelativeToolTip": "studentCrudApp\\MainWindow.xaml.cs*",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAQwDMAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-15T06:35:50.589Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
