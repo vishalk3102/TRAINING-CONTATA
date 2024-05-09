@@ -15,8 +15,6 @@ namespace server.Model
         [Required(ErrorMessage = "Employee ID is required")]
         public int empId { get; set; }
 
-        [Required(ErrorMessage = "Name is required")]
-        public string name { get; set; }
 
         [Required(ErrorMessage = "Any other income is required")]
         public decimal anyOtherIncome { get; set; }
@@ -72,6 +70,8 @@ namespace server.Model
 
         [Required(ErrorMessage = "Date of Declaration is required")]
         public string dateOfDeclaration { get; set; }
+
+        public string status { get; set; }
 
     }
 }

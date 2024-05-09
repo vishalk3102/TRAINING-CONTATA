@@ -56,7 +56,7 @@ namespace server.Controllers
           
         }
 
-        //ADD EMPLOYEE DETAILS  TO DATABASE
+        //ADD EMPLOYEE DETAILS   --admin
 
         [HttpPost("admin/employee/add")]
         public async Task<IActionResult> AddEmployee(Employee employee)
@@ -74,7 +74,7 @@ namespace server.Controllers
         }
 
 
-        //UPDATE  EMPLOYEE DETAILS
+        //UPDATE  EMPLOYEE DETAILS --admin
         [HttpPut("admin/employee/{empId}")]
         public async Task<IActionResult> UpdateEmployee(Employee employee, int empId)
         {
@@ -98,7 +98,7 @@ namespace server.Controllers
 
 
 
-        //DELETE  EMPLOYEE DETAILS
+        //DELETE  EMPLOYEE DETAILS --admin
         [HttpDelete("admin/employee/{empId}")]
         public async Task<IActionResult> DeleteEmployee(int empId)
         {

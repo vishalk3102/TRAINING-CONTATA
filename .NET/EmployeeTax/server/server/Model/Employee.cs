@@ -19,6 +19,10 @@ namespace server.Model
         [Range(18, 100, ErrorMessage = "Age must be between 18 and 100")]
         public int age { get; set; }
 
+        [Required(ErrorMessage = "Age is required")]
+        [Range(18, 100, ErrorMessage = "Age must be between 18 and 100")]
+        public string dateOfBirth { get; set; }
+
         [Required(ErrorMessage = "Gender is required")]
         public string gender { get; set; }
 

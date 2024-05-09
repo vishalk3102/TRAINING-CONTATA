@@ -19,18 +19,38 @@ namespace server.Services
 
 
         //GET  ALL TAX DECLARATION SUBMISSIONS
-        public async Task<List<TaxDeclaration>> getAllTaxDeclarations()
+        public async Task<List<(TaxDeclaration,Employee)>> getAllTaxDeclarations()
         {
-            var taxDeclarations = await _db.TaxDeclarations.ToListAsync();
-            return taxDeclarations;
+            var query = from taxDeclaration in _db.TaxDeclarations
+                        join employee in _db.Employees
+                        on taxDeclaration.empId equals employee.empId
+                        select new
+                        {
+                            TaxDeclarationDetails = taxDeclaration,
+                            EmployeeDetails = employee
+                        };
+            var result = await query.ToListAsync();
+            var taxDeclarationsResult=result.Select(item=>(item.TaxDeclarationDetails, item.EmployeeDetails)).ToList();
+            return taxDeclarationsResult;
         }
 
 
         //GET TAX DECLARATION BY TAXID
-        public async Task<TaxDeclaration>  getTaxDeclaration(int taxId)
+        public async Task<List<(TaxDeclaration, Employee)>> getTaxDeclaration(int taxId)
         {
-            var taxDeclaration = await _db.TaxDeclarations.FindAsync(taxId);
-            return taxDeclaration;
+            var query = from taxDeclaration in _db.TaxDeclarations
+                        where taxDeclaration.taxId == taxId
+                        join employee in _db.Employees
+                        on taxDeclaration.empId equals employee.empId
+                        select new
+                        {
+                            TaxDeclarationDetails = taxDeclaration,
+                            EmployeeDetails = employee
+                        };
+
+            var result = await query.ToListAsync();
+            var taxDeclarationsresult = result.Select(item => (item.TaxDeclarationDetails, item.EmployeeDetails)).ToList();
+            return taxDeclarationsresult;
         }
 
 
@@ -98,6 +118,20 @@ namespace server.Services
         public async Task unfreezeTaxForm(TaxDeclaration taxForm)
         {
             taxForm.isFrozen=false;
+            await _db.SaveChangesAsync();
+        }
+
+        //ACCEPT TAX DECLARATION FORM
+        public async Task acceptTaxForm(TaxDeclaration taxForm)
+        {
+            taxForm.status = "accepted";
+            await _db.SaveChangesAsync();
+        }
+
+        //REJECT TAX DECLARATION FORM
+        public async Task rejectTaxForm(TaxDeclaration taxForm)
+        {
+            taxForm.status = "rejected";
             await _db.SaveChangesAsync();
         }
     }

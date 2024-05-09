@@ -1,78 +1,55 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { getTaxDeclaration } from '../../Redux/Actions/TaxAction'
+import {
+  acceptTaxDeclaration,
+  getTaxDeclaration,
+  rejectTaxDeclaration
+} from '../../Redux/Actions/TaxAction'
 import Loader from '../Loader'
 
 const ViewTaxSubmission = () => {
-  // STATE VARIABLES FOR FORM INPUT
-  const [empId, setEmpId] = useState()
-  const [taxId, setTaxId] = useState()
-  const [name, setName] = useState()
-  const [panNo, setPanNo] = useState()
-  const [address, setAddress] = useState()
-  const [financialYear, setFinancialYear] = useState()
-  const [anyOtherIncome, setAnyOtherIncome] = useState('')
-  const [sukanyaSamriddhiAccount, setSukanyaSamruddhiAccount] = useState('')
-  const [ppf, setPpf] = useState('')
-  const [lic, setLic] = useState('')
-  const [tuitionFee, setTuitionFee] = useState('')
-  const [fixedDeposit, setFixedDeposit] = useState('')
-  const [interestHousingLoan, setInterestHousingLoan] = useState('')
-  const [nps, setNps] = useState('')
-  const [educationLoan, setEducationLoan] = useState('')
-  const [principalHousingLoan, setPrincipalHousingLoan] = useState('')
-  const [houseRent, setHouseRent] = useState('')
-  const [tds, setTds] = useState('')
-  const [healthInsurance, setHealthInsurance] = useState('')
-  const [preventiveHealthCheckup, setPreventiveHealthCheckup] = useState('')
-  const [ltaChecked, setLtaChecked] = useState(true)
-
-  const [editable, setEditable] = useState(false)
-
-  const { user } = useSelector(state => state.auth)
+  const dispatch = useDispatch()
+  const params = useParams()
+  const navigate = useNavigate()
+  const editable = false
 
   //FETCHING VALUE FROM OF VARIABLE'S FROM STORE
   const { loading, tax } = useSelector(state => state.tax)
-
-  const dispatch = useDispatch()
-  const params = useParams()
 
   useEffect(() => {
     dispatch(getTaxDeclaration(params.taxId))
   }, [dispatch])
 
-  // UPDATING VALUES OF VARIABLE ACCORDING TO STATE
-  useEffect(() => {
-    if (user) {
-      setEmpId(user.empId)
-      setName(user.name)
-      setPanNo(user.panNo)
-      setAddress(user.address)
-    }
-    if (tax) {
-      setTaxId(tax.taxId)
-      setFinancialYear(tax.financialYear)
-      setAnyOtherIncome(tax.anyOtherIncome)
-      setSukanyaSamruddhiAccount(tax.sukanyaSamriddhiAccount)
-      setPpf(tax.ppf)
-      setLic(tax.lifeInsurancePremium)
-      setTuitionFee(tax.tuitionFee)
-      setFixedDeposit(tax.bankFixedDeposit)
-      setPrincipalHousingLoan(tax.principalHousingLoan)
-      setNps(tax.nps)
-      setEducationLoan(tax.higherEducationLoanInterest)
-      setInterestHousingLoan(tax.interestHousingLoan)
-      setHouseRent(tax.houseRent)
-      setTds(tax.tds)
-      setHealthInsurance(tax.mediClaim)
-      setPreventiveHealthCheckup(tax.preventiveHealthCheckUp)
-      setLtaChecked(tax.lta)
-      setEditable(false)
-    }
-  }, [tax, user])
+  // CHECK IF TAX OBJECT EXIST AND HAS EMPLOYEE AND TAX DECLARATION
+  if (!tax || !tax.length || !tax[0].taxDeclaration || !tax[0].employee) {
+    return <Loader />
+  }
 
+  // FUNCTION TO HANDLE ACCEPT BUTTON CLICK
+  const handleAcceptButton = () => {
+    dispatch(acceptTaxDeclaration(tax[0].taxDeclaration.taxId))
+      .then(() => {
+        navigate('/admin/submissions')
+        toast.success('Accepted successful')
+      })
+      .catch(err => {
+        toast.error('Failed to Accept form')
+      })
+  }
+
+  // FUNCTION TO HANDLE REJECT BUTTON CLICK
+  const handleRejectButton = () => {
+    dispatch(rejectTaxDeclaration(tax[0].taxDeclaration.taxId))
+      .then(() => {
+        navigate('/admin/submissions')
+        toast.success('Rejected successful')
+      })
+      .catch(err => {
+        toast.error('Failed to Reject form')
+      })
+  }
   return (
     <>
       {loading === false ? (
@@ -81,23 +58,30 @@ const ViewTaxSubmission = () => {
             <div className='text-[1.8rem] font-medium text-center p-2 my-2'>
               <h1>Tax Declaration</h1>
             </div>
-            <div className='flex justify-between items-center my-2 border-2 border-solid border-black py-2'>
-              <div className='text-[16px] font-medium  p-4'>
-                Employee ID :<span className='p-2'> {empId}</span>
+            <form>
+              <div className='flex justify-between items-center my-2 border-2 border-solid border-black py-2'>
+                <div className='text-[16px] font-medium  p-4'>
+                  Employee ID :
+                  <span className='p-2'> {tax[0].employee.empId}</span>
+                </div>
+                <div className='text-[16px] font-medium  p-4'>
+                  Employee Name :
+                  <span className='p-2'> {tax[0].employee.name}</span>
+                </div>
+                <div className='text-[16px] font-medium  p-4'>
+                  Financial Year :
+                  <span className='p-2'>
+                    {' '}
+                    {tax[0].taxDeclaration.financialYear}
+                  </span>
+                </div>
+                <div className='text-[16px] font-medium  p-4'>
+                  Tax declaration Id :
+                  <span className='p-2'> {tax[0].taxDeclaration.taxId}</span>
+                </div>
               </div>
-              <div className='text-[16px] font-medium  p-4'>
-                Employee Name :<span className='p-2'> {name}</span>
-              </div>
-              <div className='text-[16px] font-medium  p-4'>
-                Financial Year :<span className='p-2'> {financialYear}</span>
-              </div>
-              <div className='text-[16px] font-medium  p-4'>
-                Tax declaration Id :<span className='p-2'> {taxId}</span>
-              </div>
-            </div>
 
-            <div className='border-solid border-2 border-black'>
-              <form>
+              <div className='border-solid border-2 border-black'>
                 <div className='flex items-center  py-2 ml-2'>
                   <div className='w-[70%] py-1'>
                     <label htmlFor='income' className='text-[14px]'>
@@ -112,8 +96,7 @@ const ViewTaxSubmission = () => {
                       id='income'
                       placeholder='0'
                       className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
-                      value={anyOtherIncome}
-                      onChange={e => setAnyOtherIncome(e.target.value)}
+                      value={tax[0].taxDeclaration.anyOtherIncome}
                       disabled={!editable}
                     />
                   </div>
@@ -136,10 +119,7 @@ const ViewTaxSubmission = () => {
                           id='ssa'
                           placeholder='0'
                           className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
-                          value={sukanyaSamriddhiAccount}
-                          onChange={e =>
-                            setSukanyaSamruddhiAccount(e.target.value)
-                          }
+                          value={tax[0].taxDeclaration.sukanyaSamriddhiAccount}
                           disabled={!editable}
                         />
                       </div>
@@ -157,8 +137,7 @@ const ViewTaxSubmission = () => {
                           id='ppf'
                           placeholder='0'
                           className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
-                          value={ppf}
-                          onChange={e => setPpf(e.target.value)}
+                          value={tax[0].taxDeclaration.ppf}
                           disabled={!editable}
                         />
                       </div>
@@ -176,8 +155,7 @@ const ViewTaxSubmission = () => {
                           id='lic'
                           placeholder='0'
                           className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
-                          value={lic}
-                          onChange={e => setLic(e.target.value)}
+                          value={tax[0].taxDeclaration.lifeInsurancePremium}
                           disabled={!editable}
                         />
                       </div>
@@ -198,8 +176,7 @@ const ViewTaxSubmission = () => {
                           id='tuitionfee'
                           placeholder='0'
                           className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
-                          value={tuitionFee}
-                          onChange={e => setTuitionFee(e.target.value)}
+                          value={tax[0].taxDeclaration.tuitionFee}
                           disabled={!editable}
                         />
                       </div>
@@ -220,8 +197,7 @@ const ViewTaxSubmission = () => {
                           id='fixed-deposit'
                           placeholder='0'
                           className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
-                          value={fixedDeposit}
-                          onChange={e => setFixedDeposit(e.target.value)}
+                          value={tax[0].taxDeclaration.bankFixedDeposit}
                           disabled={!editable}
                         />
                       </div>
@@ -240,10 +216,7 @@ const ViewTaxSubmission = () => {
                           id='housing'
                           placeholder='0'
                           className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
-                          value={principalHousingLoan}
-                          onChange={e =>
-                            setPrincipalHousingLoan(e.target.value)
-                          }
+                          value={tax[0].taxDeclaration.principalHousingLoan}
                           disabled={!editable}
                         />
                       </div>
@@ -261,8 +234,7 @@ const ViewTaxSubmission = () => {
                           id='NPS'
                           placeholder='0'
                           className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
-                          value={nps}
-                          onChange={e => setNps(e.target.value)}
+                          value={tax[0].taxDeclaration.nps}
                           disabled={!editable}
                         />
                       </div>
@@ -282,8 +254,7 @@ const ViewTaxSubmission = () => {
                       id='health'
                       placeholder='0'
                       className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
-                      value={educationLoan}
-                      onChange={e => setEducationLoan(e.target.value)}
+                      value={tax[0].taxDeclaration.higherEducationLoanInterest}
                       disabled={!editable}
                     />
                   </div>
@@ -301,8 +272,7 @@ const ViewTaxSubmission = () => {
                       id='housing-loan'
                       placeholder='0'
                       className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
-                      value={interestHousingLoan}
-                      onChange={e => setInterestHousingLoan(e.target.value)}
+                      value={tax[0].taxDeclaration.interestHousingLoan}
                       disabled={!editable}
                     />
                   </div>
@@ -321,8 +291,7 @@ const ViewTaxSubmission = () => {
                       id='house-rent'
                       placeholder='0'
                       className='w-[100%] border-solid border-2 border-black  px-2 py-1 text-[14px] outline-none'
-                      value={houseRent}
-                      onChange={e => setHouseRent(e.target.value)}
+                      value={tax[0].taxDeclaration.houseRent}
                       disabled={!editable}
                     />
                   </div>
@@ -340,8 +309,7 @@ const ViewTaxSubmission = () => {
                       id='TDS'
                       placeholder='0'
                       className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
-                      value={tds}
-                      onChange={e => setTds(e.target.value)}
+                      value={tax[0].taxDeclaration.tds}
                       disabled={!editable}
                     />
                   </div>
@@ -362,8 +330,7 @@ const ViewTaxSubmission = () => {
                       id='health-insurance'
                       placeholder='0'
                       className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
-                      value={healthInsurance}
-                      onChange={e => setHealthInsurance(e.target.value)}
+                      value={tax[0].taxDeclaration.mediClaim}
                       disabled={!editable}
                     />
                   </div>
@@ -382,60 +349,71 @@ const ViewTaxSubmission = () => {
                       id='health'
                       placeholder='0'
                       className='w-[100%]  border-solid border-2 border-black px-2  text-[14px] outline-none'
-                      value={preventiveHealthCheckup}
-                      onChange={e => setPreventiveHealthCheckup(e.target.value)}
+                      value={tax[0].taxDeclaration.preventiveHealthCheckUp}
                       disabled={!editable}
                     />
                   </div>
                 </div>
-              </form>
-            </div>
-
-            <div className='mt-4'>
-              <div className='text-[1.4rem] font-medium text-left py-2 mt-2'>
-                <h1>Reimbursement Component</h1>
-              </div>
-              <div className='flex  py-4 border-2 border-solid border-black'>
-                <div className='w-[70%]'>
-                  <label htmlFor='LTA' className='leading-7 text-sm p-2'>
-                    LTA (Do you want LTA as a Reimbursement)
-                  </label>
-                </div>
-                <div className='flex justify-center items-center'>
-                  <input
-                    type='checkbox'
-                    name='LTA'
-                    id='LTA'
-                    className='h-[20px] w-[20px]'
-                    checked={ltaChecked}
-                    onChange={e => setLtaChecked(e.target.value)}
-                    disabled={!editable}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className='flex justify-between my-2 '>
-              <div className='text-[16px] font-medium  p-4'>
-                Staff No :<span className='p-2'> {empId}</span>
-              </div>
-              <div className='text-[16px] font-medium  p-4'>
-                Name of the Staff :<span className='p-2'> {name}</span>
-              </div>
-              <div className='text-[16px] font-medium  p-4'>
-                PAN No :<span className='p-2'> {panNo}</span>
               </div>
 
-              <div className='text-[16px] font-medium  p-4'>
-                Address :<span className='p-2'> {address}</span>
+              <div className='mt-4'>
+                <div className='text-[1.4rem] font-medium text-left py-2 mt-2'>
+                  <h1>Reimbursement Component</h1>
+                </div>
+                <div className='flex  py-4 border-2 border-solid border-black'>
+                  <div className='w-[70%]'>
+                    <label htmlFor='LTA' className='leading-7 text-sm p-2'>
+                      LTA (Do you want LTA as a Reimbursement)
+                    </label>
+                  </div>
+                  <div className='flex justify-center items-center'>
+                    <input
+                      type='checkbox'
+                      name='LTA'
+                      id='LTA'
+                      className='h-[20px] w-[20px]'
+                      checked={tax[0].taxDeclaration.lta}
+                      disabled={!editable}
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className='flex justify-evenly gap-5 py-2 mb-20'>
-              <Link to={'/admin/submissions'}>
-                <button className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-green-400 cursor-pointer '>
-                  Back To Submissions
+              <div className='flex justify-between my-2 '>
+                <div className='text-[16px] font-medium  p-4'>
+                  Staff No :
+                  <span className='p-2'> {tax[0].employee.empId}</span>
+                </div>
+                <div className='text-[16px] font-medium  p-4'>
+                  Name of the Staff :
+                  <span className='p-2'> {tax[0].employee.name}</span>
+                </div>
+                <div className='text-[16px] font-medium  p-4'>
+                  PAN No :<span className='p-2'> {tax[0].employee.panNo}</span>
+                </div>
+
+                <div className='text-[16px] font-medium  p-4'>
+                  Address :
+                  <span className='p-2'> {tax[0].employee.address}</span>
+                </div>
+              </div>
+              <div className='w-[60%] flex justify-evenly gap-5 py-2 mb-20 mx-auto'>
+                <button className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-blue-400 cursor-pointer '>
+                  <Link to={'/admin/submissions'}>Back To Submissions</Link>
                 </button>
-              </Link>
-            </div>
+                <button
+                  onClick={handleAcceptButton}
+                  className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-green-400 cursor-pointer '
+                >
+                  Accept
+                </button>
+                <button
+                  onClick={handleRejectButton}
+                  className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-red-400 cursor-pointer '
+                >
+                  Reject
+                </button>
+              </div>
+            </form>
           </div>
         </section>
       ) : (

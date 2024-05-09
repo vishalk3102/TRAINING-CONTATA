@@ -45,6 +45,7 @@ namespace server.Data
                {
                     empId = 1,
                     name = "Vishal Kumar",
+                    dateOfBirth= "2002-01-31",
                     age = 22,
                     gender = "Male",
                     phoneNumber = "1234567890",
@@ -57,6 +58,7 @@ namespace server.Data
                 {
                     empId = 2,
                     name = "Vishal",
+                    dateOfBirth = "2002-01-31",
                     age = 21,
                     gender = "Male",
                     phoneNumber = "8459126643",
@@ -73,7 +75,6 @@ namespace server.Data
               {
                   taxId = 1,
                   empId = 1,
-                  name="vishal kumar",
                   sukanyaSamriddhiAccount = 15000,
                   PPF = 20000,
                   lifeInsurancePremium = 25000,
@@ -89,14 +90,14 @@ namespace server.Data
                   preventiveHealthCheckUp = 10000,
                   LTA = true,
                   financialYear = 2025,
-                  dateOfDeclaration="2024-04-28"
+                  dateOfDeclaration = "2024-04-28",
+                  status = "accepted"
               },
                new TaxDeclaration
                {
 
                    taxId = 2,
                    empId = 2,
-                   name="Vishal",
                    sukanyaSamriddhiAccount = 15000,
                    PPF = 20000,
                    lifeInsurancePremium = 25000,
@@ -112,7 +113,8 @@ namespace server.Data
                    preventiveHealthCheckUp = 10000,
                    LTA = true,
                    financialYear = 2024,
-                   dateOfDeclaration = "2024-04-25"
+                   dateOfDeclaration = "2024-04-25",
+                   status = "drafted"
                }
              );
 

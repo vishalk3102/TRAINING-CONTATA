@@ -26,7 +26,17 @@ namespace server.Controllers
         {
             try
             {
-                var taxDeclarations = await _taxDeclarationService.getAllTaxDeclarations();
+                var taxDeclarationsList = await _taxDeclarationService.getAllTaxDeclarations();
+                if (taxDeclarationsList == null)
+                {
+                    return NotFound();
+                }
+                var taxDeclarations = taxDeclarationsList.Select(tuple => new
+                {
+                    TaxDeclaration = tuple.Item1,
+                    Employee = tuple.Item2
+                });
+
                 return Ok(taxDeclarations);
             }
             catch (Exception ex)
@@ -42,12 +52,19 @@ namespace server.Controllers
         {
             try
             {
-                var taxDeclarations = await _taxDeclarationService.getTaxDeclaration(taxId);
-                if (taxDeclarations == null)
+                var taxDeclarationsList = await _taxDeclarationService.getTaxDeclaration(taxId);
+                if (taxDeclarationsList == null)
                 {
                     return NotFound();
                 }
-                return Ok(taxDeclarations);
+
+                var taxDeclaration = taxDeclarationsList.Select(tuple => new
+                {
+                    TaxDeclaration = tuple.Item1,
+                    Employee = tuple.Item2
+                });
+
+                return Ok(taxDeclaration);
             }
             catch (Exception ex)
             {
@@ -172,15 +189,54 @@ namespace server.Controllers
         {
             try
             {
-                var taxForm = await _taxDeclarationService.getTaxDeclaration(taxId);
-                if (taxForm == null)
+                var taxFormList = await _taxDeclarationService.getTaxDeclaration(taxId);
+                if (taxFormList == null || taxFormList.Any())
                 {
                     return NotFound();
                 }
 
+                var taxForm = taxFormList.First().Item1;
                 await _taxDeclarationService.unfreezeTaxForm(taxForm);
                 await _taxDeclarationService.deleteChangeRequest(taxId);
                 return Ok("Tax Form Unfreezed successfully");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An Unexpected error occurred");
+            }
+        }
+
+        //ACCEPT FORM 
+        [HttpGet("admin/tax/accept/{taxid}")]
+        public async Task<IActionResult> AcceptTaxForm(int taxId)
+        {
+            try
+            {
+                var taxFormList = await _taxDeclarationService.getTaxDeclaration(taxId);
+            
+
+                var taxForm = taxFormList.First().Item1;
+                await _taxDeclarationService.acceptTaxForm(taxForm);
+                return Ok("Tax Form Accepted successfully");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An Unexpected error occurred");
+            }
+        }
+
+        //REJECT FORM 
+        [HttpGet("admin/tax/reject/{taxid}")]
+        public async Task<IActionResult> RejectTaxForm(int taxId)
+        {
+            try
+            {
+                var taxFormList = await _taxDeclarationService.getTaxDeclaration(taxId);
+
+
+                var taxForm = taxFormList.First().Item1;
+                await _taxDeclarationService.rejectTaxForm(taxForm);
+                return Ok("Tax Form Rejected successfully");
             }
             catch (Exception ex)
             {

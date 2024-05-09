@@ -8,9 +8,9 @@ import Pagination from '../Pagination'
 
 const SubmissionListing = () => {
   // STATE VARIABLES FOR FORM INPUT
-  const [year, setYear] = useState()
-  const [name, setName] = useState()
   const [empId, setEmpId] = useState()
+  const [name, setName] = useState()
+  const [financialYear, setFinancialYear] = useState()
   const [status, setStatus] = useState()
   const [filteredData, setFilteredData] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
@@ -34,9 +34,9 @@ const SubmissionListing = () => {
   useEffect(() => {
     const filterData = () => {
       let filtered = taxes || []
-      if (year) {
+      if (financialYear) {
         filtered = filtered.filter(
-          item => item.financialYear === parseInt(year)
+          item => item.financialYear === parseInt(financialYear)
         )
       }
 
@@ -66,7 +66,7 @@ const SubmissionListing = () => {
     }
 
     filterData()
-  }, [currentPage, empId, name, status, taxes, year])
+  }, [currentPage, empId, name, status, taxes, financialYear])
 
   //FUNCTION TO HANDLE PAGE CHANGE
   const handlePageChange = pageNumber => {
@@ -91,8 +91,8 @@ const SubmissionListing = () => {
                 <select
                   id='text'
                   className='w-full h-[40px] text-[14px] bg-blue-50 outline-none py-1 px-3 mt-1 '
-                  value={year}
-                  onChange={e => setYear(e.target.value)}
+                  value={financialYear}
+                  onChange={e => setFinancialYear(e.target.value)}
                 >
                   <option defaultValue>-- Select --</option>
                   <option value='2019'>2019</option>
@@ -176,22 +176,22 @@ const SubmissionListing = () => {
                       return (
                         <tr className='border border-slate-900  ' key={index}>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                            {i.empId}
+                            {i.employee.empId}
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                            {i.name}
+                            {i.employee.name}
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                            {i.financialYear}
+                            {i.taxDeclaration.financialYear}
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                            submitted
+                            {i.taxDeclaration.status}
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                            {i.dateOfDeclaration}
+                            {i.taxDeclaration.dateOfDeclaration}
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize'>
-                            <Link to={`/admin/${i.taxId}`}>
+                            <Link to={`/admin/${i.taxDeclaration.taxId}`}>
                               <span className='flex justify-center'>
                                 <FaEye size={22} />
                               </span>

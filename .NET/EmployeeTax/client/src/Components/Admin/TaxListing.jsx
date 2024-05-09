@@ -193,6 +193,18 @@ const TaxListing = () => {
                             >
                               Unfreeze
                             </button>
+                            <button
+                              className='w-full h-[35px] text-[14px] bg-blue-200 outline-none p-2 rounded '
+                              onClick={() => unfreezeButtonHandler(i.taxId)}
+                            >
+                              Accept
+                            </button>
+                            <button
+                              className='w-full h-[35px] text-[14px] bg-blue-200 outline-none p-2 rounded '
+                              onClick={() => unfreezeButtonHandler(i.taxId)}
+                            >
+                              Reject
+                            </button>
                           </td>
                         </tr>
                       )

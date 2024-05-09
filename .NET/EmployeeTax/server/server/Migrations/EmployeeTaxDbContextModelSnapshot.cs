@@ -92,6 +92,10 @@ namespace server.Migrations
                     b.Property<int>("age")
                         .HasColumnType("int");
 
+                    b.Property<string>("dateOfBirth")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("gender")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -126,6 +130,7 @@ namespace server.Migrations
                             empId = 1,
                             address = "123 Main St, City, Country",
                             age = 22,
+                            dateOfBirth = "2002-01-31",
                             gender = "Male",
                             name = "Vishal Kumar",
                             panNo = "ABCDE1234F",
@@ -138,6 +143,7 @@ namespace server.Migrations
                             empId = 2,
                             address = "123 Main St, City, Country",
                             age = 21,
+                            dateOfBirth = "2002-01-31",
                             gender = "Male",
                             name = "Vishal",
                             panNo = "ABCDE1234F",
@@ -201,15 +207,15 @@ namespace server.Migrations
                     b.Property<decimal>("mediClaim")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<decimal>("preventiveHealthCheckUp")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("principalHousingLoan")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("sukanyaSamriddhiAccount")
                         .HasColumnType("decimal(18,2)");
@@ -240,9 +246,9 @@ namespace server.Migrations
                             isFrozen = false,
                             lifeInsurancePremium = 25000m,
                             mediClaim = 15000m,
-                            name = "vishal kumar",
                             preventiveHealthCheckUp = 10000m,
                             principalHousingLoan = 35000m,
+                            status = "accepted",
                             sukanyaSamriddhiAccount = 15000m,
                             tuitionFee = 30000m
                         },
@@ -264,9 +270,9 @@ namespace server.Migrations
                             isFrozen = false,
                             lifeInsurancePremium = 25000m,
                             mediClaim = 15000m,
-                            name = "Vishal",
                             preventiveHealthCheckUp = 10000m,
                             principalHousingLoan = 35000m,
+                            status = "drafted",
                             sukanyaSamriddhiAccount = 15000m,
                             tuitionFee = 30000m
                         });

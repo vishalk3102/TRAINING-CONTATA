@@ -33,8 +33,6 @@ export const createTaxDeclaration = formData => async dispatch => {
 
 // UPDATE TAX FORM
 export const updateTaxDeclaration = (formData, taxId) => async dispatch => {
-  console.log('ActionformData', formData)
-  console.log('ActiontaxID', taxId)
   try {
     dispatch({
       type: 'updateTaxDeclarationRequest'
@@ -93,6 +91,7 @@ export const getAllTaxDeclaration = () => async dispatch => {
       type: 'getAllTaxDeclarationSuccess',
       payload: data
     })
+    console.log(data)
   } catch (error) {
     dispatch({
       type: 'getAllTaxDeclarationFail',
@@ -168,7 +167,7 @@ export const requestChange = formData => async dispatch => {
   }
 }
 
-// UNFREEZE TAX DECLARATION
+// UNFREEZE TAX DECLARATION  --admin
 export const unfreezeTaxForm = taxId => async dispatch => {
   try {
     dispatch({
@@ -184,6 +183,48 @@ export const unfreezeTaxForm = taxId => async dispatch => {
   } catch (error) {
     dispatch({
       type: 'unfreezeTaxFormFail',
+      payload: error.response.data.message
+    })
+  }
+}
+
+// ACCEPTED SUBMITTED  TAX DECLARATION  --admin
+export const acceptTaxDeclaration = taxId => async dispatch => {
+  try {
+    dispatch({
+      type: 'acceptTaxDeclarationRequest'
+    })
+
+    const { data } = await axios.get(`${server}/admin/tax/accept/${taxId}`)
+    dispatch({
+      type: 'acceptTaxDeclarationSuccess',
+      payload: data
+    })
+    return data
+  } catch (error) {
+    dispatch({
+      type: 'acceptTaxDeclarationFail',
+      payload: error.response.data.message
+    })
+  }
+}
+
+// REJECT SUBMITTED  TAX DECLARATION  --admin
+export const rejectTaxDeclaration = taxId => async dispatch => {
+  try {
+    dispatch({
+      type: 'rejectTaxDeclarationRequest'
+    })
+
+    const { data } = await axios.get(`${server}/admin/tax/reject/${taxId}`)
+    dispatch({
+      type: 'rejectTaxDeclarationSuccess',
+      payload: data
+    })
+    return data
+  } catch (error) {
+    dispatch({
+      type: 'rejectTaxDeclarationFail',
       payload: error.response.data.message
     })
   }

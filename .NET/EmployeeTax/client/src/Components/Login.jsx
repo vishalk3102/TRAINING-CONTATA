@@ -43,12 +43,12 @@ const Login = () => {
               />
             </div>
             <div className='mb-3 mx-2'>
-              <label htmlFor='name' className='leading-7 text-sm '>
+              <label htmlFor='password' className='leading-7 text-sm '>
                 Password
               </label>
               <input
                 type='password'
-                id='name'
+                id='password'
                 className='w-full h-[40px] text-[14px] bg-white outline-none py-1 px-3 mt-1 '
                 value={password}
                 onChange={e => setPassword(e.target.value)}

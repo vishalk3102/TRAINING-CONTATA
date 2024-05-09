@@ -105,6 +105,30 @@ export const taxReducer = createReducer(
       state.error = action.payload
     },
 
+    acceptTaxDeclarationRequest: state => {
+      state.loading = true
+    },
+    acceptTaxDeclarationSuccess: (state, action) => {
+      state.loading = false
+      state.message = action.payload
+    },
+    acceptTaxDeclarationFail: (state, action) => {
+      state.loading = false
+      state.error = action.payload
+    },
+
+    rejectTaxDeclarationRequest: state => {
+      state.loading = true
+    },
+    rejectTaxDeclarationSuccess: (state, action) => {
+      state.loading = false
+      state.message = action.payload
+    },
+    rejectTaxDeclarationFail: (state, action) => {
+      state.loading = false
+      state.error = action.payload
+    },
+
     clearError: state => {
       state.error = null
     },

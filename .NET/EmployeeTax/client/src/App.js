@@ -57,13 +57,13 @@ const App = () => {
               element={<SubmissionListing />}
             />
             <Route exact path='/admin/employees' element={<Employees />} />
+            <Route exact path='/admin/employee/add' element={<AddEmployee />} />
             <Route
               exact
               path='/admin/employee/:empId'
               element={<EditEmployee />}
             />
           </Route>
-          <Route exact path='/admin/employee/add' element={<AddEmployee />} />
 
           {/* EMPLOYEE ROUTING  */}
           <Route

@@ -1,12 +1,122 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\TRAINING\\.NET\\EmployeeTax\\server\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|c:\\training\\.net\\employeetax\\server\\server\\controllers\\taxdeclarationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|solutionrelative:server\\controllers\\taxdeclarationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|c:\\training\\.net\\employeetax\\server\\server\\services\\taxdeclarationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|solutionrelative:server\\services\\taxdeclarationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|c:\\training\\.net\\employeetax\\server\\server\\data\\employeetaxdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|solutionrelative:server\\data\\employeetaxdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|c:\\training\\.net\\employeetax\\server\\server\\model\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|solutionrelative:server\\model\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|c:\\training\\.net\\employeetax\\server\\server\\model\\taxdeclaration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|solutionrelative:server\\model\\taxdeclaration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|c:\\training\\.net\\employeetax\\server\\server\\model\\changerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|solutionrelative:server\\model\\changerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmployeeTaxDbContext.cs",
+              "DocumentMoniker": "C:\\TRAINING\\.NET\\EmployeeTax\\server\\server\\Data\\EmployeeTaxDbContext.cs",
+              "RelativeDocumentMoniker": "server\\Data\\EmployeeTaxDbContext.cs",
+              "ToolTip": "C:\\TRAINING\\.NET\\EmployeeTax\\server\\server\\Data\\EmployeeTaxDbContext.cs",
+              "RelativeToolTip": "server\\Data\\EmployeeTaxDbContext.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAIAxwDkAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-09T06:56:26.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TaxDeclarationService.cs",
+              "DocumentMoniker": "C:\\TRAINING\\.NET\\EmployeeTax\\server\\server\\Services\\TaxDeclarationService.cs",
+              "RelativeDocumentMoniker": "server\\Services\\TaxDeclarationService.cs",
+              "ToolTip": "C:\\TRAINING\\.NET\\EmployeeTax\\server\\server\\Services\\TaxDeclarationService.cs",
+              "RelativeToolTip": "server\\Services\\TaxDeclarationService.cs",
+              "ViewState": "AQIAAF8AAAAAAAAAAIAwwIYAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-09T06:48:23.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TaxDeclarationController.cs",
+              "DocumentMoniker": "C:\\TRAINING\\.NET\\EmployeeTax\\server\\server\\Controllers\\TaxDeclarationController.cs",
+              "RelativeDocumentMoniker": "server\\Controllers\\TaxDeclarationController.cs",
+              "ToolTip": "C:\\TRAINING\\.NET\\EmployeeTax\\server\\server\\Controllers\\TaxDeclarationController.cs",
+              "RelativeToolTip": "server\\Controllers\\TaxDeclarationController.cs",
+              "ViewState": "AQIAAMgAAAAAAAAAAAAIwOwAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-09T06:37:36.903Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ChangeRequest.cs",
+              "DocumentMoniker": "C:\\TRAINING\\.NET\\EmployeeTax\\server\\server\\Model\\ChangeRequest.cs",
+              "RelativeDocumentMoniker": "server\\Model\\ChangeRequest.cs",
+              "ToolTip": "C:\\TRAINING\\.NET\\EmployeeTax\\server\\server\\Model\\ChangeRequest.cs",
+              "RelativeToolTip": "server\\Model\\ChangeRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-09T06:37:03.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "C:\\TRAINING\\.NET\\EmployeeTax\\server\\server\\Model\\Employee.cs",
+              "RelativeDocumentMoniker": "server\\Model\\Employee.cs",
+              "ToolTip": "C:\\TRAINING\\.NET\\EmployeeTax\\server\\server\\Model\\Employee.cs",
+              "RelativeToolTip": "server\\Model\\Employee.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAUwBkAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-09T06:36:56.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TaxDeclaration.cs",
+              "DocumentMoniker": "C:\\TRAINING\\.NET\\EmployeeTax\\server\\server\\Model\\TaxDeclaration.cs",
+              "RelativeDocumentMoniker": "server\\Model\\TaxDeclaration.cs",
+              "ToolTip": "C:\\TRAINING\\.NET\\EmployeeTax\\server\\server\\Model\\TaxDeclaration.cs",
+              "RelativeToolTip": "server\\Model\\TaxDeclaration.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAxwEwAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-09T06:36:55.569Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
