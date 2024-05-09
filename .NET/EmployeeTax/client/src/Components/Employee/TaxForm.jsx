@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
-<<<<<<< HEAD
 import {
   createTaxDeclaration,
   getMyTaxDeclaration
@@ -24,26 +23,6 @@ const TaxForm = () => {
   const [tds, setTds] = useState(0)
   const [healthInsurance, setHealthInsurance] = useState(0)
   const [preventiveHealthCheckup, setPreventiveHealthCheckup] = useState(0)
-=======
-import { createTaxDeclaration } from '../../Redux/Actions/TaxAction'
-
-const TaxForm = () => {
-  // STATE VARIABLES FOR FORM INPUT
-  const [anyOtherIncome, setAnyOtherIncome] = useState('')
-  const [sukanyaSamriddhiAccount, setSukanyaSamruddhiAccount] = useState('')
-  const [ppf, setPpf] = useState('')
-  const [lic, setLic] = useState('')
-  const [tuitionFee, setTuitionFee] = useState('')
-  const [fixedDeposit, setFixedDeposit] = useState('')
-  const [interestHousingLoan, setInterestHousingLoan] = useState('')
-  const [nps, setNps] = useState('')
-  const [educationLoan, setEducationLoan] = useState('')
-  const [principalHousingLoan, setPrincipalHousingLoan] = useState('')
-  const [houseRent, setHouseRent] = useState('')
-  const [tds, setTds] = useState('')
-  const [healthInsurance, setHealthInsurance] = useState('')
-  const [preventiveHealthCheckup, setPreventiveHealthCheckup] = useState('')
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
   const [ltaChecked, setLtaChecked] = useState(false)
   const [financialYear, setFinancialYear] = useState()
 
@@ -52,22 +31,16 @@ const TaxForm = () => {
 
   // FETCHING VALUES FROM STORE
   const { user } = useSelector(state => state.auth)
-<<<<<<< HEAD
   const { taxes } = useSelector(state => state.tax)
 
-=======
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const currentDate = new Date()
   const currentDateString = currentDate.toISOString().split('T')[0]
-<<<<<<< HEAD
   useEffect(() => {
     dispatch(getMyTaxDeclaration())
   }, [dispatch])
-=======
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
 
   useEffect(() => {
     const savedFormData = localStorage.getItem(`taxFormData_${financialYear}`)
@@ -136,15 +109,12 @@ const TaxForm = () => {
   const handleSubmitButton = e => {
     e.preventDefault()
 
-<<<<<<< HEAD
     const existingTax = taxes.find(tax => tax.financialYear === financialYear)
 
     if (existingTax) {
       toast.error('Tax form already submitted for this financial year.')
       return
     }
-=======
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
     // --Validation of form before submission --
     if (
       !financialYear ||

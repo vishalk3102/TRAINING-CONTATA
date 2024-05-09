@@ -3,11 +3,8 @@ import { server } from '../Store'
 
 // CREATE TAX FORM(SUBMISSION)
 export const createTaxDeclaration = formData => async dispatch => {
-<<<<<<< HEAD
-=======
   console.log(formData)
 
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
   try {
     dispatch({
       type: 'createTaxDeclarationRequest'
@@ -36,11 +33,8 @@ export const createTaxDeclaration = formData => async dispatch => {
 
 // UPDATE TAX FORM
 export const updateTaxDeclaration = (formData, taxId) => async dispatch => {
-<<<<<<< HEAD
-=======
   console.log('ActionformData', formData)
   console.log('ActiontaxID', taxId)
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
   try {
     dispatch({
       type: 'updateTaxDeclarationRequest'

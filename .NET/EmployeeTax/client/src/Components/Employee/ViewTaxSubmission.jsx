@@ -136,11 +136,8 @@ const ViewTaxSubmission = () => {
       dateOfDeclaration: currentDateString
     }
 
-<<<<<<< HEAD
-=======
     console.log('formData', formData)
     console.log('taxID', taxId)
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
     dispatch(updateTaxDeclaration(formData, taxId))
       .then(message => {
         toast.success('Form Submitted successfully')

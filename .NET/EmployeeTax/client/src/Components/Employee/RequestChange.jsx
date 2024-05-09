@@ -1,14 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-<<<<<<< HEAD
-import {
-  getTaxChangeRequestListing,
-  getTaxDeclaration,
-  requestChange
-} from '../../Redux/Actions/TaxAction'
-=======
 import { getTaxDeclaration, requestChange } from '../../Redux/Actions/TaxAction'
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
 import { useNavigate, useParams } from 'react-router-dom'
 import Loader from '../Loader'
 import toast from 'react-hot-toast'
@@ -23,11 +15,7 @@ const RequestChange = () => {
 
   // FETCHING VALUES FROM STORE
   const { loading, user, error } = useSelector(state => state.auth)
-<<<<<<< HEAD
-  const { tax, changeRequests } = useSelector(state => state.tax)
-=======
   const { tax, message } = useSelector(state => state.tax)
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
 
   const dispatch = useDispatch()
   const params = useParams()
@@ -35,10 +23,6 @@ const RequestChange = () => {
 
   useEffect(() => {
     dispatch(getTaxDeclaration(params.taxId))
-<<<<<<< HEAD
-    dispatch(getTaxChangeRequestListing())
-=======
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
   }, [dispatch])
 
   useEffect(() => {
@@ -56,15 +40,6 @@ const RequestChange = () => {
   const formHandler = e => {
     e.preventDefault()
 
-<<<<<<< HEAD
-    const existingTax = changeRequests.find(req => req.taxId === taxId)
-
-    if (existingTax) {
-      toast.error('Requested already submiited for this tax form')
-      return
-    }
-=======
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
     // --Validation of form before submission --
     if (!reason) {
       toast.error('All fields are required')

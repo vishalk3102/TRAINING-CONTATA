@@ -82,15 +82,11 @@ namespace server.Services
 
 
         //DELETE  CHNAGE REQUEST --after unfreezing it 
-<<<<<<< HEAD
+
         public async Task deleteChangeRequest(int taxId)
         {
             var changeRequest = await _db.ChangeRequests.FirstOrDefaultAsync(td=>td.taxId==taxId);
-=======
-        public async Task deleteEmployee(int taxId)
-        {
-            var changeRequest = await _db.ChangeRequests.FindAsync(taxId);
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
+
             if (changeRequest != null)
             {
                 _db.ChangeRequests.Remove(changeRequest);
@@ -98,10 +94,6 @@ namespace server.Services
             }
         }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
         //UNFREEZE TAX DECLARATION FORM
         public async Task unfreezeTaxForm(TaxDeclaration taxForm)
         {

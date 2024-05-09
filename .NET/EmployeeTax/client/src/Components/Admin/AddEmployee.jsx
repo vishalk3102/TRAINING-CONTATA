@@ -187,11 +187,7 @@ const AddEmployee = () => {
                 {' '}
                 <button
                   type='submit'
-<<<<<<< HEAD
                   className='bg-blue-500 px-6  py-3  rounded-sm  text-white'
-=======
-                  className='bg-blue-500 px-6  py-3 rounded rounded-sm  text-white'
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
                 >
                   Add Employee
                 </button>

@@ -61,17 +61,10 @@ const PreviousSubmission = () => {
                             {i.financialYear}
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-<<<<<<< HEAD
-                            Submitted
-                          </td>
-                          <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                            {i.dateOfDeclaration}
-=======
                             {i.taxId}
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
                             {i.taxId}
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize'>
                             <Link to={`/submission/${i.taxId}`}>

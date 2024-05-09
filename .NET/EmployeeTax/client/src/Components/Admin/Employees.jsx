@@ -19,11 +19,7 @@ const Employees = () => {
   const [filteredData, setFilteredData] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
-<<<<<<< HEAD
   const itemsPerPage = 5
-=======
-  const itemsPerPage = 3
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
 
   const dispatch = useDispatch()
   const { loading, employees } = useSelector(state => state.employee)
@@ -107,11 +103,7 @@ const Employees = () => {
               <Link to={'/admin/employee/add'}>
                 <button className='text-[#fff] text-[14px] font-semibold flex justify-center items-center bg-blue-500  rounded p-3 hover:bg-blue-700 ease-linear duration-300 hover:ease-linear hover:duration-300 hover:transition-all transition-all'>
                   {' '}
-<<<<<<< HEAD
                   Add Employee{' '}
-=======
-                  Create Job Post{' '}
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
                   <span className=''>
                     <IoIosAdd size={24} />
                   </span>

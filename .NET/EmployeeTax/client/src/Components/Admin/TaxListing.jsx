@@ -32,11 +32,7 @@ const TaxListing = () => {
     setFilteredData(changeRequests)
   }, [changeRequests])
 
-<<<<<<< HEAD
   //FILTERING OF DATA BASED ON FILTER SELECTEDS
-=======
-  //FILTERING OF DATA BASED ON FILTER SELECTED
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
   useEffect(() => {
     const filterData = () => {
       let filtered = changeRequests || []
@@ -152,12 +148,6 @@ const TaxListing = () => {
                     <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 p-3  uppercase text-center'>
                       Employee Name
                     </th>
-<<<<<<< HEAD
-                    <th className='text-[1.1rem] font-bold bg-blue-100  border border-slate-900 p-3 uppercase text-center'>
-                      Tax ID
-                    </th>
-=======
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
                     <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 p-3  uppercase text-center'>
                       Date of Submission
                     </th>
@@ -184,12 +174,6 @@ const TaxListing = () => {
                             {i.name}
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-<<<<<<< HEAD
-                            {i.taxId}
-                          </td>
-                          <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-=======
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
                             {i.dateOfSubmission}
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>

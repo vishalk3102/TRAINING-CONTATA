@@ -24,7 +24,6 @@ namespace server.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(User user)
         {
-<<<<<<< HEAD
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -37,11 +36,6 @@ namespace server.Controllers
         {
             return Ok(new { success = true, message = "Logout successful" });
         }
-
-=======
-            return await _userService.login(user);
-        }
-
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
+   
     }
 }

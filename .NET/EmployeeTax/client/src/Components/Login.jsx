@@ -10,30 +10,15 @@ const Login = () => {
 
   const [employeeID, setEmployeeID] = useState('')
   const [password, setPassword] = useState('')
-<<<<<<< HEAD
-  const [errorMessage, setErrorMessage] = useState('')
-=======
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
 
   const handleLoginSubmit = e => {
     e.preventDefault()
     dispatch(loginUser(employeeID, password, navigate))
-<<<<<<< HEAD
-      .then(responseData => {
-        if (responseData.token) {
-          toast.success('Login Successful')
-        }
-      })
-      .catch(error => {
-        setErrorMessage('Invalid username or password.')
-        toast.error('Login Failed')
-=======
       .then(token => {
         toast.success('Login Successful')
       })
       .catch(err => {
         toast.error('Unable to Login')
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
       })
   }
 
@@ -69,10 +54,6 @@ const Login = () => {
                 onChange={e => setPassword(e.target.value)}
               />
             </div>
-<<<<<<< HEAD
-            {errorMessage && <p>{errorMessage}</p>}
-=======
->>>>>>> 361510a1352e924016f9b4efe1c28c6ee59d6159
             <div className='m-2'>
               <button
                 type='submit'
