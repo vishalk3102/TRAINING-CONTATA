@@ -114,11 +114,11 @@ const SubmissionListing = () => {
                   value={status}
                   onChange={e => setStatus(e.target.value)}
                 >
-                  {/* <option defaultValue>-- Select --</option> */}
-                  <option defaultValue value='submitted'>
-                    Submitted
-                  </option>
-                  {/* <option value='draft'>Draft</option> */}
+                  <option defaultValue>-- Select --</option>
+                  <option value='submitted'>Submitted</option>
+                  <option value='accepted'>Accepted</option>
+                  <option value='rejected'>Rejected</option>
+                  <option value='drafted'>Drafted</option>
                 </select>
               </div>
               <div className='w-[40%]'>

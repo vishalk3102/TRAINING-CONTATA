@@ -7,7 +7,7 @@
 namespace server.Migrations
 {
     /// <inheritdoc />
-    public partial class seeddata : Migration
+    public partial class seedtabledata : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,10 +19,6 @@ namespace server.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     taxId = table.Column<int>(type: "int", nullable: false),
-                    empId = table.Column<int>(type: "int", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    financialYear = table.Column<int>(type: "int", nullable: false),
-                    dateOfSubmission = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     reason = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -85,11 +81,11 @@ namespace server.Migrations
 
             migrationBuilder.InsertData(
                 table: "ChangeRequests",
-                columns: new[] { "id", "dateOfSubmission", "empId", "financialYear", "name", "reason", "taxId" },
+                columns: new[] { "id", "reason", "taxId" },
                 values: new object[,]
                 {
-                    { 1, "2024-04-21", 1, 2024, "Vishal Kumar", "Wrong", 1 },
-                    { 2, "2024-04-21", 2, 2024, "Vishal Kumar", "Wrong", 2 }
+                    { 1, "Wrong", 1 },
+                    { 2, "Wrong", 2 }
                 });
 
             migrationBuilder.InsertData(

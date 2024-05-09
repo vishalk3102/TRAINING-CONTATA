@@ -71,7 +71,8 @@ namespace server.Model
         [Required(ErrorMessage = "Date of Declaration is required")]
         public string dateOfDeclaration { get; set; }
 
-        public string status { get; set; }
+        public string status { get; set; } = "pending";
+
 
     }
 }

@@ -27,29 +27,6 @@ const ViewTaxSubmission = () => {
     return <Loader />
   }
 
-  // FUNCTION TO HANDLE ACCEPT BUTTON CLICK
-  const handleAcceptButton = () => {
-    dispatch(acceptTaxDeclaration(tax[0].taxDeclaration.taxId))
-      .then(() => {
-        navigate('/admin/submissions')
-        toast.success('Accepted successful')
-      })
-      .catch(err => {
-        toast.error('Failed to Accept form')
-      })
-  }
-
-  // FUNCTION TO HANDLE REJECT BUTTON CLICK
-  const handleRejectButton = () => {
-    dispatch(rejectTaxDeclaration(tax[0].taxDeclaration.taxId))
-      .then(() => {
-        navigate('/admin/submissions')
-        toast.success('Rejected successful')
-      })
-      .catch(err => {
-        toast.error('Failed to Reject form')
-      })
-  }
   return (
     <>
       {loading === false ? (
@@ -396,21 +373,9 @@ const ViewTaxSubmission = () => {
                   <span className='p-2'> {tax[0].employee.address}</span>
                 </div>
               </div>
-              <div className='w-[60%] flex justify-evenly gap-5 py-2 mb-20 mx-auto'>
-                <button className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-blue-400 cursor-pointer '>
+              <div className='flex justify-evenly gap-5 py-2 mb-20 mx-auto'>
+                <button className='w-[30%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-blue-400 cursor-pointer '>
                   <Link to={'/admin/submissions'}>Back To Submissions</Link>
-                </button>
-                <button
-                  onClick={handleAcceptButton}
-                  className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-green-400 cursor-pointer '
-                >
-                  Accept
-                </button>
-                <button
-                  onClick={handleRejectButton}
-                  className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-red-400 cursor-pointer '
-                >
-                  Reject
                 </button>
               </div>
             </form>

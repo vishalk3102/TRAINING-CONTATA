@@ -122,22 +122,14 @@ namespace server.Data
               new ChangeRequest
               {
                   id=1,
-                  empId = 1,
                   taxId = 1,
-                  name = "Vishal Kumar",
-                  financialYear = 2024,
                   reason = "Wrong",
-                  dateOfSubmission="2024-04-21"
               },
               new ChangeRequest
               {
                   id=2,
-                  empId = 2,
                   taxId = 2,
-                  name = "Vishal Kumar",
-                  financialYear = 2024,
                   reason = "Wrong",
-                  dateOfSubmission = "2024-04-21"
               }
             );
         }

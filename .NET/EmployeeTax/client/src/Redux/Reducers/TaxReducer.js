@@ -30,7 +30,7 @@ export const taxReducer = createReducer(
     },
     getMyTaxDeclarationSuccess: (state, action) => {
       state.loading = false
-      state.taxes = action.payload
+      state.mytaxes = action.payload
     },
     getMyTaxDeclarationFail: (state, action) => {
       state.loading = false

@@ -3,8 +3,6 @@ import { server } from '../Store'
 
 // CREATE TAX FORM(SUBMISSION)
 export const createTaxDeclaration = formData => async dispatch => {
-  console.log(formData)
-
   try {
     dispatch({
       type: 'createTaxDeclarationRequest'
@@ -91,7 +89,6 @@ export const getAllTaxDeclaration = () => async dispatch => {
       type: 'getAllTaxDeclarationSuccess',
       payload: data
     })
-    console.log(data)
   } catch (error) {
     dispatch({
       type: 'getAllTaxDeclarationFail',
@@ -132,6 +129,7 @@ export const getTaxChangeRequestListing = () => async dispatch => {
       type: 'getTaxChangeRequestListingSuccess',
       payload: data
     })
+    console.log(data)
   } catch (error) {
     dispatch({
       type: 'getTaxChangeRequestListingFail',

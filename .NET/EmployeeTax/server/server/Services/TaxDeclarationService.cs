@@ -64,17 +64,32 @@ namespace server.Services
 
 
         //GET ALL TAX DECLARATION WITH CHANGE REQUEST
-        public async Task<List<ChangeRequest>> getChangeRequestTaxDeclaration()
+        public async Task<List<Tuple<string, TaxDeclaration, Employee>>> getChangeRequestTaxDeclaration()
         {
-            var changeRequests = await _db.ChangeRequests.ToListAsync();
-            return changeRequests;
+
+            var query = from changeRequest in _db.ChangeRequests
+                        join taxDeclaration in _db.TaxDeclarations
+                        on changeRequest.taxId equals taxDeclaration.taxId
+                        join employee in _db.Employees
+                        on taxDeclaration.empId equals employee.empId
+                        select new
+                        {
+                            ChangeRequestDetails = changeRequest.reason,
+                            TaxDeclarationDetails = taxDeclaration,
+                            EmployeeDetails = employee
+                        };
+            var result = await query.ToListAsync();
+            var requestResult = result.Select(item =>Tuple.Create(item.ChangeRequestDetails, item.TaxDeclarationDetails, item.EmployeeDetails)).ToList();
+            return requestResult;
+           
         }
 
 
         //TAX FORM SUBMISSION
         public async Task createTaxDeclaration(TaxDeclaration taxDeclaration)
         {
-            taxDeclaration.isFrozen = true;
+            taxDeclaration.isFrozen = false;
+            taxDeclaration.status = "drafted";
             taxDeclaration.dateOfDeclaration = DateOnly.FromDateTime(DateTime.UtcNow).ToString("yyyy-MM-dd");
             _db.TaxDeclarations.Add(taxDeclaration);
             await _db.SaveChangesAsync();
@@ -85,6 +100,7 @@ namespace server.Services
         public async Task updateTaxDeclaration(TaxDeclaration taxDeclaration)
         {
             taxDeclaration.isFrozen = true;
+            taxDeclaration.status = "submitted";
             _db.TaxDeclarations.Update(taxDeclaration);
             await _db.SaveChangesAsync();
         }

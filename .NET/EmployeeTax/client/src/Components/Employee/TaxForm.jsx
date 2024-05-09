@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import {
   createTaxDeclaration,
-  getMyTaxDeclaration
+  getMyTaxDeclaration,
+  updateTaxDeclaration
 } from '../../Redux/Actions/TaxAction'
 
 const TaxForm = () => {
@@ -28,10 +29,11 @@ const TaxForm = () => {
 
   // STATE VARIABLES FOR FORM
   const [taxFormActive, setTaxFormActive] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   // FETCHING VALUES FROM STORE
   const { user } = useSelector(state => state.auth)
-  const { taxes } = useSelector(state => state.tax)
+  const { mytaxes } = useSelector(state => state.tax)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -39,7 +41,7 @@ const TaxForm = () => {
   const currentDate = new Date()
   const currentDateString = currentDate.toISOString().split('T')[0]
   useEffect(() => {
-    dispatch(getMyTaxDeclaration())
+    dispatch(getMyTaxDeclaration(user.empId))
   }, [dispatch])
 
   useEffect(() => {
@@ -82,36 +84,49 @@ const TaxForm = () => {
   // FUNCTION TO HANDLE SAVE BUTTON
   const handleSaveButton = () => {
     const formData = {
+      empId: user.empId,
+      financialYear: financialYear,
       anyOtherIncome,
       sukanyaSamriddhiAccount,
-      ppf,
-      lic,
+      PPF: ppf,
+      lifeInsurancePremium: lic,
       tuitionFee,
-      fixedDeposit,
-      interestHousingLoan,
-      nps,
-      educationLoan,
+      bankFixedDeposit: fixedDeposit,
       principalHousingLoan,
+      NPS: nps,
+      higherEducationLoanInterest: educationLoan,
+      interestHousingLoan,
       houseRent,
-      tds,
-      healthInsurance,
+      TDS: tds,
+      mediClaim: healthInsurance,
       preventiveHealthCheckup,
-      ltaChecked
+      LTA: ltaChecked,
+      dateOfDeclaration: currentDateString
     }
-    localStorage.setItem(
-      `taxFormData_${financialYear}`,
-      JSON.stringify(formData)
-    )
-    toast.success('Form Saved Succesfully')
+    dispatch(createTaxDeclaration(formData))
+      .then(response => {
+        if (response) {
+          toast.success('Form Saved successfully')
+          navigate('/submissions')
+        } else {
+          toast.error('Failed to Save form')
+        }
+      })
+      .catch(err => {
+        toast.error('Failed to Save form')
+      })
   }
 
   // FUNCTION TO HANDLE FORM SUBMISSION
   const handleSubmitButton = e => {
     e.preventDefault()
 
-    const existingTax = taxes.find(tax => tax.financialYear === financialYear)
+    const existingTax = mytaxes.find(tax => tax.financialYear === financialYear)
 
-    if (existingTax) {
+    if (
+      existingTax &&
+      (existingTax.status === 'submitted' || existingTax.status === 'accepted')
+    ) {
       toast.error('Tax form already submitted for this financial year.')
       return
     }
@@ -139,9 +154,9 @@ const TaxForm = () => {
     }
 
     const formData = {
+      taxId: existingTax.taxId,
       empId: user.empId,
       financialYear: financialYear,
-      name: user.name,
       anyOtherIncome,
       sukanyaSamriddhiAccount,
       PPF: ppf,
@@ -159,11 +174,11 @@ const TaxForm = () => {
       LTA: ltaChecked,
       dateOfDeclaration: currentDateString
     }
-
-    dispatch(createTaxDeclaration(formData))
+    dispatch(updateTaxDeclaration(formData, existingTax.taxId))
       .then(response => {
         if (response) {
           toast.success('Form Submitted successfully')
+          setIsSubmitted(true)
           navigate('/submissions')
         } else {
           toast.error('Failed to submit form')
@@ -248,6 +263,7 @@ const TaxForm = () => {
                     className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
                     value={anyOtherIncome}
                     onChange={e => setAnyOtherIncome(e.target.value)}
+                    disabled={isSubmitted}
                   />
                 </div>
               </div>
@@ -273,6 +289,7 @@ const TaxForm = () => {
                         onChange={e =>
                           setSukanyaSamruddhiAccount(e.target.value)
                         }
+                        disabled={isSubmitted}
                       />
                     </div>
                   </div>
@@ -291,6 +308,7 @@ const TaxForm = () => {
                         className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
                         value={ppf}
                         onChange={e => setPpf(e.target.value)}
+                        disabled={isSubmitted}
                       />
                     </div>
                   </div>
@@ -309,6 +327,7 @@ const TaxForm = () => {
                         className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
                         value={lic}
                         onChange={e => setLic(e.target.value)}
+                        disabled={isSubmitted}
                       />
                     </div>
                   </div>
@@ -327,6 +346,7 @@ const TaxForm = () => {
                         className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
                         value={tuitionFee}
                         onChange={e => setTuitionFee(e.target.value)}
+                        disabled={isSubmitted}
                       />
                     </div>
                   </div>
@@ -348,6 +368,7 @@ const TaxForm = () => {
                         className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
                         value={fixedDeposit}
                         onChange={e => setFixedDeposit(e.target.value)}
+                        disabled={isSubmitted}
                       />
                     </div>
                   </div>
@@ -367,6 +388,7 @@ const TaxForm = () => {
                         className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
                         value={principalHousingLoan}
                         onChange={e => setPrincipalHousingLoan(e.target.value)}
+                        disabled={isSubmitted}
                       />
                     </div>
                   </div>
@@ -385,6 +407,7 @@ const TaxForm = () => {
                         className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
                         value={nps}
                         onChange={e => setNps(e.target.value)}
+                        disabled={isSubmitted}
                       />
                     </div>
                   </div>
@@ -405,6 +428,7 @@ const TaxForm = () => {
                     className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
                     value={educationLoan}
                     onChange={e => setEducationLoan(e.target.value)}
+                    disabled={isSubmitted}
                   />
                 </div>
               </div>
@@ -423,6 +447,7 @@ const TaxForm = () => {
                     className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
                     value={interestHousingLoan}
                     onChange={e => setInterestHousingLoan(e.target.value)}
+                    disabled={isSubmitted}
                   />
                 </div>
               </div>
@@ -442,6 +467,7 @@ const TaxForm = () => {
                     className='w-[100%] border-solid border-2 border-black  px-2 py-1 text-[14px] outline-none'
                     value={houseRent}
                     onChange={e => setHouseRent(e.target.value)}
+                    disabled={isSubmitted}
                   />
                 </div>
               </div>
@@ -460,6 +486,7 @@ const TaxForm = () => {
                     className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
                     value={tds}
                     onChange={e => setTds(e.target.value)}
+                    disabled={isSubmitted}
                   />
                 </div>
               </div>
@@ -481,6 +508,7 @@ const TaxForm = () => {
                     className='w-[100%]  border-solid border-2 border-black px-2 py-1 text-[14px] outline-none'
                     value={healthInsurance}
                     onChange={e => setHealthInsurance(e.target.value)}
+                    disabled={isSubmitted}
                   />
                 </div>
               </div>
@@ -500,6 +528,7 @@ const TaxForm = () => {
                     className='w-[100%]  border-solid border-2 border-black px-2  text-[14px] outline-none'
                     value={preventiveHealthCheckup}
                     onChange={e => setPreventiveHealthCheckup(e.target.value)}
+                    disabled={isSubmitted}
                   />
                 </div>
               </div>
@@ -523,6 +552,7 @@ const TaxForm = () => {
                     className='h-[20px] w-[20px]'
                     checked={ltaChecked}
                     onChange={handleLtaCheckboxChange}
+                    disabled={isSubmitted}
                   />
                 </div>
               </div>

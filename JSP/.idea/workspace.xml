@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8e33629a-e6ca-4794-a775-df99028052de" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/.vs/CRUD/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/.vs/CRUD/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/.vs/CRUD/FileContentIndex/6a6574db-5424-40f5-9d1f-59d39822a3ba.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/.vs/CRUD/FileContentIndex/9f1753b4-372b-4074-8ac7-f247bbec1a00.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/.vs/CRUD/FileContentIndex/eb291fae-3f21-4889-abf8-f4bba90665aa.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/.vs/CRUD/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/.vs/CRUD/v17/.futdcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/.vs/CRUD/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/.vs/CRUD/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/.vs/CRUD/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/.vs/CRUD/v17/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/.vs/ProjectEvaluation/crud.metadata.v7.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/.vs/ProjectEvaluation/crud.metadata.v7.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/.vs/ProjectEvaluation/crud.projects.v7.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/.vs/ProjectEvaluation/crud.projects.v7.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/CRUD.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/CRUD.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/CRUD.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/CRUD.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/Debug/net8.0/CRUD.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/Debug/net8.0/CRUD.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/Debug/net8.0/CRUD.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/Debug/net8.0/CRUD.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/Debug/net8.0/CRUD.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/Debug/net8.0/CRUD.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/Debug/net8.0/CRUD.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/Debug/net8.0/CRUD.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/Debug/net8.0/CRUD.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/Debug/net8.0/CRUD.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/CRUD/CRUD/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/LockSynchronization/.vs/LockSynchronization/FileContentIndex/b13cf9b7-5a2e-48c5-90b4-6cc6a7904abd.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/LockSynchronization/.vs/LockSynchronization/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/LockSynchronization/.vs/LockSynchronization/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/LockSynchronization/.vs/LockSynchronization/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/LockSynchronization/.vs/LockSynchronization/v17/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/LockSynchronization/LockSynchronization/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/LockSynchronization/LockSynchronization/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/ManualResetSynchronization/.vs/ManualResetSynchronization/FileContentIndex/af8b2bc8-d269-40bc-810a-a8654d51d024.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/ManualResetSynchronization/.vs/ManualResetSynchronization/FileContentIndex/ccfc7502-fcb9-4378-84d5-a5ac2cb3e6a9.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/ManualResetSynchronization/.vs/ManualResetSynchronization/FileContentIndex/e22f9253-0fba-4edc-bdb1-2c4afcd0fc59.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/ManualResetSynchronization/.vs/ManualResetSynchronization/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/ManualResetSynchronization/.vs/ManualResetSynchronization/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/ManualResetSynchronization/.vs/ManualResetSynchronization/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/ManualResetSynchronization/.vs/ManualResetSynchronization/v17/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/ManualResetSynchronization/ManualResetSynchronization/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/ManualResetSynchronization/ManualResetSynchronization/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/MultiThreading/.vs/MultiThreading/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/MultiThreading/.vs/MultiThreading/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/MultiThreading/.vs/MultiThreading/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/MultiThreading/.vs/MultiThreading/v17/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/MutexSynchronization/.vs/MutexSynchronization/FileContentIndex/6bf73cbc-aff4-4dd2-9d1a-04959e30ba62.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/MutexSynchronization/.vs/MutexSynchronization/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/MutexSynchronization/.vs/MutexSynchronization/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/MutexSynchronization/.vs/MutexSynchronization/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/MutexSynchronization/.vs/MutexSynchronization/v17/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/.vs/ProjectEvaluation/webapp.metadata.v7.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/.vs/ProjectEvaluation/webapp.metadata.v7.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/.vs/ProjectEvaluation/webapp.projects.v7.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/.vs/ProjectEvaluation/webapp.projects.v7.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/.vs/webapp/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/.vs/webapp/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/.vs/webapp/FileContentIndex/afa2b68d-a23e-4efd-82d9-01baa0ffe9be.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/.vs/webapp/FileContentIndex/fdd8f93b-fa9a-42e3-a6d8-5010112fdb16.vsidx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/.vs/webapp/v17/.futdcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/.vs/webapp/v17/.futdcache.v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/.vs/webapp/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/.vs/webapp/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/.vs/webapp/v17/DocumentLayout.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/.vs/webapp/v17/DocumentLayout.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/Debug/net8.0/project.razor.vs.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/Debug/net8.0/project.razor.vs.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/Debug/net8.0/webapp.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/Debug/net8.0/webapp.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/Debug/net8.0/webapp.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/Debug/net8.0/webapp.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/Debug/net8.0/webapp.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/Debug/net8.0/webapp.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/Debug/net8.0/webapp.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/Debug/net8.0/webapp.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/Debug/net8.0/webapp.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/Debug/net8.0/webapp.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/webapp.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/webapp.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/webapp.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../.NET/webapp/webapp/obj/webapp.csproj.nuget.g.props" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2gAMw1oedHXRrdjy5pzMZQoXrgc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8e33629a-e6ca-4794-a775-df99028052de" name="Changes" comment="" />
+      <created>1715136165874</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715136165874</updated>
+    </task>
+    <servers />
+  </component>
+</project>

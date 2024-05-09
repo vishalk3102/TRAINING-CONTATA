@@ -101,11 +101,17 @@ namespace server.Controllers
 
             try
             {
-                var taxDeclarations = await _taxDeclarationService.getChangeRequestTaxDeclaration();
-                if (taxDeclarations == null)
+                var taxDeclarationsList = await _taxDeclarationService.getChangeRequestTaxDeclaration();
+                if (taxDeclarationsList == null)
                 {
                     return NotFound();
                 }
+                var taxDeclarations = taxDeclarationsList.Select(tuple => new
+                {
+                    reason=tuple.Item1,
+                    TaxDeclaration = tuple.Item2,
+                    Employee = tuple.Item3
+                });
                 return Ok(taxDeclarations);
             }
             catch (Exception ex)

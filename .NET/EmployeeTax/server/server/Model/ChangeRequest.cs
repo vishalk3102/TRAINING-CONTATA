@@ -9,18 +9,6 @@ namespace server.Model
         [Required(ErrorMessage = "Tax ID is required")]
         public int taxId { get; set; }
 
-        [Required(ErrorMessage = "Employee ID is required")]
-        public int empId { get; set; }
-
-        [Required(ErrorMessage = "Name is required")]
-        public string name { get; set; }
-
-        [Required(ErrorMessage = "Financial Year is required")]
-        public int financialYear { get; set; }
-
-        [Required(ErrorMessage = "Date of Submission is required")]
-        public string dateOfSubmission { get; set; }
-
         [Required(ErrorMessage = "Reason is required")]
         public string reason { get; set; }
 

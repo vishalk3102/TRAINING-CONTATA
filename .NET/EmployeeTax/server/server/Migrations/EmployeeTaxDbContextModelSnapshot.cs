@@ -29,20 +29,6 @@ namespace server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<string>("dateOfSubmission")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("empId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("financialYear")
-                        .HasColumnType("int");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("reason")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -58,20 +44,12 @@ namespace server.Migrations
                         new
                         {
                             id = 1,
-                            dateOfSubmission = "2024-04-21",
-                            empId = 1,
-                            financialYear = 2024,
-                            name = "Vishal Kumar",
                             reason = "Wrong",
                             taxId = 1
                         },
                         new
                         {
                             id = 2,
-                            dateOfSubmission = "2024-04-21",
-                            empId = 2,
-                            financialYear = 2024,
-                            name = "Vishal Kumar",
                             reason = "Wrong",
                             taxId = 2
                         });
