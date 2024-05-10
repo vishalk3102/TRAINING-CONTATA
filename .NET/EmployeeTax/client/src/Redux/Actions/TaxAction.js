@@ -3,6 +3,7 @@ import { server } from '../Store'
 
 // CREATE TAX FORM(SUBMISSION)
 export const createTaxDeclaration = formData => async dispatch => {
+  console.log(formData)
   try {
     dispatch({
       type: 'createTaxDeclarationRequest'
@@ -31,6 +32,7 @@ export const createTaxDeclaration = formData => async dispatch => {
 
 // UPDATE TAX FORM
 export const updateTaxDeclaration = (formData, taxId) => async dispatch => {
+  console.log(formData)
   try {
     dispatch({
       type: 'updateTaxDeclarationRequest'

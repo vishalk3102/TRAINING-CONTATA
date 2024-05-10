@@ -40,32 +40,31 @@ const TaxForm = () => {
 
   const currentDate = new Date()
   const currentDateString = currentDate.toISOString().split('T')[0]
+
   useEffect(() => {
     dispatch(getMyTaxDeclaration(user.empId))
   }, [dispatch])
 
   useEffect(() => {
-    const savedFormData = localStorage.getItem(`taxFormData_${financialYear}`)
-    if (savedFormData) {
-      const formData = JSON.parse(savedFormData)
-
-      setAnyOtherIncome(formData.anyOtherIncome)
-      setSukanyaSamruddhiAccount(formData.sukanyaSamriddhiAccount)
-      setPpf(formData.ppf)
-      setLic(formData.lic)
-      setTuitionFee(formData.tuitionFee)
-      setFixedDeposit(formData.fixedDeposit)
-      setInterestHousingLoan(formData.interestHousingLoan)
-      setNps(formData.nps)
-      setEducationLoan(formData.educationLoan)
-      setPrincipalHousingLoan(formData.housingLoan)
-      setHouseRent(formData.houseRent)
-      setTds(formData.tds)
-      setHealthInsurance(formData.healthInsurance)
-      setPreventiveHealthCheckup(formData.preventiveHealthCheckup)
-      setLtaChecked(formData.ltaChecked)
+    const existingTax = mytaxes.find(tax => tax.financialYear === financialYear)
+    if (existingTax) {
+      setAnyOtherIncome(existingTax.anyOtherIncome)
+      setSukanyaSamruddhiAccount(existingTax.sukanyaSamriddhiAccount)
+      setPpf(existingTax.ppf)
+      setLic(existingTax.lic)
+      setTuitionFee(existingTax.tuitionFee)
+      setFixedDeposit(existingTax.fixedDeposit)
+      setInterestHousingLoan(existingTax.interestHousingLoan)
+      setNps(existingTax.nps)
+      setEducationLoan(existingTax.educationLoan)
+      setPrincipalHousingLoan(existingTax.housingLoan)
+      setHouseRent(existingTax.houseRent)
+      setTds(existingTax.tds)
+      setHealthInsurance(existingTax.healthInsurance)
+      setPreventiveHealthCheckup(existingTax.preventiveHealthCheckup)
+      setLtaChecked(existingTax.ltaChecked)
     }
-  }, [financialYear])
+  }, [financialYear, mytaxes])
 
   // FUNCTION TO HANDLE NEXT BUTTON
   const handleNextButton = () => {

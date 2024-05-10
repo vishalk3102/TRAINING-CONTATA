@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import {
+  createTaxDeclaration,
   getTaxDeclaration,
   updateTaxDeclaration
 } from '../../Redux/Actions/TaxAction'
@@ -42,42 +43,53 @@ const ViewTaxSubmission = () => {
   const params = useParams()
   const navigate = useNavigate()
 
+  // VARIABLES
   const currentDate = new Date()
   const currentDateString = currentDate.toISOString().split('T')[0]
 
+  // TO FECTH  VALUES FROM DATABASE
   useEffect(() => {
     dispatch(getTaxDeclaration(params.taxId))
   }, [dispatch])
 
   // TO SET VALUES OF VARIABLE FROM STORE
   useEffect(() => {
-    if (user) {
-      setEmpId(user.empId)
-      setName(user.name)
-      setPanNo(user.panNo)
-      setAddress(user.address)
+    if (tax && tax.length > 0) {
+      const taxDeclaration = tax[0].taxDeclaration
+      const employee = tax[0].employee
+      if (employee) {
+        setEmpId(employee.empId)
+        setName(employee.name)
+        setPanNo(employee.panNo)
+        setAddress(employee.address)
+      }
+      if (taxDeclaration) {
+        setTaxId(taxDeclaration.taxId)
+        setFinancialYear(taxDeclaration.financialYear)
+        setAnyOtherIncome(taxDeclaration.anyOtherIncome)
+        setSukanyaSamruddhiAccount(taxDeclaration.sukanyaSamriddhiAccount)
+        setPpf(taxDeclaration.ppf)
+        setLic(taxDeclaration.lifeInsurancePremium)
+        setTuitionFee(taxDeclaration.tuitionFee)
+        setFixedDeposit(taxDeclaration.bankFixedDeposit)
+        setPrincipalHousingLoan(taxDeclaration.principalHousingLoan)
+        setNps(taxDeclaration.nps)
+        setEducationLoan(taxDeclaration.higherEducationLoanInterest)
+        setInterestHousingLoan(taxDeclaration.interestHousingLoan)
+        setHouseRent(taxDeclaration.houseRent)
+        setTds(taxDeclaration.tds)
+        setHealthInsurance(taxDeclaration.mediClaim)
+        setPreventiveHealthCheckup(taxDeclaration.preventiveHealthCheckUp)
+        setLtaChecked(taxDeclaration.lta)
+        setEditable(!taxDeclaration.isFrozen)
+      }
     }
-    if (tax) {
-      setTaxId(tax.taxId)
-      setFinancialYear(tax.financialYear)
-      setAnyOtherIncome(tax.anyOtherIncome)
-      setSukanyaSamruddhiAccount(tax.sukanyaSamriddhiAccount)
-      setPpf(tax.ppf)
-      setLic(tax.lifeInsurancePremium)
-      setTuitionFee(tax.tuitionFee)
-      setFixedDeposit(tax.bankFixedDeposit)
-      setPrincipalHousingLoan(tax.principalHousingLoan)
-      setNps(tax.nps)
-      setEducationLoan(tax.higherEducationLoanInterest)
-      setInterestHousingLoan(tax.interestHousingLoan)
-      setHouseRent(tax.houseRent)
-      setTds(tax.tds)
-      setHealthInsurance(tax.mediClaim)
-      setPreventiveHealthCheckup(tax.preventiveHealthCheckUp)
-      setLtaChecked(tax.lta)
-      setEditable(!tax.isFrozen)
-    }
-  }, [tax, user])
+  }, [tax])
+
+  // CHECK IF TAX OBJECT EXIST AND HAS EMPLOYEE AND TAX DECLARATION
+  if (!tax || !tax.length || !tax[0].taxDeclaration || !tax[0].employee) {
+    return <Loader />
+  }
 
   // FUNCTION TO HANDLE CHECKBOX CHANGE
   const handleLtaCheckboxChange = e => {
@@ -87,37 +99,78 @@ const ViewTaxSubmission = () => {
   // FUNCTION TO HANDLE SAVE BUTTON
   const handleSaveButton = () => {
     const formData = {
+      empId: user.empId,
+      financialYear: financialYear,
       anyOtherIncome,
       sukanyaSamriddhiAccount,
-      ppf,
-      lic,
+      PPF: ppf,
+      lifeInsurancePremium: lic,
       tuitionFee,
-      fixedDeposit,
-      interestHousingLoan,
-      nps,
-      educationLoan,
+      bankFixedDeposit: fixedDeposit,
       principalHousingLoan,
+      NPS: nps,
+      higherEducationLoanInterest: educationLoan,
+      interestHousingLoan,
       houseRent,
-      tds,
-      healthInsurance,
+      TDS: tds,
+      mediClaim: healthInsurance,
       preventiveHealthCheckup,
-      ltaChecked
+      LTA: ltaChecked,
+      dateOfDeclaration: currentDateString
     }
-    localStorage.setItem(
-      `taxFormData_${financialYear}`,
-      JSON.stringify(formData)
-    )
-    toast.success('Form Saved Succesfully')
+    dispatch(createTaxDeclaration(formData))
+      .then(response => {
+        if (response) {
+          toast.success('Form Saved successfully')
+          navigate('/submissions')
+        } else {
+          toast.error('Failed to Save form')
+        }
+      })
+      .catch(err => {
+        toast.error('Failed to Save form')
+      })
   }
 
   // FUNCTION TO HANDLE FORM SUBMISSION
-  const handleSubmitButton = (e, taxId) => {
+  const handleSubmitButton = e => {
     e.preventDefault()
+
+    const existingTax = tax.find(tax => tax.financialYear === financialYear)
+
+    if (
+      existingTax &&
+      (existingTax.status === 'submitted' || existingTax.status === 'accepted')
+    ) {
+      toast.error('Tax form already submitted for this financial year.')
+      return
+    }
+    // --Validation of form before submission --
+    if (
+      !financialYear ||
+      !anyOtherIncome ||
+      !sukanyaSamriddhiAccount ||
+      !ppf ||
+      !lic ||
+      !tuitionFee ||
+      !fixedDeposit ||
+      !principalHousingLoan ||
+      !nps ||
+      !educationLoan ||
+      !interestHousingLoan ||
+      !houseRent ||
+      !tds ||
+      !healthInsurance ||
+      !preventiveHealthCheckup ||
+      !ltaChecked
+    ) {
+      toast.error('All fields are required')
+      return
+    }
+
     const formData = {
-      taxId: tax.taxId,
       empId: user.empId,
       financialYear: financialYear,
-      name: user.name,
       anyOtherIncome,
       sukanyaSamriddhiAccount,
       PPF: ppf,
@@ -136,16 +189,37 @@ const ViewTaxSubmission = () => {
       dateOfDeclaration: currentDateString
     }
 
-    console.log('formData', formData)
-    console.log('taxID', taxId)
-    dispatch(updateTaxDeclaration(formData, taxId))
-      .then(message => {
-        toast.success('Form Submitted successfully')
-        navigate('/submissions')
-      })
-      .catch(err => {
-        toast.error('Failed to submit form')
-      })
+    const payload = existingTax
+      ? { formData, taxId: existingTax.taxId }
+      : formData
+
+    if (existingTax) {
+      dispatch(updateTaxDeclaration(payload, existingTax.taxId))
+        .then(response => {
+          if (response) {
+            toast.success('Form Submitted successfully')
+            navigate('/submissions')
+          } else {
+            toast.error('Failed to submit form')
+          }
+        })
+        .catch(err => {
+          toast.error('Failed to submit form')
+        })
+    } else {
+      dispatch(createTaxDeclaration(formData))
+        .then(response => {
+          if (response) {
+            toast.success('Form Submitted successfully')
+            navigate('/submissions')
+          } else {
+            toast.error('Failed to Submit form')
+          }
+        })
+        .catch(err => {
+          toast.error('Failed to Submit form')
+        })
+    }
   }
   return (
     <>

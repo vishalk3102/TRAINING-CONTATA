@@ -29,10 +29,6 @@ const TaxListing = () => {
   //FETCHING VALUE FROM OF VARIABLE'S FROM STORE
   const { loading, changeRequests } = useSelector(state => state.tax)
 
-  // useEffect(() => {
-  //   dispatch(getTaxChangeRequestListing())
-  // }, [dispatch])
-
   useEffect(() => {
     dispatch(getTaxChangeRequestListing())
   }, [dispatch])

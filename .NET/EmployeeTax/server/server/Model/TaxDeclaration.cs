@@ -73,6 +73,8 @@ namespace server.Model
 
         public string status { get; set; } = "pending";
 
+        public bool isSubmitted { get; set; }
+
 
     }
 }

@@ -91,7 +91,8 @@ namespace server.Data
                   LTA = true,
                   financialYear = 2025,
                   dateOfDeclaration = "2024-04-28",
-                  status = "accepted"
+                  status = "accepted",
+                  isSubmitted = false
               },
                new TaxDeclaration
                {
@@ -114,7 +115,8 @@ namespace server.Data
                    LTA = true,
                    financialYear = 2024,
                    dateOfDeclaration = "2024-04-25",
-                   status = "drafted"
+                   status = "drafted",
+                   isSubmitted = false
                }
              );
 

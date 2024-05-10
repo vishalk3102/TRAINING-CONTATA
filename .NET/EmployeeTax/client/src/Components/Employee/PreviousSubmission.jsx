@@ -7,7 +7,7 @@ import Loader from '../Loader'
 
 const PreviousSubmission = () => {
   // FETCHING VALUES FROM STORE
-  const { loading, taxes } = useSelector(state => state.tax)
+  const { loading, mytaxes } = useSelector(state => state.tax)
   const { user } = useSelector(state => state.auth)
   const dispatch = useDispatch()
 
@@ -15,6 +15,8 @@ const PreviousSubmission = () => {
     dispatch(getMyTaxDeclaration(user.empId))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch])
+
+  const handleDeleteButton = () => {}
   return (
     <>
       {loading === false ? (
@@ -50,8 +52,8 @@ const PreviousSubmission = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {Array.isArray(taxes) && taxes.length > 0 ? (
-                    taxes.map((i, index) => {
+                  {Array.isArray(mytaxes) && mytaxes.length > 0 ? (
+                    mytaxes.map((i, index) => {
                       return (
                         <tr className='border border-slate-900  ' key={index}>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
@@ -61,10 +63,10 @@ const PreviousSubmission = () => {
                             {i.financialYear}
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                            {i.taxId}
+                            {i.status}
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                            {i.taxId}
+                            {i.dateOfDeclaration}
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize'>
                             <Link to={`/submission/${i.taxId}`}>
@@ -75,10 +77,16 @@ const PreviousSubmission = () => {
                           </td>
                           <td className='text-[1rem] font-medium border border-slate-900 capitalize  p-3 '>
                             <Link to={`/change-request/${i.taxId}`}>
-                              <button className='w-full h-[35px] text-[14px] bg-blue-300 outline-none px-2 py-4 rounded flex justify-center items-center'>
+                              <button className='text-[14px] font-medium bg-blue-400 outline-none py-2 px-4 rounded m-1'>
                                 Request For Change
                               </button>
                             </Link>
+                            <button
+                              className='text-[14px] font-medium bg-red-400 outline-none py-2 px-4 rounded m-1'
+                              onClick={() => handleDeleteButton(i.taxId)}
+                            >
+                              Delete
+                            </button>
                           </td>
                         </tr>
                       )

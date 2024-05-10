@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import {
-  acceptTaxDeclaration,
-  getTaxDeclaration,
-  rejectTaxDeclaration
-} from '../../Redux/Actions/TaxAction'
+import { getTaxDeclaration } from '../../Redux/Actions/TaxAction'
 import Loader from '../Loader'
 
 const ViewTaxSubmission = () => {

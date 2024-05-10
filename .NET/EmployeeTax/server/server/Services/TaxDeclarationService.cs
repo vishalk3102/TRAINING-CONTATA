@@ -53,6 +53,13 @@ namespace server.Services
             return taxDeclarationsresult;
         }
 
+        //GET TAX DECLARATION BY FINANCIAL YEAR
+        public async Task  getTaxDeclarationByFinancialYear(int financialYear)
+        {
+            var taxDeclaration = await _db.TaxDeclarations.FirstOrDefaultAsync(td => td.financialYear == financialYear);
+            return taxDeclaration;
+        }
+
 
         //GET MY TAX DECLARATION SUBMISSIONS
         public async Task<IEnumerable<TaxDeclaration>> getMyTaxDeclaration(int empId)
@@ -85,20 +92,31 @@ namespace server.Services
         }
 
 
-        //TAX FORM SUBMISSION
-        public async Task createTaxDeclaration(TaxDeclaration taxDeclaration)
+        //SUBMIT TAX FORM 
+        public async Task submitTaxDeclaration(TaxDeclaration taxDeclaration)
         {
-            taxDeclaration.isFrozen = false;
-            taxDeclaration.status = "drafted";
-            taxDeclaration.dateOfDeclaration = DateOnly.FromDateTime(DateTime.UtcNow).ToString("yyyy-MM-dd");
+            taxDeclaration.isFrozen = true;
+            taxDeclaration.status= "submitted";
+            taxDeclaration.isSubmitted = true;
             _db.TaxDeclarations.Add(taxDeclaration);
             await _db.SaveChangesAsync();
         }
 
+        //SAVE TAX FORM SUBMISSION 
+        public async Task saveTaxDeclaration(TaxDeclaration taxDeclaration)
+        {
+            taxDeclaration.isFrozen = false;
+            taxDeclaration.status = "drafted";
+            taxDeclaration.isSubmitted = false;
+            _db.TaxDeclarations.Add(taxDeclaration);
+            await _db.SaveChangesAsync();
+        }
 
+       
         //UPDATE TAX FORM
         public async Task updateTaxDeclaration(TaxDeclaration taxDeclaration)
         {
+
             taxDeclaration.isFrozen = true;
             taxDeclaration.status = "submitted";
             _db.TaxDeclarations.Update(taxDeclaration);

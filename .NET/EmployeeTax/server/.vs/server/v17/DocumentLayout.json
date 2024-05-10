@@ -11,10 +11,6 @@
       "RelativeMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|solutionrelative:server\\controllers\\taxdeclarationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|e:\\contata\\training-contata\\.net\\employeetax\\server\\server\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|solutionrelative:server\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|e:\\contata\\training-contata\\.net\\employeetax\\server\\server\\model\\taxdeclaration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|solutionrelative:server\\model\\taxdeclaration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -26,21 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EmployeeController.cs",
-              "DocumentMoniker": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\EmployeeTax\\server\\server\\Controllers\\EmployeeController.cs",
-              "RelativeDocumentMoniker": "server\\Controllers\\EmployeeController.cs",
-              "ToolTip": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\EmployeeTax\\server\\server\\Controllers\\EmployeeController.cs",
-              "RelativeToolTip": "server\\Controllers\\EmployeeController.cs",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAnwFQAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-09T20:14:09.035Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -49,7 +32,7 @@
               "RelativeDocumentMoniker": "server\\Services\\TaxDeclarationService.cs",
               "ToolTip": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\EmployeeTax\\server\\server\\Services\\TaxDeclarationService.cs",
               "RelativeToolTip": "server\\Services\\TaxDeclarationService.cs",
-              "ViewState": "AQIAAFcAAAAAAAAAAAAuwGgAAAAMAAAA",
+              "ViewState": "AQIAAGYAAAAAAAAAAADwv3YAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-09T18:37:51.859Z",
               "EditorCaption": ""
@@ -62,20 +45,20 @@
               "RelativeDocumentMoniker": "server\\Controllers\\TaxDeclarationController.cs",
               "ToolTip": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\EmployeeTax\\server\\server\\Controllers\\TaxDeclarationController.cs",
               "RelativeToolTip": "server\\Controllers\\TaxDeclarationController.cs",
-              "ViewState": "AQIAAKUAAAAAAAAAAAAQwLQAAABBAAAA",
+              "ViewState": "AQIAAH0AAAAAAAAAAAAIwIwAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-09T18:37:49.72Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "TaxDeclaration.cs",
               "DocumentMoniker": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\EmployeeTax\\server\\server\\Model\\TaxDeclaration.cs",
               "RelativeDocumentMoniker": "server\\Model\\TaxDeclaration.cs",
               "ToolTip": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\EmployeeTax\\server\\server\\Model\\TaxDeclaration.cs",
               "RelativeToolTip": "server\\Model\\TaxDeclaration.cs",
-              "ViewState": "AQIAADwAAAAAAAAAAAAAAEoAAAAAAAAA",
+              "ViewState": "AQIAADwAAAAAAAAAAAAAAEsAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-09T06:36:55.569Z",
               "EditorCaption": ""

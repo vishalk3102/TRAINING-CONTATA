@@ -179,6 +179,9 @@ namespace server.Migrations
                     b.Property<bool>("isFrozen")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("isSubmitted")
+                        .HasColumnType("bit");
+
                     b.Property<decimal>("lifeInsurancePremium")
                         .HasColumnType("decimal(18,2)");
 
@@ -222,6 +225,7 @@ namespace server.Migrations
                             houseRent = 20000m,
                             interestHousingLoan = 25000m,
                             isFrozen = false,
+                            isSubmitted = false,
                             lifeInsurancePremium = 25000m,
                             mediClaim = 15000m,
                             preventiveHealthCheckUp = 10000m,
@@ -246,6 +250,7 @@ namespace server.Migrations
                             houseRent = 20000m,
                             interestHousingLoan = 25000m,
                             isFrozen = false,
+                            isSubmitted = false,
                             lifeInsurancePremium = 25000m,
                             mediClaim = 15000m,
                             preventiveHealthCheckUp = 10000m,

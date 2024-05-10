@@ -94,6 +94,8 @@ namespace server.Controllers
 
 
 
+
+
         //GET ALL TAX SUBMISSIONS WITH CHANGE REQUEST  
         [HttpGet("admin/taxes")]
         public async Task<IActionResult> GetChangeRequestTaxDeclaration()
@@ -121,23 +123,73 @@ namespace server.Controllers
            
         }
 
-
-
-
         //SUBMIT TAX DECLARATION 
         [HttpPost("employee/taxform/submit")]
-        public async Task<IActionResult> CreateTaxDeclaration(TaxDeclaration tax)
+        public async Task<IActionResult> SubmitTaxDeclaration(TaxDeclaration tax)
         {
             try
             {
-                await _taxDeclarationService.createTaxDeclaration(tax);
-                return CreatedAtAction(nameof(GetTaxDeclaration), new { taxId = tax.taxId }, tax);
+                var existingTax = _taxDeclarationService.getTaxDeclarationByFinancialYear(tax.financialYear);
+                if(existingTax == null)
+                {
+                  await _taxDeclarationService.submitTaxDeclaration(tax);
+                  return CreatedAtAction(nameof(GetTaxDeclaration), new { taxId = tax.taxId }, tax);
+                }
+                else
+                {
+                    await _taxDeclarationService.updateTaxDeclaration(tax);
+                    return Ok("Form Submitted Successfully");
+                }
             }
             catch (Exception ex)
             {
                 return StatusCode(500, "An unexpected error occurred");
             }
-           
+        }
+
+        //SAVE TAX DECLARATION 
+        [HttpPost("employee/taxform/save")]
+        public async Task<IActionResult> SaveTaxDeclaration(TaxDeclaration tax)
+        {
+            try
+            {
+                var existingTax = _taxDeclarationService.getTaxDeclarationByFinancialYear(tax.financialYear);
+                if (existingTax == null)
+                {
+                    await _taxDeclarationService.saveTaxDeclaration(tax);
+                    return CreatedAtAction(nameof(GetTaxDeclaration), new { taxId = tax.taxId }, tax);
+                }
+                else
+                {
+                    await _taxDeclarationService.updateTaxDeclaration(tax);
+                    return Ok("Form saved Successfully");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An unexpected error occurred");
+            }
+        }
+
+
+        //UPDATE TAX DECLARATION DETAILS
+        [HttpPut("admin/tax/update/{taxId}")]
+        public async Task<IActionResult> UpdateTaxDeclaration(TaxDeclaration taxDeclaration, int taxId)
+        {
+            try
+            {
+                if (taxId != taxDeclaration.taxId)
+                {
+                    return BadRequest();
+                }
+
+                await _taxDeclarationService.updateTaxDeclaration(taxDeclaration);
+                return Ok("Form Submitted Successfully");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An unexpected error occurred");
+            }
         }
 
 
@@ -164,29 +216,6 @@ namespace server.Controllers
             }
             
         }
-
-
-
-        //UPDATE TAX DECLARATION DETAILS
-        [HttpPut("admin/tax/update/{taxId}")]
-        public async Task<IActionResult> UpdateTaxDeclaration(TaxDeclaration taxDeclaration,int taxId)
-        {
-            try
-            {
-                if (taxId != taxDeclaration.taxId)
-                {
-                    return BadRequest();
-                }
-
-                await _taxDeclarationService.updateTaxDeclaration(taxDeclaration);
-                return Ok("Form Submitted Successfully");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "An unexpected error occurred");
-            }
-        }
-
 
 
         //UNFREEZE FORM 
