@@ -1,12 +1,41 @@
 import axios from 'axios'
 import { server } from '../Store'
 
-// CREATE TAX FORM(SUBMISSION)
-export const createTaxDeclaration = formData => async dispatch => {
+// SAVE TAX FORM
+export const saveTaxDeclaration = formData => async dispatch => {
   console.log(formData)
   try {
     dispatch({
-      type: 'createTaxDeclarationRequest'
+      type: 'saveTaxDeclarationRequest'
+    })
+
+    const config = {
+      headers: { 'Content-Type': 'application/json' }
+    }
+    const { data } = await axios.post(
+      `${server}/employee/taxform/save`,
+      formData,
+      config
+    )
+    dispatch({
+      type: 'saveTaxDeclarationSuccess',
+      payload: data
+    })
+    return data
+  } catch (error) {
+    dispatch({
+      type: 'saveTaxDeclarationFail',
+      payload: error.response.data.message
+    })
+  }
+}
+
+// SUBMIT TAX FORM(SUBMISSION)
+export const submitTaxDeclaration = formData => async dispatch => {
+  console.log(formData)
+  try {
+    dispatch({
+      type: 'submitTaxDeclarationRequest'
     })
 
     const config = {
@@ -18,13 +47,13 @@ export const createTaxDeclaration = formData => async dispatch => {
       config
     )
     dispatch({
-      type: 'createTaxDeclarationSuccess',
+      type: 'submitTaxDeclarationSuccess',
       payload: data
     })
     return data
   } catch (error) {
     dispatch({
-      type: 'createTaxDeclarationFail',
+      type: 'submitTaxDeclarationFail',
       payload: error.response.data.message
     })
   }
@@ -54,6 +83,27 @@ export const updateTaxDeclaration = (formData, taxId) => async dispatch => {
   } catch (error) {
     dispatch({
       type: 'updateTaxDeclarationFail',
+      payload: error.response.data.message
+    })
+  }
+}
+
+// UPDATE TAX FORM
+export const deleteTaxDeclaration = taxId => async dispatch => {
+  try {
+    dispatch({
+      type: 'deleteTaxDeclarationRequest'
+    })
+
+    const { data } = await axios.delete(`${server}/admin/tax/${taxId}`)
+    dispatch({
+      type: 'deleteTaxDeclarationSuccess',
+      payload: data
+    })
+    return data
+  } catch (error) {
+    dispatch({
+      type: 'deleteTaxDeclarationFail',
       payload: error.response.data.message
     })
   }

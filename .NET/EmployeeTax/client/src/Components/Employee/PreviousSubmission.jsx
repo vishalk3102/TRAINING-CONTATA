@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { FaEye } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
-import { getMyTaxDeclaration } from '../../Redux/Actions/TaxAction'
+import {
+  deleteTaxDeclaration,
+  getMyTaxDeclaration
+} from '../../Redux/Actions/TaxAction'
 import { Link } from 'react-router-dom'
 import Loader from '../Loader'
+import toast from 'react-hot-toast'
 
 const PreviousSubmission = () => {
   // FETCHING VALUES FROM STORE
@@ -16,11 +20,25 @@ const PreviousSubmission = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch])
 
-  const handleDeleteButton = () => {}
+  const handleDeleteButton = taxId => {
+    dispatch(deleteTaxDeclaration(taxId))
+      .then(message => {
+        if (message) {
+          toast.success(message)
+          dispatch(dispatch(getMyTaxDeclaration(user.empId)))
+        } else {
+          toast.error('Failed to Delete Tax Declaration')
+        }
+      })
+      .catch(err => {
+        toast.error('Failed to Delete Tax Declaration')
+      })
+  }
+
   return (
     <>
       {loading === false ? (
-        <section className='w-full h-full'>
+        <section className='w-full h-full mb-20'>
           <div className='max-w-[1200px] mx-auto'>
             <div className='my-4'>
               <h2 className='text-[2rem] font-medium text-center p-2'>
@@ -76,17 +94,24 @@ const PreviousSubmission = () => {
                             </Link>
                           </td>
                           <td className='text-[1rem] font-medium border border-slate-900 capitalize  p-3 '>
-                            <Link to={`/change-request/${i.taxId}`}>
-                              <button className='text-[14px] font-medium bg-blue-400 outline-none py-2 px-4 rounded m-1'>
-                                Request For Change
+                            {i.status === 'accepted' ? (
+                              ''
+                            ) : i.status === 'drafted' ? (
+                              <button
+                                className='text-[14px] font-medium bg-red-400 outline-none py-2 px-4 rounded m-1'
+                                onClick={() => handleDeleteButton(i.taxId)}
+                              >
+                                Delete
                               </button>
-                            </Link>
-                            <button
-                              className='text-[14px] font-medium bg-red-400 outline-none py-2 px-4 rounded m-1'
-                              onClick={() => handleDeleteButton(i.taxId)}
-                            >
-                              Delete
-                            </button>
+                            ) : i.status === 'submitted' ? (
+                              <Link to={`/change-request/${i.taxId}`}>
+                                <button className='text-[14px] font-medium bg-blue-400 outline-none py-2 px-4 rounded m-1'>
+                                  Request For Change
+                                </button>
+                              </Link>
+                            ) : (
+                              ''
+                            )}
                           </td>
                         </tr>
                       )

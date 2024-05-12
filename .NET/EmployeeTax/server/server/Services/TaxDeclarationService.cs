@@ -54,9 +54,9 @@ namespace server.Services
         }
 
         //GET TAX DECLARATION BY FINANCIAL YEAR
-        public async Task  getTaxDeclarationByFinancialYear(int financialYear)
+        public async Task<TaxDeclaration>  getTaxByFinancialYearAndEmpId(int financialYear,int empId)
         {
-            var taxDeclaration = await _db.TaxDeclarations.FirstOrDefaultAsync(td => td.financialYear == financialYear);
+            var taxDeclaration = await _db.TaxDeclarations.FirstOrDefaultAsync(td => td.financialYear == financialYear && td.empId==empId);
             return taxDeclaration;
         }
 
@@ -114,15 +114,55 @@ namespace server.Services
 
        
         //UPDATE TAX FORM
-        public async Task updateTaxDeclaration(TaxDeclaration taxDeclaration)
+        public async Task updateTaxDeclaration(TaxDeclaration taxDeclaration,bool isSubmitted)
         {
+            var existingTax = await _db.TaxDeclarations.FindAsync(taxDeclaration.taxId);
+            if(existingTax!=null)
+            {
+                existingTax.anyOtherIncome=taxDeclaration.anyOtherIncome;
+                existingTax.sukanyaSamriddhiAccount=taxDeclaration.sukanyaSamriddhiAccount;
+                existingTax.PPF=taxDeclaration.PPF;
+                existingTax.lifeInsurancePremium=taxDeclaration.lifeInsurancePremium;
+                existingTax.tuitionFee=taxDeclaration.tuitionFee;
+                existingTax.bankFixedDeposit=taxDeclaration.bankFixedDeposit;
+                existingTax.principalHousingLoan=taxDeclaration.principalHousingLoan;
+                existingTax.NPS=taxDeclaration.NPS;
+                existingTax.higherEducationLoanInterest=taxDeclaration.higherEducationLoanInterest;
+                existingTax.houseRent=taxDeclaration.houseRent;
+                existingTax.TDS=taxDeclaration.TDS;
+                existingTax.mediClaim=taxDeclaration.mediClaim;
+                existingTax.preventiveHealthCheckUp=taxDeclaration.preventiveHealthCheckUp;
+                existingTax.LTA=taxDeclaration.LTA;
+                existingTax.dateOfDeclaration=taxDeclaration.dateOfDeclaration;
 
-            taxDeclaration.isFrozen = true;
-            taxDeclaration.status = "submitted";
-            _db.TaxDeclarations.Update(taxDeclaration);
+                if (isSubmitted)
+                {
+                    existingTax.isFrozen = true;
+                    existingTax.status = "submitted";
+                    existingTax.isSubmitted = true;
+                }
+                else
+                {
+                    existingTax.isFrozen = false;
+                    existingTax.status = "drafted";
+                    existingTax.isSubmitted = false;
+                }
+            }
+            _db.TaxDeclarations.Update(existingTax);
             await _db.SaveChangesAsync();
         }
 
+
+        //DELETE  EMPLOYEE 
+        public async Task deleteTaxDeclaration(int taxId)
+        {
+            var taxDeclaration = await _db.TaxDeclarations.FindAsync(taxId);
+            if (taxDeclaration != null)
+            {
+                _db.TaxDeclarations.Remove(taxDeclaration);
+                await _db.SaveChangesAsync();
+            }
+        }
 
         //CHANGE REQUEST TO UNFREEZE  TAX FORM
         public async Task<bool> changeRequest(ChangeRequest newChangeRequest)

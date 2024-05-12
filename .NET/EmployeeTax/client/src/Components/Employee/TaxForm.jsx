@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import {
-  createTaxDeclaration,
   getMyTaxDeclaration,
-  updateTaxDeclaration
+  saveTaxDeclaration,
+  submitTaxDeclaration
 } from '../../Redux/Actions/TaxAction'
 
 const TaxForm = () => {
@@ -46,23 +46,27 @@ const TaxForm = () => {
   }, [dispatch])
 
   useEffect(() => {
-    const existingTax = mytaxes.find(tax => tax.financialYear === financialYear)
-    if (existingTax) {
-      setAnyOtherIncome(existingTax.anyOtherIncome)
-      setSukanyaSamruddhiAccount(existingTax.sukanyaSamriddhiAccount)
-      setPpf(existingTax.ppf)
-      setLic(existingTax.lic)
-      setTuitionFee(existingTax.tuitionFee)
-      setFixedDeposit(existingTax.fixedDeposit)
-      setInterestHousingLoan(existingTax.interestHousingLoan)
-      setNps(existingTax.nps)
-      setEducationLoan(existingTax.educationLoan)
-      setPrincipalHousingLoan(existingTax.housingLoan)
-      setHouseRent(existingTax.houseRent)
-      setTds(existingTax.tds)
-      setHealthInsurance(existingTax.healthInsurance)
-      setPreventiveHealthCheckup(existingTax.preventiveHealthCheckup)
-      setLtaChecked(existingTax.ltaChecked)
+    if (mytaxes) {
+      const existingTax = mytaxes.find(
+        tax => tax.financialYear === financialYear
+      )
+      if (existingTax) {
+        setAnyOtherIncome(existingTax.anyOtherIncome)
+        setSukanyaSamruddhiAccount(existingTax.sukanyaSamriddhiAccount)
+        setPpf(existingTax.ppf)
+        setLic(existingTax.lifeInsurancePremium)
+        setTuitionFee(existingTax.tuitionFee)
+        setFixedDeposit(existingTax.bankFixedDeposit)
+        setInterestHousingLoan(existingTax.interestHousingLoan)
+        setNps(existingTax.nps)
+        setEducationLoan(existingTax.higherEducationLoanInterest)
+        setPrincipalHousingLoan(existingTax.principalHousingLoan)
+        setHouseRent(existingTax.houseRent)
+        setTds(existingTax.tds)
+        setHealthInsurance(existingTax.mediClaim)
+        setPreventiveHealthCheckup(existingTax.preventiveHealthCheckUp)
+        setLtaChecked(existingTax.ltaChecked)
+      }
     }
   }, [financialYear, mytaxes])
 
@@ -102,7 +106,7 @@ const TaxForm = () => {
       LTA: ltaChecked,
       dateOfDeclaration: currentDateString
     }
-    dispatch(createTaxDeclaration(formData))
+    dispatch(saveTaxDeclaration(formData))
       .then(response => {
         if (response) {
           toast.success('Form Saved successfully')
@@ -153,7 +157,6 @@ const TaxForm = () => {
     }
 
     const formData = {
-      taxId: existingTax.taxId,
       empId: user.empId,
       financialYear: financialYear,
       anyOtherIncome,
@@ -173,18 +176,18 @@ const TaxForm = () => {
       LTA: ltaChecked,
       dateOfDeclaration: currentDateString
     }
-    dispatch(updateTaxDeclaration(formData, existingTax.taxId))
+
+    dispatch(submitTaxDeclaration(formData))
       .then(response => {
         if (response) {
           toast.success('Form Submitted successfully')
-          setIsSubmitted(true)
           navigate('/submissions')
         } else {
-          toast.error('Failed to submit form')
+          toast.error('Failed to Submit form')
         }
       })
       .catch(err => {
-        toast.error('Failed to submit form')
+        toast.error('Failed to Submit form')
       })
   }
 

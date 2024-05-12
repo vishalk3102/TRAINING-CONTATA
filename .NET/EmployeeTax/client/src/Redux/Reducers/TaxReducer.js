@@ -47,18 +47,33 @@ export const taxReducer = createReducer(
       state.loading = false
       state.error = action.payload
     },
-    createTaxDeclarationRequest: state => {
+
+    saveTaxDeclarationRequest: state => {
       state.loading = true
     },
-    createTaxDeclarationSuccess: (state, action) => {
+    saveTaxDeclarationSuccess: (state, action) => {
       state.loading = false
       state.message = action.payload
       state.tax = action.payload
     },
-    createTaxDeclarationFail: (state, action) => {
+    saveTaxDeclarationFail: (state, action) => {
       state.loading = false
       state.error = action.payload
     },
+
+    submitTaxDeclarationRequest: state => {
+      state.loading = true
+    },
+    submitTaxDeclarationSuccess: (state, action) => {
+      state.loading = false
+      state.message = action.payload
+      state.tax = action.payload
+    },
+    submitTaxDeclarationFail: (state, action) => {
+      state.loading = false
+      state.error = action.payload
+    },
+
     updateTaxDeclarationRequest: state => {
       state.loading = true
     },
@@ -71,17 +86,19 @@ export const taxReducer = createReducer(
       state.loading = false
       state.error = action.payload
     },
-    submitTaxDeclarationRequest: state => {
+
+    deleteTaxDeclarationRequest: state => {
       state.loading = true
     },
-    submitTaxDeclarationSuccess: (state, action) => {
+    deleteTaxDeclarationSuccess: (state, action) => {
       state.loading = false
       state.message = action.payload
     },
-    submitTaxDeclarationFail: (state, action) => {
+    deleteTaxDeclarationFail: (state, action) => {
       state.loading = false
       state.error = action.payload
     },
+
     RequestForTaxDeclarationChangeRequest: state => {
       state.loading = true
     },

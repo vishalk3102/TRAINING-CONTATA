@@ -129,7 +129,7 @@ namespace server.Controllers
         {
             try
             {
-                var existingTax = _taxDeclarationService.getTaxDeclarationByFinancialYear(tax.financialYear);
+                var existingTax = await _taxDeclarationService.getTaxByFinancialYearAndEmpId(tax.financialYear,tax.empId);
                 if(existingTax == null)
                 {
                   await _taxDeclarationService.submitTaxDeclaration(tax);
@@ -137,7 +137,8 @@ namespace server.Controllers
                 }
                 else
                 {
-                    await _taxDeclarationService.updateTaxDeclaration(tax);
+                    tax.taxId = existingTax.taxId;
+                    await _taxDeclarationService.updateTaxDeclaration(tax,true);
                     return Ok("Form Submitted Successfully");
                 }
             }
@@ -153,7 +154,7 @@ namespace server.Controllers
         {
             try
             {
-                var existingTax = _taxDeclarationService.getTaxDeclarationByFinancialYear(tax.financialYear);
+                var existingTax = await  _taxDeclarationService.getTaxByFinancialYearAndEmpId(tax.financialYear,tax.empId);
                 if (existingTax == null)
                 {
                     await _taxDeclarationService.saveTaxDeclaration(tax);
@@ -161,7 +162,8 @@ namespace server.Controllers
                 }
                 else
                 {
-                    await _taxDeclarationService.updateTaxDeclaration(tax);
+                    tax.taxId = existingTax.taxId;
+                    await _taxDeclarationService.updateTaxDeclaration(tax, false);
                     return Ok("Form saved Successfully");
                 }
             }
@@ -183,8 +185,29 @@ namespace server.Controllers
                     return BadRequest();
                 }
 
-                await _taxDeclarationService.updateTaxDeclaration(taxDeclaration);
+                await _taxDeclarationService.updateTaxDeclaration(taxDeclaration, true);
                 return Ok("Form Submitted Successfully");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An unexpected error occurred");
+            }
+        }
+
+        //DELETE TAX FROM --employee
+        [HttpDelete("admin/tax/{taxId}")]
+        public async Task<IActionResult> DeleteTaxDeclaration(int taxId)
+        {
+            try
+            {
+                var taxDeclaration = await _taxDeclarationService.getTaxDeclaration(taxId);
+                if (taxDeclaration == null)
+                {
+
+                    return NotFound();
+                }
+                await _taxDeclarationService.deleteTaxDeclaration(taxId);
+                return Ok("Tax Form  Deleted Successfully");
             }
             catch (Exception ex)
             {

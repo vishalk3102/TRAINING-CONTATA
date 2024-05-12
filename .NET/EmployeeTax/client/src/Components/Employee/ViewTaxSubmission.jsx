@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import {
-  createTaxDeclaration,
   getTaxDeclaration,
-  updateTaxDeclaration
+  saveTaxDeclaration,
+  submitTaxDeclaration
 } from '../../Redux/Actions/TaxAction'
 import Loader from '../Loader'
 
@@ -37,7 +37,7 @@ const ViewTaxSubmission = () => {
 
   // FETCHING VALUES FROM STORE
   const { user } = useSelector(state => state.auth)
-  const { loading, tax } = useSelector(state => state.tax)
+  const { loading, tax, mytaxes } = useSelector(state => state.tax)
 
   const dispatch = useDispatch()
   const params = useParams()
@@ -52,7 +52,7 @@ const ViewTaxSubmission = () => {
     dispatch(getTaxDeclaration(params.taxId))
   }, [dispatch])
 
-  // TO SET VALUES OF VARIABLE FROM STORE
+  // TO SET VALUES OF VARIABLE FROM STORE 1`` 2aZdd
   useEffect(() => {
     if (tax && tax.length > 0) {
       const taxDeclaration = tax[0].taxDeclaration
@@ -118,7 +118,7 @@ const ViewTaxSubmission = () => {
       LTA: ltaChecked,
       dateOfDeclaration: currentDateString
     }
-    dispatch(createTaxDeclaration(formData))
+    dispatch(saveTaxDeclaration(formData))
       .then(response => {
         if (response) {
           toast.success('Form Saved successfully')
@@ -136,7 +136,7 @@ const ViewTaxSubmission = () => {
   const handleSubmitButton = e => {
     e.preventDefault()
 
-    const existingTax = tax.find(tax => tax.financialYear === financialYear)
+    const existingTax = mytaxes.find(tax => tax.financialYear === financialYear)
 
     if (
       existingTax &&
@@ -189,38 +189,20 @@ const ViewTaxSubmission = () => {
       dateOfDeclaration: currentDateString
     }
 
-    const payload = existingTax
-      ? { formData, taxId: existingTax.taxId }
-      : formData
-
-    if (existingTax) {
-      dispatch(updateTaxDeclaration(payload, existingTax.taxId))
-        .then(response => {
-          if (response) {
-            toast.success('Form Submitted successfully')
-            navigate('/submissions')
-          } else {
-            toast.error('Failed to submit form')
-          }
-        })
-        .catch(err => {
-          toast.error('Failed to submit form')
-        })
-    } else {
-      dispatch(createTaxDeclaration(formData))
-        .then(response => {
-          if (response) {
-            toast.success('Form Submitted successfully')
-            navigate('/submissions')
-          } else {
-            toast.error('Failed to Submit form')
-          }
-        })
-        .catch(err => {
+    dispatch(submitTaxDeclaration(formData))
+      .then(response => {
+        if (response) {
+          toast.success('Form Submitted successfully')
+          navigate('/submissions')
+        } else {
           toast.error('Failed to Submit form')
-        })
-    }
+        }
+      })
+      .catch(err => {
+        toast.error('Failed to Submit form')
+      })
   }
+
   return (
     <>
       {loading === false ? (
