@@ -35,8 +35,6 @@ namespace server.Services
         //ADD  EMPLOYEE 
         public async Task addEmployee([FromBody] Employee employee)
         {
-            
-
             await _db.Employees.AddAsync(employee);
             await _db.SaveChangesAsync();
         }

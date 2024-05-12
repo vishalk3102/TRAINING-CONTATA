@@ -30,7 +30,7 @@ export const saveTaxDeclaration = formData => async dispatch => {
   }
 }
 
-// SUBMIT TAX FORM(SUBMISSION)
+// SUBMIT TAX FORM
 export const submitTaxDeclaration = formData => async dispatch => {
   console.log(formData)
   try {
@@ -59,36 +59,7 @@ export const submitTaxDeclaration = formData => async dispatch => {
   }
 }
 
-// UPDATE TAX FORM
-export const updateTaxDeclaration = (formData, taxId) => async dispatch => {
-  console.log(formData)
-  try {
-    dispatch({
-      type: 'updateTaxDeclarationRequest'
-    })
-
-    const config = {
-      headers: { 'Content-Type': 'application/json' }
-    }
-    const { data } = await axios.put(
-      `${server}/admin/tax/update/${taxId}`,
-      formData,
-      config
-    )
-    dispatch({
-      type: 'updateTaxDeclarationSuccess',
-      payload: data
-    })
-    return data
-  } catch (error) {
-    dispatch({
-      type: 'updateTaxDeclarationFail',
-      payload: error.response.data.message
-    })
-  }
-}
-
-// UPDATE TAX FORM
+// DELETE TAX FORM
 export const deleteTaxDeclaration = taxId => async dispatch => {
   try {
     dispatch({
@@ -181,7 +152,6 @@ export const getTaxChangeRequestListing = () => async dispatch => {
       type: 'getTaxChangeRequestListingSuccess',
       payload: data
     })
-    console.log(data)
   } catch (error) {
     dispatch({
       type: 'getTaxChangeRequestListingFail',
@@ -224,12 +194,12 @@ export const unfreezeTaxForm = taxId => async dispatch => {
       type: 'unfreezeTaxFormRequest'
     })
 
-    console.log(taxId)
     const { data } = await axios.get(`${server}/admin/tax/unfreeze/${taxId}`)
     dispatch({
       type: 'unfreezeTaxFormSuccess',
       payload: data
     })
+    return data
   } catch (error) {
     dispatch({
       type: 'unfreezeTaxFormFail',

@@ -248,7 +248,7 @@ namespace server.Controllers
             try
             {
                 var taxFormList = await _taxDeclarationService.getTaxDeclaration(taxId);
-                if (taxFormList == null || taxFormList.Any())
+                if (taxFormList == null || !taxFormList.Any())
                 {
                     return NotFound();
                 }
@@ -271,10 +271,14 @@ namespace server.Controllers
             try
             {
                 var taxFormList = await _taxDeclarationService.getTaxDeclaration(taxId);
-            
+                if (taxFormList == null || !taxFormList.Any())
+                {
+                    return NotFound();
+                }
 
                 var taxForm = taxFormList.First().Item1;
                 await _taxDeclarationService.acceptTaxForm(taxForm);
+                await _taxDeclarationService.deleteChangeRequest(taxId);
                 return Ok("Tax Form Accepted successfully");
             }
             catch (Exception ex)
@@ -290,10 +294,14 @@ namespace server.Controllers
             try
             {
                 var taxFormList = await _taxDeclarationService.getTaxDeclaration(taxId);
-
+                if (taxFormList == null || !taxFormList.Any())
+                {
+                    return NotFound();
+                }
 
                 var taxForm = taxFormList.First().Item1;
                 await _taxDeclarationService.rejectTaxForm(taxForm);
+                await _taxDeclarationService.deleteChangeRequest(taxId);
                 return Ok("Tax Form Rejected successfully");
             }
             catch (Exception ex)

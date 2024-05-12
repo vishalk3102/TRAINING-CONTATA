@@ -21,26 +21,31 @@ const TaxListing = () => {
   const [filteredData, setFilteredData] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
-  const itemsPerPage = 3
+  const itemsPerPage = 6
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   //FETCHING VALUE FROM OF VARIABLE'S FROM STORE
-  const { loading, changeRequests } = useSelector(state => state.tax)
+  const { loading, changeRequests, taxes } = useSelector(state => state.tax)
 
   useEffect(() => {
     dispatch(getTaxChangeRequestListing())
+    dispatch(getAllTaxDeclaration())
   }, [dispatch])
 
   useEffect(() => {
-    setFilteredData(changeRequests)
-  }, [changeRequests])
+    const combinedData =
+      Array.isArray(changeRequests) && Array.isArray(taxes)
+        ? [...changeRequests, ...taxes]
+        : []
+    setFilteredData(combinedData)
+  }, [changeRequests, taxes])
 
   //FILTERING OF DATA BASED ON FILTER SELECTEDS
   useEffect(() => {
     const filterData = () => {
-      let filtered = changeRequests || []
+      let filtered = [...changeRequests, ...taxes] || []
       if (year) {
         filtered = filtered.filter(
           item => item.taxDeclaration.financialYear === parseInt(year)
@@ -68,7 +73,7 @@ const TaxListing = () => {
       setTotalPages(Math.ceil(filtered.length / itemsPerPage))
     }
     filterData()
-  }, [changeRequests, currentPage, empId, itemsPerPage, name, year])
+  }, [changeRequests, currentPage, empId, itemsPerPage, name, taxes, year])
 
   if (
     !changeRequests ||
@@ -86,11 +91,13 @@ const TaxListing = () => {
 
   // FUNCTION TO HANDLE UNFREEZE BUTTON FUNCTIONALITY
   const unfreezeButtonHandler = taxId => {
-    console.log(taxId)
     dispatch(unfreezeTaxForm(taxId))
-      .then(() => {
-        dispatch(getAllTaxDeclaration())
-        toast.success('Unfreeze successful')
+      .then(message => {
+        if (message) {
+          dispatch(getTaxChangeRequestListing())
+          navigate('/admin/taxes')
+          toast.success('Unfreezed successful')
+        }
       })
       .catch(err => {
         toast.error('Failed to unfreeze form')
@@ -100,9 +107,12 @@ const TaxListing = () => {
   // FUNCTION TO HANDLE ACCEPT BUTTON CLICK
   const handleAcceptButton = taxId => {
     dispatch(acceptTaxDeclaration(taxId))
-      .then(() => {
-        navigate('/admin/submissions')
-        toast.success('Accepted successful')
+      .then(message => {
+        if (message) {
+          dispatch(getTaxChangeRequestListing())
+          navigate('/admin/taxes')
+          toast.success('Accepted successful')
+        }
       })
       .catch(err => {
         toast.error('Failed to Accept form')
@@ -112,9 +122,12 @@ const TaxListing = () => {
   // FUNCTION TO HANDLE REJECT BUTTON CLICK
   const handleRejectButton = taxId => {
     dispatch(rejectTaxDeclaration(taxId))
-      .then(() => {
-        navigate('/admin/submissions')
-        toast.success('Rejected successful')
+      .then(message => {
+        if (message) {
+          dispatch(getTaxChangeRequestListing())
+          navigate('/admin/taxes')
+          toast.success('Rejected successful')
+        }
       })
       .catch(err => {
         toast.error('Failed to Reject form')
@@ -191,6 +204,9 @@ const TaxListing = () => {
                       Date of Submission
                     </th>
                     <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 p-3  uppercase text-center'>
+                      Status
+                    </th>
+                    <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 p-3  uppercase text-center'>
                       Unfreeze Reason
                     </th>
                     <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 p-3  uppercase text-center'>
@@ -205,58 +221,102 @@ const TaxListing = () => {
                   {Array.isArray(filteredData) && filteredData.length > 0 ? (
                     filteredData.map((i, index) => {
                       return (
-                        <tr className='border border-slate-900  ' key={index}>
-                          <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                            {i.employee.empId}
-                          </td>
-                          <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                            {i.employee.name}
-                          </td>
-                          <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                            {i.taxDeclaration.dateOfDeclaration}
-                          </td>
-                          <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                            {i.reason}
-                          </td>
-                          <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize'>
-                            <Link to={`/admin/${i.taxId}`}>
-                              <span className='flex justify-center'>
-                                <FaEye size={22} />
-                              </span>
-                            </Link>
-                          </td>
-                          <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center px-4 gap-5 '>
-                            {i.reason ? (
-                              <button
-                                className='text-[14px] font-medium bg-blue-400 outline-none py-2 px-4 rounded m-1'
-                                onClick={() =>
-                                  unfreezeButtonHandler(i.taxDeclaration.taxId)
-                                }
+                        <>
+                          {i.taxDeclaration.status === 'submitted' ||
+                            (i.taxDeclaration.status === 'drafted' && (
+                              <tr
+                                className='border border-slate-900  '
+                                key={index}
                               >
-                                Unfreeze
-                              </button>
-                            ) : (
-                              ''
-                            )}
-
-                            <button
-                              className='text-[14px] font-medium bg-green-400 outline-none py-2 px-4 rounded m-1'
-                              onClick={() =>
-                                handleAcceptButton(i.taxDeclaration.taxId)
-                              }
-                            >
-                              Accept
-                            </button>
-                            <button
-                              className='text-[14px] font-medium bg-red-400 outline-none py-2 px-4 rounded m-1'
-                              onClick={() =>
-                                handleRejectButton(i.taxDeclaration.taxId)
-                              }
-                            >
-                              Reject
-                            </button>
-                          </td>
-                        </tr>
+                                <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
+                                  {i.employee.empId}
+                                </td>
+                                <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
+                                  {i.employee.name}
+                                </td>
+                                <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
+                                  {i.taxDeclaration.dateOfDeclaration}
+                                </td>
+                                <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
+                                  {i.taxDeclaration.status}
+                                </td>
+                                <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
+                                  {i.reason}
+                                </td>
+                                <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize'>
+                                  <Link to={`/admin/${i.taxDeclaration.taxId}`}>
+                                    <span className='flex justify-center'>
+                                      <FaEye size={22} />
+                                    </span>
+                                  </Link>
+                                </td>
+                                <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center px-4 gap-5 '>
+                                  {i.taxDeclaration.status === 'submitted' ? (
+                                    i.reason ? (
+                                      <>
+                                        <button
+                                          className='text-[14px] font-medium bg-blue-400 outline-none py-2 px-4 rounded m-1'
+                                          onClick={() =>
+                                            unfreezeButtonHandler(
+                                              i.taxDeclaration.taxId
+                                            )
+                                          }
+                                        >
+                                          Unfreeze
+                                        </button>{' '}
+                                        <button
+                                          className='text-[14px] font-medium bg-green-400 outline-none py-2 px-4 rounded m-1'
+                                          onClick={() =>
+                                            handleAcceptButton(
+                                              i.taxDeclaration.taxId
+                                            )
+                                          }
+                                        >
+                                          Accept
+                                        </button>
+                                        <button
+                                          className='text-[14px] font-medium bg-red-400 outline-none py-2 px-4 rounded m-1'
+                                          onClick={() =>
+                                            handleRejectButton(
+                                              i.taxDeclaration.taxId
+                                            )
+                                          }
+                                        >
+                                          Reject
+                                        </button>
+                                      </>
+                                    ) : (
+                                      <>
+                                        {' '}
+                                        <button
+                                          className='text-[14px] font-medium bg-green-400 outline-none py-2 px-4 rounded m-1'
+                                          onClick={() =>
+                                            handleAcceptButton(
+                                              i.taxDeclaration.taxId
+                                            )
+                                          }
+                                        >
+                                          Accept
+                                        </button>
+                                        <button
+                                          className='text-[14px] font-medium bg-red-400 outline-none py-2 px-4 rounded m-1'
+                                          onClick={() =>
+                                            handleRejectButton(
+                                              i.taxDeclaration.taxId
+                                            )
+                                          }
+                                        >
+                                          Reject
+                                        </button>
+                                      </>
+                                    )
+                                  ) : (
+                                    ''
+                                  )}
+                                </td>
+                              </tr>
+                            ))}
+                        </>
                       )
                     })
                   ) : (

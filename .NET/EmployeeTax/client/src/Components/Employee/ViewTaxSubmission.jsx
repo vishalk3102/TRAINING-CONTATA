@@ -560,29 +560,38 @@ const ViewTaxSubmission = () => {
               </div>
             </div>
             <div className='flex justify-evenly gap-5 py-2 mb-20'>
-              <button
-                className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-green-400 cursor-pointer '
-                onClick={handleSaveButton}
-                disabled={!editable}
-              >
-                Save
-              </button>
-              <button
-                type='submit'
-                className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-green-400 cursor-pointer'
-                onClick={e => handleSubmitButton(e, taxId)}
-                disabled={!editable}
-              >
-                Submit
-              </button>
-              {!editable ? (
-                <button className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-green-400 cursor-pointer'>
-                  <Link to={`/change-request/${taxId}`}>
-                    Request for Change
-                  </Link>
+              {tax[0].taxDeclaration.status === 'accepted' ? (
+                <button className='w-[30%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-blue-400 cursor-pointer '>
+                  <Link to={'/admin/submissions'}>Back To Submissions</Link>
                 </button>
               ) : (
-                ''
+                <>
+                  {' '}
+                  <button
+                    className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-green-400 cursor-pointer '
+                    onClick={handleSaveButton}
+                    disabled={!editable}
+                  >
+                    Save
+                  </button>
+                  <button
+                    type='submit'
+                    className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-green-400 cursor-pointer'
+                    onClick={e => handleSubmitButton(e, taxId)}
+                    disabled={!editable}
+                  >
+                    Submit
+                  </button>
+                  {!editable ? (
+                    <button className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-green-400 cursor-pointer'>
+                      <Link to={`/change-request/${taxId}`}>
+                        Request for Change
+                      </Link>
+                    </button>
+                  ) : (
+                    ''
+                  )}
+                </>
               )}
             </div>
           </div>

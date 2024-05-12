@@ -34,25 +34,32 @@ const SubmissionListing = () => {
   useEffect(() => {
     const filterData = () => {
       let filtered = taxes || []
+      console.log('Original data:', taxes)
       if (financialYear) {
         filtered = filtered.filter(
-          item => item.financialYear === parseInt(financialYear)
+          item => item.taxDeclaration.financialYear === parseInt(financialYear)
         )
+        console.log('Filtered by financial year:', filtered)
       }
 
       if (name) {
         filtered = filtered.filter(item =>
-          item.name.toLowerCase().includes(name.toLowerCase())
+          item.employee.name.toLowerCase().includes(name.toLowerCase())
         )
       }
 
       if (empId) {
         filtered = filtered.filter(item =>
-          item.empId.toString().includes(empId)
+          item.employee.empId.toString().includes(empId)
         )
       }
       if (status) {
-        filtered = taxes
+        filtered = filtered.filter(
+          item =>
+            item.taxDeclaration.status &&
+            item.taxDeclaration.status.toLowerCase() === status.toLowerCase()
+        )
+        console.log('Filtered by status:', filtered)
       }
 
       const indexOfLastItem = currentPage * itemsPerPage

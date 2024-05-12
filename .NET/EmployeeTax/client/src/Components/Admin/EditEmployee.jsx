@@ -13,7 +13,7 @@ const EditEmployee = () => {
   const [gender, setGender] = useState()
   const [panNo, setPanNo] = useState()
   const [address, setAddress] = useState()
-  const [age, setAge] = useState()
+  const [dob, setDob] = useState()
   const [role, setRole] = useState()
   const [password, setPassword] = useState()
 
@@ -32,7 +32,7 @@ const EditEmployee = () => {
     if (employee) {
       setEmpId(employee.empId)
       setName(employee.name)
-      setAge(employee.age)
+      setDob(employee.dateOfBirth)
       setGender(employee.gender)
       setPhoneNumber(employee.phoneNumber)
       setRole(employee.role)
@@ -45,36 +45,51 @@ const EditEmployee = () => {
   // FUNCTION TO HANDLE SUBMIT BUTTON -updating employee detailss
   const handleFormSubmit = e => {
     e.preventDefault()
+
+    // --Validation of form before submission --
     if (
-      !empId ||
       !name ||
       !phoneNumber ||
       !gender ||
       !panNo ||
       !address ||
-      !age ||
+      !dob ||
       !role ||
       !password
     ) {
       toast.error('All fields are required')
       return
     }
+
+    const today = new Date()
+    const dobDate = new Date(dob)
+    let calculatedAge = today.getFullYear() - dobDate.getFullYear()
+    const monthDiff = today.getMonth() - dobDate.getMonth()
+
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < dobDate.getDate())
+    ) {
+      calculatedAge--
+    }
+
     const formData = {
       empId,
       name,
-      age,
+      age: calculatedAge,
+      dateOfBirth: dob,
       gender,
       phoneNumber,
-      role,
       panNo,
       address,
+      role,
       password
     }
     dispatch(updateEmployee(formData, empId))
       .then(message => {
         if (message) {
           setName('')
-          setAge('')
+          setDob('')
           setPhoneNumber('')
           setGender('')
           setPanNo('')
@@ -127,14 +142,14 @@ const EditEmployee = () => {
                   />
                 </div>
                 <div className='w-[40%]'>
-                  <label htmlFor='age' className='leading-7 text-sm '>
-                    Age
+                  <label htmlFor='dob' className='leading-7 text-sm '>
+                    Date of Birth
                   </label>
                   <input
-                    type='number'
-                    id='age'
-                    value={age}
-                    onChange={e => setAge(e.target.value)}
+                    type='date'
+                    id='dob'
+                    value={dob}
+                    onChange={e => setDob(e.target.value)}
                     className='px-2 bg-blue-50 py-3 rounded-sm text-base w-full accent-blue-700 outline-none'
                   />
                 </div>

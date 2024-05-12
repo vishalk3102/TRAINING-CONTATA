@@ -53,7 +53,7 @@ namespace server.Services
             return taxDeclarationsresult;
         }
 
-        //GET TAX DECLARATION BY FINANCIAL YEAR
+        //GET TAX DECLARATION BY FINANCIAL YEAR AND EMPID
         public async Task<TaxDeclaration>  getTaxByFinancialYearAndEmpId(int financialYear,int empId)
         {
             var taxDeclaration = await _db.TaxDeclarations.FirstOrDefaultAsync(td => td.financialYear == financialYear && td.empId==empId);
@@ -112,7 +112,6 @@ namespace server.Services
             await _db.SaveChangesAsync();
         }
 
-       
         //UPDATE TAX FORM
         public async Task updateTaxDeclaration(TaxDeclaration taxDeclaration,bool isSubmitted)
         {
@@ -153,7 +152,7 @@ namespace server.Services
         }
 
 
-        //DELETE  EMPLOYEE 
+        //DELETE  TAX DECLARATION 
         public async Task deleteTaxDeclaration(int taxId)
         {
             var taxDeclaration = await _db.TaxDeclarations.FindAsync(taxId);
@@ -175,7 +174,7 @@ namespace server.Services
 
 
 
-        //DELETE  CHNAGE REQUEST --after unfreezing it 
+        //DELETE  CHANGE REQUEST --after unfreezing it 
 
         public async Task deleteChangeRequest(int taxId)
         {

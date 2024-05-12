@@ -36,6 +36,13 @@ const Home = () => {
                     </li>
                     <li className='text-[14px] md:text-[1rem] font-semibold capitalize p-1 md:p-2'>
                       {' '}
+                      Date of Birth :
+                      <span className='text-[14px] md:text-[0.9rem] font-normal '>
+                        {user.dateOfBirth}
+                      </span>
+                    </li>
+                    <li className='text-[14px] md:text-[1rem] font-semibold capitalize p-1 md:p-2'>
+                      {' '}
                       Age :
                       <span className='text-[14px] md:text-[0.9rem] font-normal '>
                         {user.age}

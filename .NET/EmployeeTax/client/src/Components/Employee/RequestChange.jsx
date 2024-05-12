@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getTaxDeclaration, requestChange } from '../../Redux/Actions/TaxAction'
+import {
+  getTaxChangeRequestListing,
+  getTaxDeclaration,
+  requestChange
+} from '../../Redux/Actions/TaxAction'
 import { useNavigate, useParams } from 'react-router-dom'
 import Loader from '../Loader'
 import toast from 'react-hot-toast'
@@ -15,7 +19,7 @@ const RequestChange = () => {
 
   // FETCHING VALUES FROM STORE
   const { loading, user, error } = useSelector(state => state.auth)
-  const { tax, message } = useSelector(state => state.tax)
+  const { tax, changeRequests } = useSelector(state => state.tax)
 
   const dispatch = useDispatch()
   const params = useParams()
@@ -26,19 +30,31 @@ const RequestChange = () => {
   }, [dispatch])
 
   useEffect(() => {
+    dispatch(getTaxChangeRequestListing())
+  }, [dispatch])
+
+  useEffect(() => {
     if (user) {
       setEmpId(user.empId)
       setName(user.name)
     }
-    if (tax) {
-      setTaxId(tax.taxId)
-      setFinancialYear(tax.financialYear)
+    if (tax && tax.length > 0 && tax[0].taxDeclaration) {
+      setTaxId(tax[0].taxDeclaration.taxId)
+      setFinancialYear(tax[0].taxDeclaration.financialYear)
     }
   }, [tax, user])
 
   // FUNCTION TO HANDLE FORM SUBMISSION
   const formHandler = e => {
     e.preventDefault()
+
+    let existingRequest = changeRequests.find(
+      req => req.taxDeclaration.taxId === taxId
+    )
+    if (existingRequest) {
+      toast.error('Tax form already submitted for this financial year.')
+      return
+    }
 
     // --Validation of form before submission --
     if (!reason) {
