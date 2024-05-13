@@ -11,6 +11,7 @@ const Login = () => {
   const [employeeID, setEmployeeID] = useState('')
   const [password, setPassword] = useState('')
 
+  // FUNCTION TO HANDLE LOGIN BUTTON
   const handleLoginSubmit = e => {
     e.preventDefault()
     dispatch(loginUser(employeeID, password, navigate))

@@ -35,6 +35,7 @@ const TaxListing = () => {
   }, [dispatch])
 
   useEffect(() => {
+    // -- Combining data from two array --
     const combinedData =
       Array.isArray(changeRequests) && Array.isArray(taxes)
         ? [...changeRequests, ...taxes]
@@ -99,6 +100,8 @@ const TaxListing = () => {
           dispatch(getTaxChangeRequestListing())
           navigate('/admin/taxes')
           toast.success('Unfreezed successful')
+        } else {
+          toast.error('Failed to unfreeze form')
         }
       })
       .catch(err => {
@@ -114,6 +117,8 @@ const TaxListing = () => {
           dispatch(getTaxChangeRequestListing())
           navigate('/admin/taxes')
           toast.success('Accepted successful')
+        } else {
+          toast.error('Failed to Accept form')
         }
       })
       .catch(err => {
@@ -129,6 +134,8 @@ const TaxListing = () => {
           dispatch(getTaxChangeRequestListing())
           navigate('/admin/taxes')
           toast.success('Rejected successful')
+        } else {
+          toast.error('Failed to Reject form')
         }
       })
       .catch(err => {

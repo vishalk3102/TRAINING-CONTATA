@@ -19,7 +19,6 @@ namespace server.Controllers
         }
 
 
-
         //LOGIN USER 
         [HttpPost("login")]
         public async Task<IActionResult> Login(User user)
@@ -31,6 +30,8 @@ namespace server.Controllers
             return await _userService.login(user,Response);
         }
 
+
+        //LOGOUT USER 
         [HttpPost("logout")]
         public async Task<IActionResult> Logout()
         {

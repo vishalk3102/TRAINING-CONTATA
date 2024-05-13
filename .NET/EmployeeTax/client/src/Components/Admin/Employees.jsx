@@ -19,7 +19,7 @@ const Employees = () => {
   const [filteredData, setFilteredData] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
-  const itemsPerPage = 5
+  const itemsPerPage = 6
 
   const dispatch = useDispatch()
   const { loading, employees } = useSelector(state => state.employee)

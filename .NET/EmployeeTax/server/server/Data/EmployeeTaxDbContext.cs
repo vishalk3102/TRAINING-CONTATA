@@ -51,8 +51,8 @@ namespace server.Data
                     phoneNumber = "1234567890",
                     panNo = "ABCDE1234F",
                     address = "123 Main St, City, Country",
-                    role = "employee",
-                    password = "emp@123"
+                    role = "admin",
+                    password = "admin@123"
                },
                 new Employee
                 {
@@ -64,8 +64,8 @@ namespace server.Data
                     phoneNumber = "8459126643",
                     panNo = "ABCDE1234F",
                     address = "123 Main St, City, Country",
-                    role = "admin",
-                    password = "admin@123"
+                    role = "employee",
+                    password = "emp@123"
                 }
              );
 
@@ -91,7 +91,7 @@ namespace server.Data
                   LTA = true,
                   financialYear = 2025,
                   dateOfDeclaration = "2024-04-28",
-                  status = "accepted",
+                  status = "drafted",
                   isSubmitted = false
               },
                new TaxDeclaration

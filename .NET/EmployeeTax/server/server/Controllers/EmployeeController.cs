@@ -56,7 +56,7 @@ namespace server.Controllers
           
         }
 
-        //ADD EMPLOYEE DETAILS   --admin
+        //ADD EMPLOYEE DETAILS   
 
         [HttpPost("admin/employee/add")]
         public async Task<IActionResult> AddEmployee(Employee employee)
@@ -94,9 +94,6 @@ namespace server.Controllers
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
         }
-
-
-
 
         //DELETE  EMPLOYEE DETAILS --admin
         [HttpDelete("admin/employee/{empId}")]

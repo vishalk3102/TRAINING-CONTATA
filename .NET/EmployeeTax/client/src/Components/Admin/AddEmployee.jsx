@@ -12,7 +12,6 @@ const AddEmployee = () => {
   const [panNo, setPanNo] = useState()
   const [address, setAddress] = useState()
   const [dob, setDob] = useState()
-  // const [age, setAge] = useState()
   const [role, setRole] = useState()
   const [password, setPassword] = useState()
 

@@ -19,7 +19,6 @@ namespace server.Controllers
         }
 
 
-
         //GET ALL TAX SUBMISSIONS FROM DATABASE
         [HttpGet("admin/submissions")]
         public async Task<IActionResult> GetAllTaxDeclaration()
@@ -91,9 +90,6 @@ namespace server.Controllers
                 return StatusCode(500, "An unexpected error occurred");
             }
         }
-
-
-
 
 
         //GET ALL TAX SUBMISSIONS WITH CHANGE REQUEST  
@@ -173,27 +169,6 @@ namespace server.Controllers
             }
         }
 
-
-        //UPDATE TAX DECLARATION DETAILS
-        [HttpPut("admin/tax/update/{taxId}")]
-        public async Task<IActionResult> UpdateTaxDeclaration(TaxDeclaration taxDeclaration, int taxId)
-        {
-            try
-            {
-                if (taxId != taxDeclaration.taxId)
-                {
-                    return BadRequest();
-                }
-
-                await _taxDeclarationService.updateTaxDeclaration(taxDeclaration, true);
-                return Ok("Form Submitted Successfully");
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "An unexpected error occurred");
-            }
-        }
-
         //DELETE TAX FROM --employee
         [HttpDelete("admin/tax/{taxId}")]
         public async Task<IActionResult> DeleteTaxDeclaration(int taxId)
@@ -214,7 +189,6 @@ namespace server.Controllers
                 return StatusCode(500, "An unexpected error occurred");
             }
         }
-
 
 
         //REQUEST TO CHANGE DETAILS IN TAX FORM
@@ -239,7 +213,6 @@ namespace server.Controllers
             }
             
         }
-
 
         //UNFREEZE FORM 
         [HttpGet("admin/tax/unfreeze/{taxid}")]

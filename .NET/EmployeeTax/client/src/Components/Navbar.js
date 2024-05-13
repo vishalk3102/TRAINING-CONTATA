@@ -8,6 +8,7 @@ const Navbar = ({ role, isAuthenticated = false }) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  // FUNCTION TO HANDLE LOGOUT BUTTON CLICK
   const logoutButtonHandler = () => {
     dispatch(logout())
       .then(message => {
@@ -73,6 +74,7 @@ const Navbar = ({ role, isAuthenticated = false }) => {
             </div>
           )}
 
+          {/* LOGIC TO SHOW LOGIN OR LOGOUT BUTTON  */}
           <div className=''>
             {isAuthenticated ? (
               <Link

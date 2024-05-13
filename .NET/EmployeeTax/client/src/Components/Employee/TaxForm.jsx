@@ -46,7 +46,9 @@ const TaxForm = () => {
   }, [dispatch])
 
   useEffect(() => {
+    // --Check if taxes exist--
     if (mytaxes) {
+      // --Check if taxes exist for the current financial year--
       const existingTax = mytaxes.find(
         tax => tax.financialYear === financialYear
       )
@@ -123,9 +125,10 @@ const TaxForm = () => {
   // FUNCTION TO HANDLE FORM SUBMISSION
   const handleSubmitButton = e => {
     e.preventDefault()
-
+    // --Check if taxes exist for the current financial year--
     const existingTax = mytaxes.find(tax => tax.financialYear === financialYear)
 
+    // --Logic to avoid resubmission of tax form--
     if (
       existingTax &&
       (existingTax.status === 'submitted' || existingTax.status === 'accepted')
@@ -133,6 +136,7 @@ const TaxForm = () => {
       toast.error('Tax form already submitted for this financial year.')
       return
     }
+
     // --Validation of form before submission --
     if (
       !financialYear ||

@@ -15,6 +15,7 @@ namespace server.Model
         [Required(ErrorMessage = "Name is required")]
         public string name { get; set; }
 
+        [Required(ErrorMessage = "Age is required")]
         public int age { get; set; }
 
         [Required(ErrorMessage = "Date of birth is required")]

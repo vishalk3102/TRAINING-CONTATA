@@ -22,7 +22,7 @@ namespace server.Services
             _configuration=configuration;
         }
 
-
+        //LOGIN 
         public async Task<IActionResult> login(User user,HttpResponse response)
         {
             var result = await _db.Login(user.empId, user.password);  
@@ -42,11 +42,16 @@ namespace server.Services
             return new UnauthorizedResult();
         }
 
+
+        //LOGOUT
         public async Task logout(HttpResponse response)
         {
+            //delete cookie
             response.Cookies.Delete("jwt");
         }
 
+
+        // GENERATE JWT TOKEN
         private string GenerateJwtToken(Employee employee)
         {
             // Load JWT settings from configuration

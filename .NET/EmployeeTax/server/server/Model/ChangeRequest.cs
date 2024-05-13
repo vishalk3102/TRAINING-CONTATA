@@ -4,6 +4,7 @@ namespace server.Model
 {
     public class ChangeRequest
     {
+        [Key]
         public int id { get; set; }
 
         [Required(ErrorMessage = "Tax ID is required")]

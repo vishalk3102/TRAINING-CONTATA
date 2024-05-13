@@ -235,7 +235,7 @@ const EditEmployee = () => {
                   {' '}
                   <button
                     type='submit'
-                    className='bg-blue-500 px-6  py-3 rounded rounded-sm  text-white'
+                    className='bg-blue-500 px-6  py-3  rounded-sm  text-white'
                   >
                     Update Employee
                   </button>

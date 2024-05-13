@@ -18,7 +18,7 @@ const RequestChange = () => {
   const [reason, setReason] = useState()
 
   // FETCHING VALUES FROM STORE
-  const { loading, user, error } = useSelector(state => state.auth)
+  const { loading, user } = useSelector(state => state.auth)
   const { tax, changeRequests } = useSelector(state => state.tax)
 
   const dispatch = useDispatch()

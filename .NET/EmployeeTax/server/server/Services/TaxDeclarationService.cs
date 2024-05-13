@@ -166,7 +166,6 @@ namespace server.Services
         //CHANGE REQUEST TO UNFREEZE  TAX FORM
         public async Task<bool> changeRequest(ChangeRequest newChangeRequest)
         {
-           // newChangeRequest.dateOfSubmission = DateOnly.FromDateTime(DateTime.UtcNow).ToString("yyyy-MM-dd");
             _db.ChangeRequests.Add(newChangeRequest);
             await _db.SaveChangesAsync();
             return true;

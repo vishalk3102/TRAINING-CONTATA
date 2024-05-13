@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import toast from 'react-hot-toast'
+import { Link, useParams } from 'react-router-dom'
 import { getTaxDeclaration } from '../../Redux/Actions/TaxAction'
 import Loader from '../Loader'
 
 const ViewTaxSubmission = () => {
   const dispatch = useDispatch()
   const params = useParams()
-  const navigate = useNavigate()
   const editable = false
 
   //FETCHING VALUE FROM OF VARIABLE'S FROM STORE

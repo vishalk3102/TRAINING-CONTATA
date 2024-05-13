@@ -39,7 +39,6 @@ const SubmissionListing = () => {
         filtered = filtered.filter(
           item => item.taxDeclaration.financialYear === parseInt(financialYear)
         )
-        console.log('Filtered by financial year:', filtered)
       }
 
       if (name) {
@@ -59,7 +58,6 @@ const SubmissionListing = () => {
             item.taxDeclaration.status &&
             item.taxDeclaration.status.toLowerCase() === status.toLowerCase()
         )
-        console.log('Filtered by status:', filtered)
       }
 
       const indexOfLastItem = currentPage * itemsPerPage
