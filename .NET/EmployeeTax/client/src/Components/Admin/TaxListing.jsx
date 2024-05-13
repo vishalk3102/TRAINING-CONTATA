@@ -21,7 +21,7 @@ const TaxListing = () => {
   const [filteredData, setFilteredData] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
-  const itemsPerPage = 10
+  const itemsPerPage = 5
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -36,10 +36,9 @@ const TaxListing = () => {
 
   useEffect(() => {
     // -- Combining data from two array --
-    const combinedData =
-      Array.isArray(changeRequests) && Array.isArray(taxes)
-        ? [...changeRequests, ...taxes]
-        : []
+    const combinedData = Array.isArray(changeRequests)
+      ? [...changeRequests, ...(Array.isArray(taxes) ? taxes : [])]
+      : []
     setFilteredData(combinedData)
   }, [changeRequests, taxes])
 
@@ -47,8 +46,9 @@ const TaxListing = () => {
   useEffect(() => {
     const filterData = () => {
       let filtered = Array.isArray(changeRequests)
-        ? [...changeRequests, ...taxes]
+        ? [...changeRequests, ...(Array.isArray(taxes) ? taxes : [])]
         : []
+
       if (year) {
         filtered = filtered.filter(
           item => item.taxDeclaration.financialYear === parseInt(year)
@@ -66,6 +66,13 @@ const TaxListing = () => {
           item.employee.empId.toString().includes(empId)
         )
       }
+
+      filtered = filtered.filter(
+        item =>
+          item.taxDeclaration.status === 'submitted' ||
+          item.taxDeclaration.status === 'drafted'
+      )
+
       const indexOfLastItem = currentPage * itemsPerPage
       const indexOfFirstItem = indexOfLastItem - itemsPerPage
       const currentItems = Array.isArray(filtered)
@@ -98,6 +105,7 @@ const TaxListing = () => {
       .then(message => {
         if (message) {
           dispatch(getTaxChangeRequestListing())
+          dispatch(getAllTaxDeclaration())
           navigate('/admin/taxes')
           toast.success('Unfreezed successful')
         } else {
@@ -115,6 +123,7 @@ const TaxListing = () => {
       .then(message => {
         if (message) {
           dispatch(getTaxChangeRequestListing())
+          dispatch(getAllTaxDeclaration())
           navigate('/admin/taxes')
           toast.success('Accepted successful')
         } else {
@@ -132,6 +141,7 @@ const TaxListing = () => {
       .then(message => {
         if (message) {
           dispatch(getTaxChangeRequestListing())
+          dispatch(getAllTaxDeclaration())
           navigate('/admin/taxes')
           toast.success('Rejected successful')
         } else {
@@ -203,25 +213,25 @@ const TaxListing = () => {
               <table className=' w-[100%] table-auto border-solid border-2 border-black border-collapse rounded mx-auto my-5'>
                 <thead>
                   <tr className='w-[100%] border-solid border-2 border-black'>
-                    <th className='text-[1.1rem] font-bold bg-blue-100  border border-slate-900 p-3 uppercase text-center'>
+                    <th className='text-[1.1rem] font-bold bg-blue-100  border border-slate-900 py-3 uppercase text-center'>
                       employee ID
                     </th>
-                    <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 p-3  uppercase text-center'>
+                    <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3  uppercase text-center'>
                       Employee Name
                     </th>
-                    <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 p-3  uppercase text-center'>
+                    <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3  uppercase text-center'>
                       Date of Submission
                     </th>
-                    <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 p-3  uppercase text-center'>
+                    <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3  uppercase text-center'>
                       Status
                     </th>
-                    <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 p-3  uppercase text-center'>
+                    <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3  uppercase text-center'>
                       Unfreeze Reason
                     </th>
-                    <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 p-3  uppercase text-center'>
+                    <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3  uppercase text-center'>
                       View Declaration
                     </th>
-                    <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 p-3  uppercase text-center'>
+                    <th className='text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3  uppercase text-center'>
                       Action
                     </th>
                   </tr>
@@ -231,100 +241,94 @@ const TaxListing = () => {
                     filteredData.map((i, index) => {
                       return (
                         <>
-                          {i.taxDeclaration.status === 'submitted' ||
-                            (i.taxDeclaration.status === 'drafted' && (
-                              <tr
-                                className='border border-slate-900  '
-                                key={index}
-                              >
-                                <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                                  {i.employee.empId}
-                                </td>
-                                <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                                  {i.employee.name}
-                                </td>
-                                <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                                  {i.taxDeclaration.dateOfDeclaration}
-                                </td>
-                                <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                                  {i.taxDeclaration.status}
-                                </td>
-                                <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                                  {i.reason}
-                                </td>
-                                <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize'>
-                                  <Link to={`/admin/${i.taxDeclaration.taxId}`}>
-                                    <span className='flex justify-center'>
-                                      <FaEye size={22} />
-                                    </span>
-                                  </Link>
-                                </td>
-                                <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center px-4 gap-5 '>
-                                  {i.taxDeclaration.status === 'submitted' ? (
-                                    i.reason ? (
-                                      <>
-                                        <button
-                                          className='text-[14px] font-medium bg-blue-400 outline-none py-2 px-4 rounded m-1'
-                                          onClick={() =>
-                                            unfreezeButtonHandler(
-                                              i.taxDeclaration.taxId
-                                            )
-                                          }
-                                        >
-                                          Unfreeze
-                                        </button>{' '}
-                                        <button
-                                          className='text-[14px] font-medium bg-green-400 outline-none py-2 px-4 rounded m-1'
-                                          onClick={() =>
-                                            handleAcceptButton(
-                                              i.taxDeclaration.taxId
-                                            )
-                                          }
-                                        >
-                                          Accept
-                                        </button>
-                                        <button
-                                          className='text-[14px] font-medium bg-red-400 outline-none py-2 px-4 rounded m-1'
-                                          onClick={() =>
-                                            handleRejectButton(
-                                              i.taxDeclaration.taxId
-                                            )
-                                          }
-                                        >
-                                          Reject
-                                        </button>
-                                      </>
-                                    ) : (
-                                      <>
-                                        {' '}
-                                        <button
-                                          className='text-[14px] font-medium bg-green-400 outline-none py-2 px-4 rounded m-1'
-                                          onClick={() =>
-                                            handleAcceptButton(
-                                              i.taxDeclaration.taxId
-                                            )
-                                          }
-                                        >
-                                          Accept
-                                        </button>
-                                        <button
-                                          className='text-[14px] font-medium bg-red-400 outline-none py-2 px-4 rounded m-1'
-                                          onClick={() =>
-                                            handleRejectButton(
-                                              i.taxDeclaration.taxId
-                                            )
-                                          }
-                                        >
-                                          Reject
-                                        </button>
-                                      </>
-                                    )
-                                  ) : (
-                                    ''
-                                  )}
-                                </td>
-                              </tr>
-                            ))}
+                          <tr className='border border-slate-900  ' key={index}>
+                            <td className='text-[1rem] font-normal border border-slate-900 py-1 capitalize text-center'>
+                              {i.employee.empId}
+                            </td>
+                            <td className='text-[1rem] font-normal border border-slate-900 py-1 capitalize text-center'>
+                              {i.employee.name}
+                            </td>
+                            <td className='text-[1rem] font-normal border border-slate-900 py-1 capitalize text-center'>
+                              {i.taxDeclaration.dateOfDeclaration}
+                            </td>
+                            <td className='text-[1rem] font-normal border border-slate-900 py-1 capitalize text-center'>
+                              {i.taxDeclaration.status}
+                            </td>
+                            <td className='text-[1rem] font-normal border border-slate-900 py-1 capitalize text-center'>
+                              {i.reason}
+                            </td>
+                            <td className='text-[1rem] font-normal border border-slate-900 py-1 capitalize'>
+                              <Link to={`/admin/${i.taxDeclaration.taxId}`}>
+                                <span className='flex justify-center'>
+                                  <FaEye size={22} />
+                                </span>
+                              </Link>
+                            </td>
+                            <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center px-4 gap-5 '>
+                              {i.taxDeclaration.status === 'submitted' ? (
+                                i.reason ? (
+                                  <>
+                                    <button
+                                      className='text-[14px] font-medium bg-blue-400 outline-none py-2 px-4 rounded m-1'
+                                      onClick={() =>
+                                        unfreezeButtonHandler(
+                                          i.taxDeclaration.taxId
+                                        )
+                                      }
+                                    >
+                                      Unfreeze
+                                    </button>{' '}
+                                    <button
+                                      className='text-[14px] font-medium bg-green-400 outline-none py-2 px-4 rounded m-1'
+                                      onClick={() =>
+                                        handleAcceptButton(
+                                          i.taxDeclaration.taxId
+                                        )
+                                      }
+                                    >
+                                      Accept
+                                    </button>
+                                    <button
+                                      className='text-[14px] font-medium bg-red-400 outline-none py-2 px-4 rounded m-1'
+                                      onClick={() =>
+                                        handleRejectButton(
+                                          i.taxDeclaration.taxId
+                                        )
+                                      }
+                                    >
+                                      Reject
+                                    </button>
+                                  </>
+                                ) : (
+                                  <>
+                                    {' '}
+                                    <button
+                                      className='text-[14px] font-medium bg-green-400 outline-none py-2 px-4 rounded m-1'
+                                      onClick={() =>
+                                        handleAcceptButton(
+                                          i.taxDeclaration.taxId
+                                        )
+                                      }
+                                    >
+                                      Accept
+                                    </button>
+                                    <button
+                                      className='text-[14px] font-medium bg-red-400 outline-none py-2 px-4 rounded m-1'
+                                      onClick={() =>
+                                        handleRejectButton(
+                                          i.taxDeclaration.taxId
+                                        )
+                                      }
+                                    >
+                                      Reject
+                                    </button>
+                                  </>
+                                )
+                              ) : (
+                                ''
+                              )}
+                            </td>
+                          </tr>
                         </>
                       )
                     })

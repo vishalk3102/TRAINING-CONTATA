@@ -118,7 +118,7 @@ const TaxForm = () => {
         }
       })
       .catch(err => {
-        toast.error('Failed to Save form')
+        toast.error(JSON.stringify(err))
       })
   }
 

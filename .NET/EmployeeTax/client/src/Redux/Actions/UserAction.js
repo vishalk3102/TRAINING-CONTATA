@@ -27,6 +27,7 @@ export const loginUser = (employeeID, password, navigate) => async dispatch => {
     } else {
       console.error('Unknown user role:', data.employee.role)
     }
+    return data
   } catch (error) {
     dispatch({
       type: 'loginFail',

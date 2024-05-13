@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\EmployeeTax\\server\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|e:\\contata\\training-contata\\.net\\employeetax\\server\\server\\controllers\\taxdeclarationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E55D56B5-2961-4A15-A6D3-23DBBCB3DABD}|server\\server.csproj|solutionrelative:server\\controllers\\taxdeclarationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TaxDeclarationController.cs",
+              "DocumentMoniker": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\EmployeeTax\\server\\server\\Controllers\\TaxDeclarationController.cs",
+              "RelativeDocumentMoniker": "server\\Controllers\\TaxDeclarationController.cs",
+              "ToolTip": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\EmployeeTax\\server\\server\\Controllers\\TaxDeclarationController.cs",
+              "RelativeToolTip": "server\\Controllers\\TaxDeclarationController.cs",
+              "ViewState": "AQIAAP0AAAAAAAAAAAAcwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-13T20:28:36.223Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

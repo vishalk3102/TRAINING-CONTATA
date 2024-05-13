@@ -34,7 +34,6 @@ const SubmissionListing = () => {
   useEffect(() => {
     const filterData = () => {
       let filtered = taxes || []
-      console.log('Original data:', taxes)
       if (financialYear) {
         filtered = filtered.filter(
           item => item.taxDeclaration.financialYear === parseInt(financialYear)

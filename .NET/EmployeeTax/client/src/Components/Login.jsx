@@ -16,10 +16,14 @@ const Login = () => {
     e.preventDefault()
     dispatch(loginUser(employeeID, password, navigate))
       .then(token => {
-        toast.success('Login Successful')
+        if (token) {
+          toast.success('Login Successful')
+        } else {
+          toast.error('Unable to Login')
+        }
       })
       .catch(err => {
-        toast.error('Unable to Login')
+        toast.error(JSON.stringify(err))
       })
   }
 
