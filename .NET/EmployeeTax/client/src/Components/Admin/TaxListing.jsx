@@ -21,7 +21,7 @@ const TaxListing = () => {
   const [filteredData, setFilteredData] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
-  const itemsPerPage = 6
+  const itemsPerPage = 10
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -45,7 +45,9 @@ const TaxListing = () => {
   //FILTERING OF DATA BASED ON FILTER SELECTEDS
   useEffect(() => {
     const filterData = () => {
-      let filtered = [...changeRequests, ...taxes] || []
+      let filtered = Array.isArray(changeRequests)
+        ? [...changeRequests, ...taxes]
+        : []
       if (year) {
         filtered = filtered.filter(
           item => item.taxDeclaration.financialYear === parseInt(year)

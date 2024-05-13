@@ -28,12 +28,13 @@ namespace server.Controllers
             {
                 return BadRequest(ModelState);
             }
-            return await _userService.login(user);
+            return await _userService.login(user,Response);
         }
 
-        [HttpGet("logout")]
+        [HttpPost("logout")]
         public async Task<IActionResult> Logout()
         {
+            await _userService.logout(Response);
             return Ok(new { success = true, message = "Logout successful" });
         }
    

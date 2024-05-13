@@ -28,7 +28,7 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <Navbar isAuthenticated={isAuthenticated} role={user.role} />
+        <Navbar isAuthenticated={isAuthenticated} role={user?.role || ''} />
 
         <Routes>
           <Route exact path='/' element={<Login />} />

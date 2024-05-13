@@ -1,11 +1,13 @@
-﻿using Azure.Core;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 using server.Data;
 using server.Model;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Azure;
+using Newtonsoft.Json.Linq;
 
 namespace server.Services
 {
@@ -21,16 +23,28 @@ namespace server.Services
         }
 
 
-        public async Task<IActionResult> login(User user)
+        public async Task<IActionResult> login(User user,HttpResponse response)
         {
             var result = await _db.Login(user.empId, user.password);  
             if (result.Success)
             {
                 var token = GenerateJwtToken(result.Data);
+                var cookieOptions = new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.Strict,
+                };
+                response.Cookies.Append("jwt", token, cookieOptions);
                 return new OkObjectResult(new { token, employee = result.Data });
             }
 
             return new UnauthorizedResult();
+        }
+
+        public async Task logout(HttpResponse response)
+        {
+            response.Cookies.Delete("jwt");
         }
 
         private string GenerateJwtToken(Employee employee)

@@ -42,13 +42,12 @@ export const logout = () => async dispatch => {
       type: 'logoutRequest'
     })
 
-    const { data } = await axios.get(`${server}/logout`, {
+    const { data } = await axios.post(`${server}/logout`, {
       withCredentials: true
     })
 
     dispatch({ type: 'logoutSuccess', payload: data.message })
-    if (data.success) {
-    }
+    return data
   } catch (error) {
     dispatch({ type: 'logoutFail', payload: error.reponse.data.message })
   }

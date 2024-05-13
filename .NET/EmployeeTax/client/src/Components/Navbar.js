@@ -1,14 +1,26 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { logout } from '../Redux/Actions/UserAction'
+import toast from 'react-hot-toast'
 
 const Navbar = ({ role, isAuthenticated = false }) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const logoutButtonHandler = () => {
     dispatch(logout())
-    localStorage.removeItem('token')
+      .then(message => {
+        if (message) {
+          toast.success('Logout Successful')
+          navigate('/')
+        } else {
+          toast.error('Logout Unsuccessful')
+        }
+      })
+      .catch(err => {
+        toast.error('Logout Unsuccessful')
+      })
   }
 
   return (
