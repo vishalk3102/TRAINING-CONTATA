@@ -240,22 +240,22 @@ const TaxListing = () => {
                       return (
                         <>
                           <tr className='border border-slate-900  ' key={index}>
-                            <td className='text-[1rem] font-normal border border-slate-900 py-1 capitalize text-center'>
+                            <td className='text-[1rem] font-normal border border-slate-900 px-2 py-1 capitalize text-center'>
                               {i.employee.empId}
                             </td>
-                            <td className='text-[1rem] font-normal border border-slate-900 py-1 capitalize text-center'>
+                            <td className='text-[1rem] font-normal border border-slate-900 px-2 py-1 capitalize text-center'>
                               {i.employee.name}
                             </td>
-                            <td className='text-[1rem] font-normal border border-slate-900 py-1 capitalize text-center'>
+                            <td className='text-[1rem] font-normal border border-slate-900 px-2 py-1 capitalize text-center'>
                               {i.taxDeclaration.dateOfDeclaration}
                             </td>
-                            <td className='text-[1rem] font-normal border border-slate-900 py-1 capitalize text-center'>
+                            <td className='text-[1rem] font-normal border border-slate-900 px-2 py-1 capitalize text-center'>
                               {i.taxDeclaration.status}
                             </td>
-                            <td className='text-[1rem] font-normal border border-slate-900 py-1 capitalize text-center'>
+                            <td className='text-[1rem] font-normal border border-slate-900 px-2 py-1 capitalize text-center'>
                               {i.reason}
                             </td>
-                            <td className='text-[1rem] font-normal border border-slate-900 py-1 capitalize'>
+                            <td className='text-[1rem] font-normal border border-slate-900 px-2 py-1 capitalize'>
                               <Link to={`/admin/${i.taxDeclaration.taxId}`}>
                                 <span className='flex justify-center'>
                                   <FaEye size={22} />

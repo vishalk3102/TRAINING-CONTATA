@@ -29,6 +29,7 @@ namespace server.Model
         public string phoneNumber { get; set; }
 
         [Required(ErrorMessage = "PAN number is required")]
+        [RegularExpression(@"^[A-Z]{5}\d{4}[A-Z]$", ErrorMessage = "Please enter a valid PAN number.(format ABCTY1234D )")]
         public string panNo { get; set; }
 
         [Required(ErrorMessage = "Address is required")]
