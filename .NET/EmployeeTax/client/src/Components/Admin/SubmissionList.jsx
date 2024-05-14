@@ -15,7 +15,7 @@ const SubmissionListing = () => {
   const [filteredData, setFilteredData] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(0)
-  const itemsPerPage = 3
+  const itemsPerPage = 6
 
   const dispatch = useDispatch()
 

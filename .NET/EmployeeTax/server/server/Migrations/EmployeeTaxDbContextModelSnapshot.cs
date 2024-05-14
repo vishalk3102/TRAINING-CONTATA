@@ -112,9 +112,9 @@ namespace server.Migrations
                             gender = "Male",
                             name = "Vishal Kumar",
                             panNo = "ABCDE1234F",
-                            password = "emp@123",
+                            password = "admin@123",
                             phoneNumber = "1234567890",
-                            role = "employee"
+                            role = "admin"
                         },
                         new
                         {
@@ -125,9 +125,9 @@ namespace server.Migrations
                             gender = "Male",
                             name = "Vishal",
                             panNo = "ABCDE1234F",
-                            password = "admin@123",
+                            password = "emp@123",
                             phoneNumber = "8459126643",
-                            role = "admin"
+                            role = "employee"
                         });
                 });
 
@@ -230,7 +230,7 @@ namespace server.Migrations
                             mediClaim = 15000m,
                             preventiveHealthCheckUp = 10000m,
                             principalHousingLoan = 35000m,
-                            status = "accepted",
+                            status = "drafted",
                             sukanyaSamriddhiAccount = 15000m,
                             tuitionFee = 30000m
                         },

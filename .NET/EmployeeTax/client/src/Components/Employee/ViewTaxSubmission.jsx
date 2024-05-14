@@ -562,7 +562,7 @@ const ViewTaxSubmission = () => {
             <div className='flex justify-evenly gap-5 py-2 mb-20'>
               {tax[0].taxDeclaration.status === 'accepted' ? (
                 <button className='w-[30%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-blue-400 cursor-pointer '>
-                  <Link to={'/admin/submissions'}>Back To Submissions</Link>
+                  <Link to={'/submissions'}>Back To Submissions</Link>
                 </button>
               ) : (
                 <>

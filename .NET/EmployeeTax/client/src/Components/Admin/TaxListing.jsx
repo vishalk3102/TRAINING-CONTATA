@@ -86,10 +86,8 @@ const TaxListing = () => {
   }, [changeRequests, currentPage, empId, itemsPerPage, name, taxes, year])
 
   if (
-    !changeRequests ||
-    !changeRequests.length ||
-    !changeRequests[0]?.taxDeclaration ||
-    !changeRequests[0]?.employee
+    (!Array.isArray(changeRequests) || !changeRequests.length) &&
+    (!Array.isArray(taxes) || !taxes.length)
   ) {
     return <Loader />
   }

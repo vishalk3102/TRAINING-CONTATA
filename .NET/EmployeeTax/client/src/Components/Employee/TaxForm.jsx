@@ -88,6 +88,20 @@ const TaxForm = () => {
 
   // FUNCTION TO HANDLE SAVE BUTTON
   const handleSaveButton = () => {
+    // --Logic to avoid resubmission of tax form--
+    const existingTax = mytaxes.find(tax => tax.financialYear === financialYear)
+
+    if (
+      existingTax &&
+      (existingTax.status === 'submitted' ||
+        existingTax.status === 'accepted' ||
+        existingTax.status === 'drafted')
+    ) {
+      toast.error(
+        'Tax form already submitted or Saved  for this financial year.'
+      )
+      return
+    }
     const formData = {
       empId: user.empId,
       financialYear: financialYear,
