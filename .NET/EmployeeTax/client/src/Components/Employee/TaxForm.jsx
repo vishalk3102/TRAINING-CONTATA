@@ -151,29 +151,6 @@ const TaxForm = () => {
       return
     }
 
-    // --Validation of form before submission --
-    if (
-      !financialYear ||
-      !anyOtherIncome ||
-      !sukanyaSamriddhiAccount ||
-      !ppf ||
-      !lic ||
-      !tuitionFee ||
-      !fixedDeposit ||
-      !principalHousingLoan ||
-      !nps ||
-      !educationLoan ||
-      !interestHousingLoan ||
-      !houseRent ||
-      !tds ||
-      !healthInsurance ||
-      !preventiveHealthCheckup ||
-      !ltaChecked
-    ) {
-      toast.error('All fields are required')
-      return
-    }
-
     const formData = {
       empId: user.empId,
       financialYear: financialYear,
@@ -558,22 +535,45 @@ const TaxForm = () => {
               <div className='text-[1.4rem] font-medium text-left py-2 mt-2'>
                 <h1>Reimbursement Component</h1>
               </div>
-              <div className='flex  py-4 border-2 border-solid border-black'>
-                <div className='w-[70%]'>
-                  <label htmlFor='LTA' className='leading-7 text-sm p-2'>
-                    LTA (Do you want LTA as a Reimbursement)
-                  </label>
+              <div className='flex flex-col   py-4 border-2 border-solid border-black'>
+                <div className='flex py-1'>
+                  {' '}
+                  <div className='w-[70%]'>
+                    <label htmlFor='LTA' className='leading-7 text-sm p-2'>
+                      LTA (Do you want LTA as a Reimbursement)
+                    </label>
+                  </div>
+                  <div className='flex justify-center items-center'>
+                    <input
+                      type='checkbox'
+                      name='LTA'
+                      id='LTA'
+                      className='h-[20px] w-[20px]'
+                      checked={ltaChecked}
+                      onChange={handleLtaCheckboxChange}
+                      disabled={isSubmitted}
+                    />
+                  </div>
                 </div>
-                <div className='flex justify-center items-center'>
-                  <input
-                    type='checkbox'
-                    name='LTA'
-                    id='LTA'
-                    className='h-[20px] w-[20px]'
-                    checked={ltaChecked}
-                    onChange={handleLtaCheckboxChange}
-                    disabled={isSubmitted}
-                  />
+                <div className='flex py-1'>
+                  {' '}
+                  <div className='w-[70%]'>
+                    <label htmlFor='LTA' className='leading-7 text-sm p-2'>
+                      Education Allowance(Do you want education allowance as a
+                      Reimbursement)
+                    </label>
+                  </div>
+                  <div className='flex justify-center items-center'>
+                    <input
+                      type='checkbox'
+                      name='EA'
+                      id='EA'
+                      className='h-[20px] w-[20px]'
+                      checked={ltaChecked}
+                      onChange={handleLtaCheckboxChange}
+                      disabled={isSubmitted}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

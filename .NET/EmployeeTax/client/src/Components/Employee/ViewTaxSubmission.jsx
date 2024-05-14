@@ -81,7 +81,11 @@ const ViewTaxSubmission = () => {
         setHealthInsurance(taxDeclaration.mediClaim)
         setPreventiveHealthCheckup(taxDeclaration.preventiveHealthCheckUp)
         setLtaChecked(taxDeclaration.lta)
-        setEditable(!taxDeclaration.isFrozen)
+        if (taxDeclaration.status === 'rejected') {
+          setEditable(true)
+        } else {
+          setEditable(!taxDeclaration.isFrozen)
+        }
       }
     }
   }, [tax])
@@ -143,28 +147,6 @@ const ViewTaxSubmission = () => {
       (existingTax.status === 'submitted' || existingTax.status === 'accepted')
     ) {
       toast.error('Tax form already submitted for this financial year.')
-      return
-    }
-    // --Validation of form before submission --
-    if (
-      !financialYear ||
-      !anyOtherIncome ||
-      !sukanyaSamriddhiAccount ||
-      !ppf ||
-      !lic ||
-      !tuitionFee ||
-      !fixedDeposit ||
-      !principalHousingLoan ||
-      !nps ||
-      !educationLoan ||
-      !interestHousingLoan ||
-      !houseRent ||
-      !tds ||
-      !healthInsurance ||
-      !preventiveHealthCheckup ||
-      !ltaChecked
-    ) {
-      toast.error('All fields are required')
       return
     }
 

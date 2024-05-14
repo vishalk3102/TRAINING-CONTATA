@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addEmployee } from '../../Redux/Actions/EmployeeAction'
+import { addEmployee, getAllEmployee } from '../../Redux/Actions/EmployeeAction'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
@@ -14,9 +14,22 @@ const AddEmployee = () => {
   const [dob, setDob] = useState()
   const [role, setRole] = useState()
   const [password, setPassword] = useState()
+  const [existingPanCard, setExistingPanCard] = useState([])
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const { employees } = useSelector(state => state.employee)
+
+  useEffect(() => {
+    dispatch(getAllEmployee())
+  }, [dispatch])
+
+  useEffect(() => {
+    const panCards = employees.map(employees => employees.panNo)
+    setExistingPanCard(panCards)
+    console.log(existingPanCard)
+  }, [employees])
 
   // FUNCTION TO HANDLE ADD BUTTON --adding employee details
   const HandleAddButton = e => {
@@ -37,6 +50,26 @@ const AddEmployee = () => {
       return
     }
 
+    // Validation for Pan Card
+    const panRegex = /^[A-Z]{5}\d{4}[A-Z]$/
+    if (!panRegex.test(panNo)) {
+      toast.error('Invalid Pan Card Number')
+      return
+    }
+
+    const nameArray = name.split(' ')
+    const surname = nameArray[nameArray.length - 1]
+    if (surname && panNo[4].toUpperCase() !== surname[0].toUpperCase()) {
+      toast.error('Inavalid Pan Card Number')
+      return
+    }
+
+    if (existingPanCard.includes(panNo)) {
+      toast.error('PAN card number already exists')
+      return
+    }
+
+    // logic to calculate age from date of birth
     const today = new Date()
     const dobDate = new Date(dob)
     let calculatedAge = today.getFullYear() - dobDate.getFullYear()

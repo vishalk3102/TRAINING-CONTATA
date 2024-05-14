@@ -68,9 +68,7 @@ const TaxListing = () => {
       }
 
       filtered = filtered.filter(
-        item =>
-          item.taxDeclaration.status === 'submitted' ||
-          item.taxDeclaration.status === 'drafted'
+        item => item.taxDeclaration.status === 'submitted'
       )
 
       const indexOfLastItem = currentPage * itemsPerPage

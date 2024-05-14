@@ -33,7 +33,7 @@ const SubmissionListing = () => {
   //FILTERING OF DATA BASED ON FILTER SELECTED
   useEffect(() => {
     const filterData = () => {
-      let filtered = taxes || []
+      let filtered = Array.isArray(taxes) ? taxes.slice() : []
       if (financialYear) {
         filtered = filtered.filter(
           item => item.taxDeclaration.financialYear === parseInt(financialYear)
@@ -58,6 +58,13 @@ const SubmissionListing = () => {
             item.taxDeclaration.status.toLowerCase() === status.toLowerCase()
         )
       }
+
+      filtered = filtered.filter(
+        item =>
+          item.taxDeclaration.status === 'submitted' ||
+          item.taxDeclaration.status === 'accepted' ||
+          item.taxDeclaration.status === 'rejected'
+      )
 
       const indexOfLastItem = currentPage * itemsPerPage
       const indexOfFirstItem = indexOfLastItem - itemsPerPage
@@ -122,7 +129,6 @@ const SubmissionListing = () => {
                   <option value='submitted'>Submitted</option>
                   <option value='accepted'>Accepted</option>
                   <option value='rejected'>Rejected</option>
-                  <option value='drafted'>Drafted</option>
                 </select>
               </div>
               <div className='w-[40%]'>
