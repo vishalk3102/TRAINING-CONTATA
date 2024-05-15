@@ -30,6 +30,7 @@ const TaxForm = () => {
   // STATE VARIABLES FOR FORM
   const [taxFormActive, setTaxFormActive] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [nextButtonStatus, setNextButtonStatus] = useState(false)
 
   // FETCHING VALUES FROM STORE
   const { user } = useSelector(state => state.auth)
@@ -186,6 +187,22 @@ const TaxForm = () => {
       })
   }
 
+  // LOGIC TO RESTRICT NAVIGATING TO TAX FORM IF FORM IS ALREADY SUBMITTED OR SAVED
+  useEffect(() => {
+    if (financialYear !== undefined) {
+      const existingTax = mytaxes.find(
+        tax => tax.financialYear === financialYear
+      )
+      if (existingTax) {
+        toast.error('Form Already Submitted/Drafted for this financial Year')
+        setNextButtonStatus(true)
+        return
+      } else {
+        setNextButtonStatus(false)
+      }
+    }
+  }, [financialYear, mytaxes])
+
   return (
     <section className='w-full h-full mb-20'>
       <div className='max-w-[1200px] mx-auto  my-2'>
@@ -221,6 +238,7 @@ const TaxForm = () => {
                 type='submit'
                 className='bg-blue-500 px-6  py-3 rounded  text-white'
                 onClick={handleNextButton}
+                disabled={nextButtonStatus}
               >
                 Next
               </button>

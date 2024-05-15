@@ -108,6 +108,7 @@ namespace server.Services
             taxDeclaration.isFrozen = false;
             taxDeclaration.status = "drafted";
             taxDeclaration.isSubmitted = false;
+            taxDeclaration.isDrafted = true;
             _db.TaxDeclarations.Add(taxDeclaration);
             await _db.SaveChangesAsync();
         }
@@ -145,6 +146,7 @@ namespace server.Services
                     existingTax.isFrozen = false;
                     existingTax.status = "drafted";
                     existingTax.isSubmitted = false;
+                    existingTax.isDrafted = true;
                 }
             }
             _db.TaxDeclarations.Update(existingTax);
@@ -197,6 +199,8 @@ namespace server.Services
         public async Task acceptTaxForm(TaxDeclaration taxForm)
         {
             taxForm.status = "accepted";
+            taxForm.isSubmitted = false;
+            taxForm.isAccepted = true;
             await _db.SaveChangesAsync();
         }
 
@@ -204,6 +208,8 @@ namespace server.Services
         public async Task rejectTaxForm(TaxDeclaration taxForm)
         {
             taxForm.status = "rejected";
+            taxForm.isSubmitted = false;
+            taxForm.isRejected = true;
             await _db.SaveChangesAsync();
         }
     }

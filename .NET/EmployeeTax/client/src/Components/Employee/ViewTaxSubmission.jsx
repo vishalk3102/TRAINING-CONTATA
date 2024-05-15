@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import {
+  getTaxChangeRequestListing,
   getTaxDeclaration,
   saveTaxDeclaration,
   submitTaxDeclaration
@@ -37,7 +38,9 @@ const ViewTaxSubmission = () => {
 
   // FETCHING VALUES FROM STORE
   const { user } = useSelector(state => state.auth)
-  const { loading, tax, mytaxes } = useSelector(state => state.tax)
+  const { loading, tax, mytaxes, changeRequests } = useSelector(
+    state => state.tax
+  )
 
   const dispatch = useDispatch()
   const params = useParams()
@@ -50,9 +53,10 @@ const ViewTaxSubmission = () => {
   // TO FECTH  VALUES FROM DATABASE
   useEffect(() => {
     dispatch(getTaxDeclaration(params.taxId))
+    dispatch(getTaxChangeRequestListing())
   }, [dispatch])
 
-  // TO SET VALUES OF VARIABLE FROM STORE 1`` 2aZdd
+  // TO SET VALUES OF VARIABLE FROM STORE
   useEffect(() => {
     if (tax && tax.length > 0) {
       const taxDeclaration = tax[0].taxDeclaration
@@ -185,6 +189,20 @@ const ViewTaxSubmission = () => {
       })
   }
 
+  // FUNCTION TO HANDLE REQUEST BUTTON CLICK TO RESTRICT FORM RESUBMISSION
+  const handleRequestButton = taxId => {
+    if (changeRequests) {
+      var existingRequest = changeRequests.find(
+        req => req.taxDeclaration.taxId === taxId
+      )
+      if (existingRequest) {
+        toast.error('Request Already Submitted for this tax declaration ')
+        console.log(existingRequest)
+      } else {
+        navigate(`/change-request/${taxId}`)
+      }
+    }
+  }
   return (
     <>
       {loading === false ? (
@@ -565,10 +583,13 @@ const ViewTaxSubmission = () => {
                     Submit
                   </button>
                   {!editable ? (
-                    <button className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-green-400 cursor-pointer'>
-                      <Link to={`/change-request/${taxId}`}>
-                        Request for Change
-                      </Link>
+                    <button
+                      className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-green-400 cursor-pointer'
+                      onClick={() => handleRequestButton(taxId)}
+                    >
+                      {/* <Link to={`/change-request/${taxId}`}> */}
+                      Request for Change
+                      {/* </Link> */}
                     </button>
                   ) : (
                     ''

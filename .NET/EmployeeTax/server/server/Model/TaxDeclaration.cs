@@ -73,6 +73,10 @@ namespace server.Model
 
         public bool isSubmitted { get; set; }
 
+        public bool isDrafted{ get; set; }
+        public bool isAccepted { get; set; }
+        public bool isRejected { get; set; }
+
 
     }
 }

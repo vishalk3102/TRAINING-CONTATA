@@ -176,7 +176,16 @@ namespace server.Migrations
                     b.Property<decimal>("interestHousingLoan")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<bool>("isAccepted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isDrafted")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("isFrozen")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isRejected")
                         .HasColumnType("bit");
 
                     b.Property<bool>("isSubmitted")
@@ -224,13 +233,16 @@ namespace server.Migrations
                             higherEducationLoanInterest = 20000m,
                             houseRent = 20000m,
                             interestHousingLoan = 25000m,
+                            isAccepted = true,
+                            isDrafted = false,
                             isFrozen = false,
+                            isRejected = false,
                             isSubmitted = false,
                             lifeInsurancePremium = 25000m,
                             mediClaim = 15000m,
                             preventiveHealthCheckUp = 10000m,
                             principalHousingLoan = 35000m,
-                            status = "drafted",
+                            status = "accepted",
                             sukanyaSamriddhiAccount = 15000m,
                             tuitionFee = 30000m
                         },
@@ -249,13 +261,16 @@ namespace server.Migrations
                             higherEducationLoanInterest = 20000m,
                             houseRent = 20000m,
                             interestHousingLoan = 25000m,
+                            isAccepted = false,
+                            isDrafted = false,
                             isFrozen = false,
+                            isRejected = true,
                             isSubmitted = false,
                             lifeInsurancePremium = 25000m,
                             mediClaim = 15000m,
                             preventiveHealthCheckUp = 10000m,
                             principalHousingLoan = 35000m,
-                            status = "drafted",
+                            status = "rejected",
                             sukanyaSamriddhiAccount = 15000m,
                             tuitionFee = 30000m
                         });
