@@ -68,7 +68,7 @@ const TaxListing = () => {
       }
 
       filtered = filtered.filter(
-        item => item.taxDeclaration.status === 'submitted'
+        item => item.taxDeclaration.isSubmitted === true
       )
 
       const indexOfLastItem = currentPage * itemsPerPage
@@ -261,7 +261,7 @@ const TaxListing = () => {
                               </Link>
                             </td>
                             <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center px-4 gap-5 '>
-                              {i.taxDeclaration.status === 'submitted' ? (
+                              {i.taxDeclaration.isSubmitted === true ? (
                                 i.reason ? (
                                   <>
                                     <button

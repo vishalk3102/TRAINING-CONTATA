@@ -137,16 +137,39 @@ namespace server.Services
 
                 if (isSubmitted)
                 {
-                    existingTax.isFrozen = true;
-                    existingTax.status = "submitted";
-                    existingTax.isSubmitted = true;
+                    if(existingTax.isRejected==true)
+                    {
+                        existingTax.status = "rejected";
+                        existingTax.isFrozen = true;
+                        existingTax.isRejected = true;
+                        existingTax.isSubmitted=true;
+                        existingTax.isDrafted=false;
+                    }
+                    else
+                    {
+                        existingTax.isFrozen = true;
+                        existingTax.status = "submitted";
+                        existingTax.isSubmitted = true;
+                        existingTax.isDrafted = false;
+                    }
                 }
                 else
                 {
-                    existingTax.isFrozen = false;
-                    existingTax.status = "drafted";
-                    existingTax.isSubmitted = false;
-                    existingTax.isDrafted = true;
+                    if (existingTax.isRejected == true)
+                    {
+                        existingTax.status = "rejected";
+                        existingTax.isFrozen = false;
+                        existingTax.isRejected = true;
+                        existingTax.isSubmitted = false;
+                        existingTax.isDrafted = true;
+                    }
+                    else
+                    {
+                        existingTax.isFrozen = false;
+                        existingTax.status = "drafted";
+                        existingTax.isSubmitted = false;
+                        existingTax.isDrafted = true;
+                    }
                 }
             }
             _db.TaxDeclarations.Update(existingTax);
@@ -201,6 +224,8 @@ namespace server.Services
             taxForm.status = "accepted";
             taxForm.isSubmitted = false;
             taxForm.isAccepted = true;
+            taxForm.isDrafted = false;
+            taxForm.isRejected = false;
             await _db.SaveChangesAsync();
         }
 

@@ -81,7 +81,13 @@ const PreviousSubmission = () => {
                             {i.financialYear}
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
-                            {i.status}
+                            {i.isDrafted === true && i.isRejected === true
+                              ? 'Drafted'
+                              : i.isSubmitted === true && i.isRejected === true
+                              ? 'Submitted'
+                              : i.status.isDrafted === true
+                              ? 'Drafted'
+                              : i.status}
                           </td>
                           <td className='text-[1rem] font-normal border border-slate-900 p-1 capitalize text-center'>
                             {i.dateOfDeclaration}

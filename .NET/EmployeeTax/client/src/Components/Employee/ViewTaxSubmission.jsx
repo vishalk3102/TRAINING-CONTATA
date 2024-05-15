@@ -54,7 +54,7 @@ const ViewTaxSubmission = () => {
   useEffect(() => {
     dispatch(getTaxDeclaration(params.taxId))
     dispatch(getTaxChangeRequestListing())
-  }, [dispatch])
+  }, [dispatch, params.taxId])
 
   // TO SET VALUES OF VARIABLE FROM STORE
   useEffect(() => {
@@ -85,7 +85,7 @@ const ViewTaxSubmission = () => {
         setHealthInsurance(taxDeclaration.mediClaim)
         setPreventiveHealthCheckup(taxDeclaration.preventiveHealthCheckUp)
         setLtaChecked(taxDeclaration.lta)
-        if (taxDeclaration.status === 'rejected') {
+        if (taxDeclaration.isRejected === true) {
           setEditable(true)
         } else {
           setEditable(!taxDeclaration.isFrozen)
@@ -148,7 +148,8 @@ const ViewTaxSubmission = () => {
 
     if (
       existingTax &&
-      (existingTax.status === 'submitted' || existingTax.status === 'accepted')
+      ((existingTax.isSubmitted === true && existingTax.isFrozen === true) ||
+        existingTax.isAccepted === true)
     ) {
       toast.error('Tax form already submitted for this financial year.')
       return
@@ -587,9 +588,7 @@ const ViewTaxSubmission = () => {
                       className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-green-400 cursor-pointer'
                       onClick={() => handleRequestButton(taxId)}
                     >
-                      {/* <Link to={`/change-request/${taxId}`}> */}
                       Request for Change
-                      {/* </Link> */}
                     </button>
                   ) : (
                     ''
