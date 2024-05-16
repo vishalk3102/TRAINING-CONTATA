@@ -139,9 +139,9 @@ namespace server.Services
                 {
                     if(existingTax.isRejected==true)
                     {
-                        existingTax.status = "rejected";
+                        existingTax.status = "submitted";
                         existingTax.isFrozen = true;
-                        existingTax.isRejected = true;
+                        existingTax.isRejected = false;
                         existingTax.isSubmitted=true;
                         existingTax.isDrafted=false;
                     }

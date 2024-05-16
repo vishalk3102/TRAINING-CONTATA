@@ -39,7 +39,7 @@ const PreviousSubmission = () => {
   }
 
   const reqTaxId =
-    changeRequests.length > 0
+    Array.isArray(changeRequests) && changeRequests.length > 0
       ? changeRequests.map(req => req.taxDeclaration.taxId)
       : []
 
@@ -117,7 +117,8 @@ const PreviousSubmission = () => {
                               >
                                 Delete
                               </button>
-                            ) : i.status === 'submitted' &&
+                            ) : i.isSubmitted === true &&
+                              i.isFrozen === true &&
                               !reqTaxId.includes(i.taxId) ? (
                               <Link to={`/change-request/${i.taxId}`}>
                                 <button className='text-[14px] font-medium bg-blue-400 outline-none py-2 px-4 rounded m-1'>

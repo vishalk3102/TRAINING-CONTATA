@@ -39,15 +39,34 @@ const TaxListing = () => {
     const combinedData = Array.isArray(changeRequests)
       ? [...changeRequests, ...(Array.isArray(taxes) ? taxes : [])]
       : []
+
     setFilteredData(combinedData)
   }, [changeRequests, taxes])
 
   //FILTERING OF DATA BASED ON FILTER SELECTEDS
   useEffect(() => {
     const filterData = () => {
-      let filtered = Array.isArray(changeRequests)
-        ? [...changeRequests, ...(Array.isArray(taxes) ? taxes : [])]
+      let filteredChangeRequests = new Set(
+        (Array.isArray(changeRequests) ? changeRequests : []).flatMap(req =>
+          req.taxDeclaration ? [req.taxDeclaration.taxId] : []
+        )
+      )
+
+      console.log(filteredChangeRequests)
+      let filteredTaxes = Array.isArray(taxes)
+        ? taxes.filter(
+            tax => !filteredChangeRequests.has(tax.taxDeclaration?.taxId)
+          )
         : []
+
+      console.log(filteredTaxes)
+      let filtered = [...filteredTaxes, ...(changeRequests || [])]
+
+      console.log(filtered)
+
+      // let filtered = Array.isArray(changeRequests)
+      //   ? [...changeRequests, ...(Array.isArray(taxes) ? taxes : [])]
+      //   : []
 
       if (year) {
         filtered = filtered.filter(

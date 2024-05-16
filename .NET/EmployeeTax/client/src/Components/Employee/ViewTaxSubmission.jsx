@@ -583,7 +583,7 @@ const ViewTaxSubmission = () => {
                   >
                     Submit
                   </button>
-                  {!editable ? (
+                  {/* {!editable ? (
                     <button
                       className='w-[100%] h-[45px] text-[16px] font-medium  flex justify-center items-center  p-4  rounded bg-green-400 cursor-pointer'
                       onClick={() => handleRequestButton(taxId)}
@@ -592,7 +592,7 @@ const ViewTaxSubmission = () => {
                     </button>
                   ) : (
                     ''
-                  )}
+                  )} */}
                 </>
               )}
             </div>
