@@ -3,7 +3,8 @@ import { FaEye } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   deleteTaxDeclaration,
-  getMyTaxDeclaration
+  getMyTaxDeclaration,
+  getTaxChangeRequestListing
 } from '../../Redux/Actions/TaxAction'
 import { Link } from 'react-router-dom'
 import Loader from '../Loader'
@@ -11,12 +12,14 @@ import toast from 'react-hot-toast'
 
 const PreviousSubmission = () => {
   // FETCHING VALUES FROM STORE
-  const { loading, mytaxes } = useSelector(state => state.tax)
+  const { loading, mytaxes, changeRequests } = useSelector(state => state.tax)
   const { user } = useSelector(state => state.auth)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getMyTaxDeclaration(user.empId))
+    dispatch(getTaxChangeRequestListing())
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch])
 
@@ -34,6 +37,11 @@ const PreviousSubmission = () => {
         toast.error('Failed to Delete Tax Declaration')
       })
   }
+
+  const reqTaxId =
+    changeRequests.length > 0
+      ? changeRequests.map(req => req.taxDeclaration.taxId)
+      : []
 
   return (
     <>
@@ -109,7 +117,8 @@ const PreviousSubmission = () => {
                               >
                                 Delete
                               </button>
-                            ) : i.status === 'submitted' ? (
+                            ) : i.status === 'submitted' &&
+                              !reqTaxId.includes(i.taxId) ? (
                               <Link to={`/change-request/${i.taxId}`}>
                                 <button className='text-[14px] font-medium bg-blue-400 outline-none py-2 px-4 rounded m-1'>
                                   Request For Change

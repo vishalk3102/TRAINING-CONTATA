@@ -25,6 +25,7 @@ const TaxForm = () => {
   const [healthInsurance, setHealthInsurance] = useState(0)
   const [preventiveHealthCheckup, setPreventiveHealthCheckup] = useState(0)
   const [ltaChecked, setLtaChecked] = useState(false)
+  const [EAChecked, setEAChecked] = useState(false)
   const [financialYear, setFinancialYear] = useState()
 
   // STATE VARIABLES FOR FORM
@@ -85,6 +86,10 @@ const TaxForm = () => {
   // FUNCTION TO HANDLE CHECKBOX  CHANGE
   const handleLtaCheckboxChange = e => {
     setLtaChecked(e.target.checked)
+  }
+  // FUNCTION TO HANDLE CHECKBOX  CHANGE
+  const handleEACheckboxChange = e => {
+    setEAChecked(e.target.checked)
   }
 
   // FUNCTION TO HANDLE SAVE BUTTON
@@ -587,8 +592,8 @@ const TaxForm = () => {
                       name='EA'
                       id='EA'
                       className='h-[20px] w-[20px]'
-                      checked={ltaChecked}
-                      onChange={handleLtaCheckboxChange}
+                      checked={EAChecked}
+                      onChange={handleEACheckboxChange}
                       disabled={isSubmitted}
                     />
                   </div>
