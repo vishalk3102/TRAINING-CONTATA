@@ -1,0 +1,66 @@
+﻿@page
+@model RegisterModel
+
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<section class="h-full w-full">
+    <div class="w-[100%] max-w-[1200px] mx-auto">
+        <div class="my-4">
+            <h2 class="text-[2rem] p-2 text-center font-medium">Create a new account</h2>
+        </div>
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="w-[70%] mx-auto mt-5 flex flex-wrap items-center justify-center gap-6">
+                <div class="w-[40%]">
+                    <label asp-for="Input.EmpId" class="leading-7 text-sm">Employee Id</label>
+                    <input asp-for="Input.EmpId" class="w-full rounded-sm bg-blue-50 px-2 py-3 text-base accent-blue-700 outline-none" />
+                    <span asp-validation-for="Input.EmpId" class="text-danger"></span>
+                </div> 
+                <div class="w-[40%]">
+                    <label asp-for="Input.Name" class="leading-7 text-sm">Full Name</label>
+                    <input asp-for="Input.Name" class="w-full rounded-sm bg-blue-50 px-2 py-3 text-base accent-blue-700 outline-none" />
+                    <span asp-validation-for="Input.Name" class="text-danger"></span>
+                </div>
+                <div class="w-[40%]">
+                    <label asp-for="Input.DateOfBirth" class="leading-7 text-sm">Date of Birth</label>
+                    <input asp-for="Input.DateOfBirth" class="w-full rounded-sm bg-blue-50 px-2 py-3 text-base accent-blue-700 outline-none" />
+                    <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
+                </div>
+                <div class="w-[40%]">
+                    <label asp-for="Input.PhoneNumber" class="leading-7 text-sm">Phone Number</label>
+                    <input asp-for="Input.PhoneNumber" class="w-full rounded-sm bg-blue-50 px-2 py-3 text-base accent-blue-700 outline-none" />
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="w-[40%]">
+                    <label asp-for="Input.PanNo" class="leading-7 text-sm">Pan Card Number</label>
+                    <input asp-for="Input.PanNo" class="w-full rounded-sm bg-blue-50 px-2 py-3 text-base accent-blue-700 outline-none" />
+                    <span asp-validation-for="Input.PanNo" class="text-danger"></span>
+                </div>
+                <div class="w-[40%]">
+                    <label asp-for="Input.Address" class="leading-7 text-sm">Address</label>
+                    <input asp-for="Input.Address" class="w-full rounded-sm bg-blue-50 px-2 py-3 text-base accent-blue-700 outline-none" />
+                    <span asp-validation-for="Input.Address" class="text-danger"></span>
+                </div>
+                <div class="w-[40%]">
+                    <label asp-for="Input.Password" class="leading-7 text-sm">Password</label>
+                    <input asp-for="Input.Password" class="w-full rounded-sm bg-blue-50 px-2 py-3 text-base accent-blue-700 outline-none" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="w-[80%] mb-20 flex items-center justify-center">
+                    <button type="submit" class="rounded-sm bg-blue-500 px-6 py-3 text-white">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+      

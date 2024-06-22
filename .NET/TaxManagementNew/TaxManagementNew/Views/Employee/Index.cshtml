@@ -1,0 +1,43 @@
+﻿
+<section className='w-full h-full mb-20'>
+    <div className='max-w-[1200px] mx-auto  my-2'>
+        <div class="w-[60%] mx-auto my-10 flex flex-col justify-center">
+            <div class="w-[100%]">
+                <label for="financial-year" class="leading-7 text-sm">Financial Year</label>
+                <select id="financial-year" name="FinancialYear"
+                        class="h-[40px] text-[14px] mt-1 w-full bg-blue-50 px-3 py-1 outline-none"
+                        onchange="handleFinancialYearChange()">
+                    <option value="">-- Select --</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                </select>
+            </div>
+            <div class="w-[100%] mt-5 flex items-center justify-center">
+                <button type="submit"
+                        class="rounded bg-blue-500 px-6 py-3 text-white @(Model.NextButtonStatus ? "opacity-50 cursor-not-allowed" : "")"
+                        onclick="handleNextButton()"
+                @(Model.NextButtonStatus ? "disabled" : "")>
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    <script>
+        function handleNextButton() {
+            // Add your client-side logic here
+        }
+
+        function handleFinancialYearChange() {
+            // Add your client-side logic here
+        }
+    </script>
+}
