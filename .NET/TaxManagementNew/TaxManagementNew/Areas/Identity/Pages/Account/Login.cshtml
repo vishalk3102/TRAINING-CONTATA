@@ -1,0 +1,42 @@
+﻿@page
+@model LoginModel
+
+<section class="h-full w-full">
+    <div class="my-4">
+        <h2 class="text-[2rem] p-2 text-center font-medium">Log in</h2>
+    </div>
+    <div class="max-w-[1200px] mx-auto flex items-center justify-center">
+        <div class="w-[40%] rounded-md bg-blue-100 px-8 py-8">
+            <form method="post" class="mt-10 flex w-full flex-col justify-center">
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                <div class="mx-2 mb-3">
+                    <label asp-for="Input.EmpId" class="leading-7 text-sm">Employee ID</label>
+                    <input asp-for="Input.EmpId" class="h-[40px] text-[14px] mt-1 w-full bg-white px-3 py-1 outline-none" autocomplete="off" />
+                    <span asp-validation-for="Input.EmpId" class="text-danger"></span>
+                </div>
+
+                <div class="mx-2 mb-3">
+                    <label asp-for="Input.Password" class="leading-7 text-sm">Password</label>
+                    <input asp-for="Input.Password" class="h-[40px] text-[14px] mt-1 w-full bg-white px-3 py-1 outline-none" type="password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="checkbox mb-3 text-white">
+                    <label asp-for="Input.RememberMe" class="form-label">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+
+                <div class="m-2">
+                    <button type="submit" class="w-[150px] h-[40px] text-[16px] flex cursor-pointer items-center justify-center rounded bg-green-400 p-4 font-medium">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

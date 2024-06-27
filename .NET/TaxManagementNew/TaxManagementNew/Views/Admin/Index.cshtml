@@ -1,0 +1,58 @@
+﻿<section id="Profile" class="w-full h-full mt-20">
+    <div class="max-w-[1200px] w-[100%] mx-auto my-10">
+        <div class="w-[70%] mx-auto bg-blue-200 border-2 border-solid rounded-[10px] my-4">
+            <div class="p-4">
+                <h4 class="text-[1.4rem] font-bold text-center capitalize px-20">Personal Details</h4>
+            </div>
+            <hr class="w-[80%] mx-auto border-solid border-2 border-black" />
+            <div class="grid grid-cols-2 md:grid-cols-4 w-[80%] mx-auto my-2">
+                <div class="col-span-1 md:col-span-2 ">
+                    <ul class="flex flex-col justify-center items-start p-4">
+                        <li class="text-[14px] md:text-[1rem] font-semibold capitalize p-1 md:p-2">
+                            Employee ID :
+                            <span class="text-[14px] md:text-[0.9rem] font-normal ">
+                                @ViewBag.EmpId
+                            </span>
+                        </li>
+                        <li class="text-[14px] md:text-[1rem] font-semibold capitalize p-1 md:p-2">
+                            Employee Name :
+                            <span class="text-[14px] md:text-[0.9rem] font-normal ">
+                                @ViewBag.Name
+                            </span>
+                        </li>
+                        <li class="text-[14px] md:text-[1rem] font-semibold capitalize p-1 md:p-2">
+                            Date of Birth :
+                            <span class="text-[14px] md:text-[0.9rem] font-normal ">
+                                @ViewBag.DateOfBirth.ToShortDateString()
+                            </span>
+                        </li>
+                        <li class="text-[14px] md:text-[1rem] font-semibold capitalize p-1 md:p-2">
+                            Age :
+                            <span class="text-[14px] md:text-[0.9rem] font-normal ">
+                                @ViewBag.Age
+                            </span>
+                        </li>
+                        <li class="text-[14px] md:text-[1rem] font-semibold capitalize p-1 md:p-2">
+                            Phone Number:
+                            <span class="text-[14px] md:text-[0.9rem] font-normal ">
+                                @ViewBag.PhoneNumber
+                            </span>
+                        </li>
+                        <li class="text-[14px] md:text-[1rem] font-semibold capitalize p-1 md:p-2">
+                            PAN Card Number :
+                            <span class="text-[14px] md:text-[0.9rem] font-normal ">
+                                @ViewBag.PanNo
+                            </span>
+                        </li>
+                        <li class="text-[14px] md:text-[1rem] font-semibold capitalize p-1 md:p-2">
+                            Address :
+                            <span class="text-[14px] md:text-[0.9rem] font-normal ">
+                                @ViewBag.Address
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

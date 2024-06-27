@@ -1,0 +1,75 @@
+﻿@model List<TaxManagementNew.Models.TaxDeclaration>
+
+<section class="w-full h-full">
+    <div class="max-w-[1200px] mx-auto">
+        <h2 class="text-[2rem] font-medium text-center p-2">Tax Declaration Listing</h2>
+        <!-- Form for filtering -->
+        <form method="get">
+            <div class="flex justify-evenly items-center gap-5 my-4">
+                <div class="w-[30%]">
+                    <label for="FinancialYear" class="block mb-2">Financial Year:</label>
+                    <select id="FinancialYear" name="FinancialYear" class="w-full h-[40px] text-[14px] bg-blue-50 outline-none py-1 px-3 mt-1">
+                        <option value="">-- Select --</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                    </select>
+                </div>
+                <div class="w-[30%]">
+                    <label for="employeeName" class="block mb-2">Employee Name:</label>
+                    <input type="text" id="EmployeeName" name="employeeName" class="w-full h-[40px] text-[14px] bg-blue-50 outline-none py-1 px-3 mt-1" />
+                </div>
+                <div class="w-[30%]">
+                    <label for="empId" class="block mb-2">Employee ID:</label>
+                    <input type="number" id="empId" name="empId" class="w-full h-[40px] text-[14px] bg-blue-50 outline-none py-1 px-3 mt-1" />
+                </div>
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Filter</button>
+        </form>
+        <table class="w-full table-auto border-solid border-2 border-black border-collapse rounded mx-auto my-5">
+            <thead>
+                <tr class="w-full border-solid border-2 border-black">
+                    <th class="text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3 uppercase text-center">Employee ID</th>
+                    <th class="text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3 uppercase text-center">Employee Name</th>
+                    <th class="text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3 uppercase text-center">Date of Submission</th>
+                    <th class="text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3 uppercase text-center">Status</th>
+                    <th class="text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3 uppercase text-center">Unfreeze Reason</th>
+                    <th class="text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3 uppercase text-center">View Declaration</th>
+                    <th class="text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3 uppercase text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr class="border border-slate-900">
+                            <td>@item.FinancialYear</td>
+                            <td>@item.Status</td>
+                            <td>
+                                <a href="/Admin/@item.TaxId">View Details</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" class="text-center">No data available</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <!-- Placeholder for Pagination Component -->
+        <div class="pagination-controls">
+            <button onclick="previousPage()">Previous</button>
+            <span>Page 1 of X</span>
+            <button onclick="nextPage()">Next</button>
+        </div>
+    </div>
+</section>
+

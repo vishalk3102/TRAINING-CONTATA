@@ -1,0 +1,78 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Employee Tax Maganement</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+        <nav class="border-2 h-full w-full border-solid border-blue-100 bg-blue-200">
+            <div class="max-w-[1200px] mx-auto flex items-center justify-between">
+                <div class="flex items-center justify-evenly">
+                    <span>
+                        <h1 class="text-[24px] p-2 font-bold uppercase" asp-area="" asp-controller="Home" asp-action="Index">Contata</h1>
+                    </span>
+                </div>
+
+                <div class="">
+                    <ul class="flex items-center justify-evenly">
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            if(User.IsInRole("client"))
+                            {
+                                <li class="text-[1rem] m-2 flex items-center justify-center p-2 font-medium capitalize hover:cursor-pointer" >
+                                    <a  asp-controller="Employee" asp-action="Index">Home</a>
+                                </li>
+                                <li class="text-[1rem] m-2 flex items-center justify-center p-2 font-medium capitalize hover:cursor-pointer" >
+                                    <a asp-controller="Employee" asp-action="TaxForm">Tax Form</a>
+                                </li>
+                                <li class="text-[1rem] m-2 flex items-center justify-center p-2 font-medium capitalize hover:cursor-pointer" >
+                                    <a asp-controller="Employee" asp-action="PreviousSubmissions">Previous Submissions</a>
+                                </li>
+                            }
+                            else if(User.IsInRole("admin"))
+                            {
+                                <li class="text-[1rem] m-2 flex items-center justify-center p-2 font-medium capitalize hover:cursor-pointer" >
+                                    <a asp-controller="Admin" asp-action="Index">Home</a>
+                                </li>
+                                <li class="text-[1rem] m-2 flex items-center justify-center p-2 font-medium capitalize hover:cursor-pointer" >
+                                    <a asp-controller="Admin" asp-action="TaxDeclaration">Tax Declaration</a>
+                                </li>
+                                <li class="text-[1rem] m-2 flex items-center justify-center p-2 font-medium capitalize hover:cursor-pointer" >
+                                    <a asp-controller="Admin" asp-action="Submission">Submission</a>
+                                </li>
+                            }
+                        }       
+                    </ul>
+                </div>
+                <partial name="_LoginPartial" />
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="w-[100%] border-2 fixed bottom-0 left-0 bg-blue-200">
+        <div class="text-[16px] flex items-center justify-center p-4 font-medium">
+            Contata Solutions © 2024. All rights reserved.
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
