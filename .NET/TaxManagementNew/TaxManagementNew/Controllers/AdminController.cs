@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pag
 using System.Diagnostics;
 using TaxManagementNew.Data;
 using TaxManagementNew.Models;
+using TaxManagementNew.Models.ViewModel;
 
 namespace TaxManagementNew.Controllers
 {
@@ -35,16 +36,43 @@ namespace TaxManagementNew.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> TaxDeclaration()
+        public async Task<IActionResult> TaxDeclaration(int? FinancialYear, string Name, int? EmpId)
         {
             try
             {
-               var  taxFormList= await _db.TaxDeclarations.ToListAsync();
-                if(!taxFormList.Any())
+                var query = from td in _db.TaxDeclarations
+                            join u in _db.Users on td.EmpId equals u.EmpId
+                            join cr in _db.ChangeRequests on td.TaxId equals cr.TaxId into crGroup
+                            from cr in crGroup.DefaultIfEmpty()
+                            select new TaxDeclarationViewModel
+                            {
+                                EmpId = td.EmpId,
+                                Name = u.Name,
+                                FinancialYear=td.FinancialYear,
+                                DateOfSubmission = td.DateOfDeclaration,
+                                Status = td.Status,
+                                Reason = cr != null ? cr.Reason : "",
+                                TaxId = td.TaxId
+                            };
+
+                if (FinancialYear.HasValue)
                 {
-                    return NotFound("No Tax Form Found");
+                    query = query.Where(x => x.FinancialYear == FinancialYear.Value);
                 }
-                return View(taxFormList);
+
+                if (!string.IsNullOrEmpty(Name))
+                {
+                    query = query.Where(x => x.Name.Contains(Name));
+                }
+
+                if (EmpId.HasValue)
+                {
+                    query = query.Where(x => x.EmpId == EmpId.Value);
+                }
+
+                var model = await query.ToListAsync();
+
+                return View(model);
             }
             catch (Exception e)
             {
@@ -54,22 +82,116 @@ namespace TaxManagementNew.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Submission()
+        public async Task<IActionResult> Submission(int? FinancialYear, string Name, int? EmpId, string Status)
         {
 
             try
             {
-                var taxFormList = await _db.TaxDeclarations.ToListAsync();
-                if (!taxFormList.Any())
+                var query = from td in _db.TaxDeclarations
+                            join u in _db.Users on td.EmpId equals u.EmpId
+                            where td.Status == "submitted" || td.Status == "accepted" || td.Status == "rejected"
+                            select new TaxDeclarationViewModel
+                            {
+                                EmpId = td.EmpId,
+                                Name = u.Name,
+                                FinancialYear = td.FinancialYear,
+                                Status = td.Status,
+                                DateOfSubmission = td.DateOfDeclaration,
+                                TaxId = td.TaxId
+                            };
+                if (FinancialYear.HasValue)
                 {
-                    return NotFound("No Tax Form Found");
+                    query = query.Where(x => x.FinancialYear == FinancialYear.Value);
                 }
-                return View(taxFormList);
+
+                if (!string.IsNullOrEmpty(Name))
+                {
+                    query = query.Where(x => x.Name.Contains(Name));
+                }
+
+                if (EmpId.HasValue)
+                {
+                    query = query.Where(x => x.EmpId == EmpId.Value);
+                }
+
+                if (!string.IsNullOrEmpty(Status))
+                {
+                    query = query.Where(x => x.Status.ToLower() == Status.ToLower());
+                }
+                var model = await query.ToListAsync();
+
+                return View(model);
             }
             catch (Exception e)
             {
                 return RedirectToAction("Error", new { msg = e.Message });
             }
+        }
+
+
+
+        public async Task deleteChangeRequest(int TaxId)
+        {
+            var changeRequest = await _db.ChangeRequests.FirstOrDefaultAsync(td => td.TaxId == TaxId);
+
+            if (changeRequest != null)
+            {
+                _db.ChangeRequests.Remove(changeRequest);
+                await _db.SaveChangesAsync();
+            }
+        }
+        public async Task<IActionResult> UnfreezeForm(int TaxId)
+        {
+            var taxForm = await _db.TaxDeclarations.FindAsync(TaxId);
+
+            if(taxForm == null)
+            {
+                return NotFound();  
+            }
+
+            taxForm.isFrozen = false;
+            await deleteChangeRequest(TaxId);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("TaxDeclaration");
+
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> AcceptForm(int TaxId)
+        {
+            var taxForm = await _db.TaxDeclarations.FindAsync(TaxId);
+
+            if(taxForm == null)
+            {
+                return NotFound();  
+            }
+
+            taxForm.Status = "accepted";
+            taxForm.isSubmitted = false;
+            taxForm.isAccepted = true;
+            taxForm.isDrafted = false;
+            taxForm.isRejected = false;
+            await _db.SaveChangesAsync();
+            return RedirectToAction("TaxDeclaration");
+
+        } 
+        
+        public async Task<IActionResult> RejectForm(int TaxId)
+        {
+            var taxForm = await _db.TaxDeclarations.FindAsync(TaxId);
+
+            if(taxForm == null)
+            {
+                return NotFound();  
+            }
+
+            taxForm.Status = "rejected";
+            taxForm.isSubmitted = false;
+            taxForm.isRejected = true;
+            await _db.SaveChangesAsync();
+            return RedirectToAction("TaxDeclaration");
+
         }
     }
 }

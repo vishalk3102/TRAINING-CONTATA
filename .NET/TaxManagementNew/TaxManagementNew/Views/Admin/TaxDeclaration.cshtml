@@ -1,14 +1,16 @@
-﻿@model List<TaxManagementNew.Models.TaxDeclaration>
+﻿@model List<TaxManagementNew.Models.ViewModel.TaxDeclarationViewModel>
 
-<section class="w-full h-full">
+
+
+<section class="h-full w-full">
     <div class="max-w-[1200px] mx-auto">
-        <h2 class="text-[2rem] font-medium text-center p-2">Tax Declaration Listing</h2>
+        <h2 class="text-[2rem] p-2 text-center font-medium">Tax Declaration Listing</h2>
         <!-- Form for filtering -->
         <form method="get">
-            <div class="flex justify-evenly items-center gap-5 my-4">
+            <div class="my-4 flex items-center justify-evenly gap-5">
                 <div class="w-[30%]">
-                    <label for="FinancialYear" class="block mb-2">Financial Year:</label>
-                    <select id="FinancialYear" name="FinancialYear" class="w-full h-[40px] text-[14px] bg-blue-50 outline-none py-1 px-3 mt-1">
+                    <label for="FinancialYear" class="mb-2 block">Financial Year:</label>
+                    <select id="FinancialYear" name="FinancialYear" class="h-[40px] text-[14px] mt-1 w-full bg-blue-50 px-3 py-1 outline-none">
                         <option value="">-- Select --</option>
                         <option value="2019">2019</option>
                         <option value="2020">2020</option>
@@ -20,26 +22,26 @@
                     </select>
                 </div>
                 <div class="w-[30%]">
-                    <label for="employeeName" class="block mb-2">Employee Name:</label>
-                    <input type="text" id="EmployeeName" name="employeeName" class="w-full h-[40px] text-[14px] bg-blue-50 outline-none py-1 px-3 mt-1" />
+                    <label for="Name" class="mb-2 block">Employee Name:</label>
+                    <input type="text" id="Name" name="Name" class="h-[40px] text-[14px] mt-1 w-full bg-blue-50 px-3 py-1 outline-none" />
                 </div>
                 <div class="w-[30%]">
-                    <label for="empId" class="block mb-2">Employee ID:</label>
-                    <input type="number" id="empId" name="empId" class="w-full h-[40px] text-[14px] bg-blue-50 outline-none py-1 px-3 mt-1" />
+                    <label for="EmpId" class="mb-2 block">Employee ID:</label>
+                    <input type="number" id="EmpId" name="EmpId" class="h-[40px] text-[14px] mt-1 w-full bg-blue-50 px-3 py-1 outline-none" />
                 </div>
             </div>
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Filter</button>
+            <button type="submit" class="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">Filter</button>
         </form>
-        <table class="w-full table-auto border-solid border-2 border-black border-collapse rounded mx-auto my-5">
+        <table class="border-2 mx-auto my-5 w-full table-auto border-collapse rounded border-solid border-black">
             <thead>
-                <tr class="w-full border-solid border-2 border-black">
-                    <th class="text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3 uppercase text-center">Employee ID</th>
-                    <th class="text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3 uppercase text-center">Employee Name</th>
-                    <th class="text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3 uppercase text-center">Date of Submission</th>
-                    <th class="text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3 uppercase text-center">Status</th>
-                    <th class="text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3 uppercase text-center">Unfreeze Reason</th>
-                    <th class="text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3 uppercase text-center">View Declaration</th>
-                    <th class="text-[1.1rem] font-bold bg-blue-100 border border-slate-900 py-3 uppercase text-center">Action</th>
+                <tr class="border-2 w-full border-solid border-black">
+                    <th class="text-[1.1rem] border border-slate-900 bg-blue-100 py-3 text-center font-bold uppercase">Employee ID</th>
+                    <th class="text-[1.1rem] border border-slate-900 bg-blue-100 py-3 text-center font-bold uppercase">Employee Name</th>
+                    <th class="text-[1.1rem] border border-slate-900 bg-blue-100 py-3 text-center font-bold uppercase">Date of Submission</th>
+                    <th class="text-[1.1rem] border border-slate-900 bg-blue-100 py-3 text-center font-bold uppercase">Status</th>
+                    <th class="text-[1.1rem] border border-slate-900 bg-blue-100 py-3 text-center font-bold uppercase">Unfreeze Reason</th>
+                    <th class="text-[1.1rem] border border-slate-900 bg-blue-100 py-3 text-center font-bold uppercase">View Declaration</th>
+                    <th class="text-[1.1rem] border border-slate-900 bg-blue-100 py-3 text-center font-bold uppercase">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,10 +50,38 @@
                     foreach (var item in Model)
                     {
                         <tr class="border border-slate-900">
-                            <td>@item.FinancialYear</td>
+                            <td>@item.EmpId</td>
+                            <td>@item.Name</td>
+                            <td>@item.DateOfSubmission</td>
                             <td>@item.Status</td>
+                            <td>@item.Reason</td>
                             <td>
-                                <a href="/Admin/@item.TaxId">View Details</a>
+                                <a href="/Admin/ViewDeclaration/@item.TaxId">View Details</a>
+                            </td>
+                            <td class='text-[1rem] gap-5 border border-slate-900 p-1 px-4 text-center font-normal capitalize'>
+                                @if (!string.IsNullOrEmpty(item.Reason))
+                                {
+                                    <form asp-controller="Admin" asp-action="UnfreezeForm" method="post" style="display: inline;">
+                                        <input type="hidden" name="TaxId" value="@item.TaxId" />
+                                        <button type="submit" class='text-[14px] m-1 rounded bg-blue-400 px-4 py-2 font-medium outline-none'>Unfreeze</button>
+                                    </form>
+                                    <form asp-controller="Admin" asp-action="AcceptForm" method="post" style="display: inline;">
+                                        <input type="hidden" name="TaxId" value="@item.TaxId" />
+                                        <button type="submit" class='text-[14px] m-1 rounded bg-green-400 px-4 py-2 font-medium outline-none'>Accept</button>
+                                    </form>
+                                    <form asp-controller="Admin" asp-action="RejectForm" method="post" style="display: inline;">
+                                        <input type="hidden" name="TaxId" value="@item.TaxId" />
+                                        <button type="submit" class='text-[14px] m-1 rounded bg-red-400 px-4 py-2 font-medium outline-none'>Reject</button>
+                                    </form>
+                                }
+                                <form asp-controller="Admin" asp-action="AcceptForm" method="post" style="display: inline;">
+                                    <input type="hidden" name="TaxId" value="@item.TaxId" />
+                                    <button type="submit" class='text-[14px] m-1 rounded bg-green-400 px-4 py-2 font-medium outline-none'>Accept</button>
+                                </form>
+                                <form asp-controller="Admin" asp-action="RejectForm" method="post" style="display: inline;">
+                                    <input type="hidden" name="TaxId" value="@item.TaxId" />
+                                    <button type="submit" class='text-[14px] m-1 rounded bg-red-400 px-4 py-2 font-medium outline-none'>Reject</button>
+                                </form>
                             </td>
                         </tr>
                     }
