@@ -46,7 +46,7 @@
                                 @item.DateOfSubmission
                             </td>
                             <td>
-                                <form asp-controller="Employee" asp-action="ShowTaxForm" method="post">
+                                <form asp-controller="Employee" asp-action="ViewTaxForm" method="post">
                                     <input type="hidden" name="TaxId" value="@item.TaxId" />
                                     <button type="submit" class="btn btn-link p-0">
                                         <svg class="mx-auto h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -61,19 +61,20 @@
                                 </form>
                             </td>
                             <td class='text-[1rem] gap-5 border border-slate-900 p-1 px-4 text-center font-normal capitalize'>
+                               
                                 @if (item.Status == "drafted")
                                 {
-                                    <form asp-controller="Admin" asp-action="UnfreezeForm" method="post" style="display: inline;">
+                                    <form asp-controller="Employee" asp-action="DeleteTaxForm" method="post" style="display: inline;">
                                         <input type="hidden" name="TaxId" value="@item.TaxId" />
                                         <button type="submit"
-                                                class='text-[14px] font-medium bg-red-400 outline-none py-2 px-4 rounded m-1'>
+                                                class="text-[14px] font-medium bg-red-400 outline-none py-2 px-4 rounded m-1">
                                             Delete
                                         </button>
                                     </form>
                                 }
-                                else if (item.isSubmitted == true && item.isFrozen == true)
+                                else if (item.Status == "submitted")
                                 {
-                                    <form asp-controller="Admin" asp-action="UnfreezeForm" method="post" style="display: inline;">
+                                    <form asp-controller="Employee" asp-action="ChangeRequest" method="get" style="display: inline;">
                                         <input type="hidden" name="TaxId" value="@item.TaxId" />
                                         <button type="submit"
                                                 class="text-[14px] font-medium bg-blue-400 outline-none py-2 px-4 rounded m-1">

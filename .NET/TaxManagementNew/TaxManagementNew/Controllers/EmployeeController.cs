@@ -194,6 +194,25 @@ namespace TaxManagementNew.Controllers
         }
 
 
+        public async Task<IActionResult> DeleteTaxForm(int TaxID)
+        {
+            try
+            {
+                var taxForm=await _db.TaxDeclarations.FindAsync(TaxID);
+                if (taxForm != null)
+                {
+                    NotFound();
+                }
+                _db.TaxDeclarations.Remove(taxForm);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("PreviousSubmissions");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error", new { msg = ex.Message });
+            }
+
+        }
 
         [HttpGet]
         public async Task<IActionResult> PreviousSubmissions()
@@ -232,13 +251,18 @@ namespace TaxManagementNew.Controllers
 
 
         [HttpGet]
-        private IActionResult ChangeRequest()
+        public async Task<IActionResult> ChangeRequest(int TaxId)
         {
-                return View();
+            ApplicationUser user = await GetCurrentUser();
+            var model = new ChangeRequest();
+            ViewBag.EmpId = user.EmpId;
+            ViewBag.Name = user.Name;
+            model.TaxId = TaxId;
+            return View(model);
         }
 
         [HttpPost]
-        private async Task<IActionResult>  ChangeRequest(ChangeRequest changeRequest)
+        public async Task<IActionResult>  ChangeRequest(ChangeRequest changeRequest)
         {
             if (ModelState.IsValid)
             {
@@ -262,6 +286,32 @@ namespace TaxManagementNew.Controllers
                 }
             }
             return View(changeRequest);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> ViewTaxForm(int TaxId)
+        {
+            try
+            {
+                var query = from taxDeclaration in _db.TaxDeclarations
+                            where taxDeclaration.TaxId == TaxId
+                            join user in _db.Users
+                            on taxDeclaration.EmpId equals user.EmpId
+                            select new
+                            {
+                                TaxDeclaration = taxDeclaration,
+                                ApplicationUser = user
+                            };
+
+
+                var model = await query.FirstOrDefaultAsync();
+                return View(model);
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Error", new { msg = e.Message });
+            }
         }
 
         private Task<ApplicationUser> GetCurrentUser() => _userManager.GetUserAsync(HttpContext.User);
