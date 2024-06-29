@@ -56,32 +56,46 @@
                             <td>@item.Status</td>
                             <td>@item.Reason</td>
                             <td>
-                                <a href="/Admin/ViewDeclaration/@item.TaxId">View Details</a>
+                                <form asp-controller="Admin" asp-action="ViewTaxForm" method="post">
+                                    <input type="hidden" name="TaxId" value="@item.TaxId" />
+                                    <button type="submit" class="btn btn-link p-0">
+                                        <svg class="mx-auto h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                        </svg>
+                                    </button>
+                                </form>
                             </td>
                             <td class='text-[1rem] gap-5 border border-slate-900 p-1 px-4 text-center font-normal capitalize'>
-                                @if (!string.IsNullOrEmpty(item.Reason))
+                                @if(item.isSubmitted==true)
                                 {
-                                    <form asp-controller="Admin" asp-action="UnfreezeForm" method="post" style="display: inline;">
-                                        <input type="hidden" name="TaxId" value="@item.TaxId" />
-                                        <button type="submit" class='text-[14px] m-1 rounded bg-blue-400 px-4 py-2 font-medium outline-none'>Unfreeze</button>
-                                    </form>
-                                    <form asp-controller="Admin" asp-action="AcceptForm" method="post" style="display: inline;">
-                                        <input type="hidden" name="TaxId" value="@item.TaxId" />
-                                        <button type="submit" class='text-[14px] m-1 rounded bg-green-400 px-4 py-2 font-medium outline-none'>Accept</button>
-                                    </form>
-                                    <form asp-controller="Admin" asp-action="RejectForm" method="post" style="display: inline;">
-                                        <input type="hidden" name="TaxId" value="@item.TaxId" />
-                                        <button type="submit" class='text-[14px] m-1 rounded bg-red-400 px-4 py-2 font-medium outline-none'>Reject</button>
-                                    </form>
+                                    @if (!string.IsNullOrEmpty(item.Reason))
+                                    {
+                                        <form asp-controller="Admin" asp-action="UnfreezeForm" method="post" style="display: inline;">
+                                            <input type="hidden" name="TaxId" value="@item.TaxId" />
+                                            <button type="submit" class='text-[14px] m-1 rounded bg-blue-400 px-4 py-2 font-medium outline-none'>Unfreeze</button>
+                                        </form>
+                                        <form asp-controller="Admin" asp-action="AcceptForm" method="post" style="display: inline;">
+                                            <input type="hidden" name="TaxId" value="@item.TaxId" />
+                                            <button type="submit" class='text-[14px] m-1 rounded bg-green-400 px-4 py-2 font-medium outline-none'>Accept</button>
+                                        </form>
+                                        <form asp-controller="Admin" asp-action="RejectForm" method="post" style="display: inline;">
+                                            <input type="hidden" name="TaxId" value="@item.TaxId" />
+                                            <button type="submit" class='text-[14px] m-1 rounded bg-red-400 px-4 py-2 font-medium outline-none'>Reject</button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <form asp-controller="Admin" asp-action="AcceptForm" method="post" style="display: inline;">
+                                            <input type="hidden" name="TaxId" value="@item.TaxId" />
+                                            <button type="submit" class='text-[14px] m-1 rounded bg-green-400 px-4 py-2 font-medium outline-none'>Accept</button>
+                                        </form>
+                                        <form asp-controller="Admin" asp-action="RejectForm" method="post" style="display: inline;">
+                                            <input type="hidden" name="TaxId" value="@item.TaxId" />
+                                            <button type="submit" class='text-[14px] m-1 rounded bg-red-400 px-4 py-2 font-medium outline-none'>Reject</button>
+                                        </form>
+                                    }
                                 }
-                                <form asp-controller="Admin" asp-action="AcceptForm" method="post" style="display: inline;">
-                                    <input type="hidden" name="TaxId" value="@item.TaxId" />
-                                    <button type="submit" class='text-[14px] m-1 rounded bg-green-400 px-4 py-2 font-medium outline-none'>Accept</button>
-                                </form>
-                                <form asp-controller="Admin" asp-action="RejectForm" method="post" style="display: inline;">
-                                    <input type="hidden" name="TaxId" value="@item.TaxId" />
-                                    <button type="submit" class='text-[14px] m-1 rounded bg-red-400 px-4 py-2 font-medium outline-none'>Reject</button>
-                                </form>
                             </td>
                         </tr>
                     }

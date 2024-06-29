@@ -14,5 +14,6 @@
         public bool isDrafted { get; set; }
         public bool isAccepted { get; set; }
         public bool isRejected { get; set; }
+        public bool isFrozen { get; set; }
     }
 }

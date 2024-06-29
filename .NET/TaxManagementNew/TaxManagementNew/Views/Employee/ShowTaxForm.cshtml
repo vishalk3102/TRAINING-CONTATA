@@ -3,7 +3,6 @@
 
 <section className='w-full h-full'>
     <div className='max-w-[1200px] mx-auto  my-20'>
-        <form method="post" id="taxForm" asp-action="ProcessTaxForm">
             <div class="border-2 my-2 flex items-center justify-between border-solid border-black py-2">
                 <div class="text-[16px] p-4 font-medium">
                     Employee ID: <span class="p-2">@ViewBag.EmpId</span>
@@ -15,7 +14,10 @@
                     Financial Year: <span class="p-2">@ViewBag.FinancialYear</span>
                 </div>
             </div>
+        <form method="post" id="taxForm" asp-action="ProcessTaxForm">
             <div class="border-2 border-solid border-black">
+                <input type="hidden" asp-for="EmpId" value="@ViewBag.EmpId" />
+                <input type="hidden" asp-for="FinancialYear" value="@ViewBag.FinancialYear" />
                 <div class="ml-2 flex items-center py-2">
                     <div class="w-[70%] py-1">
                         <label asp-for="AnyOtherIncome" class="text-[14px]">1.) Any other income (interest from property, rental income, etc.)</label>
@@ -186,10 +188,12 @@
                 </div>
             </div>
             <div class="w-[50%] mx-auto mb-20 flex justify-end gap-5 py-2">
-                <button type="submit" name="action" value="save" class="w-[100%] h-[45px] text-[16px] flex cursor-pointer items-center justify-center rounded bg-green-400 p-4 font-medium">
+                <button type="submit" name="action" value="save"
+                        class="w-[100%] h-[45px] text-[16px] flex cursor-pointer items-center justify-center rounded bg-green-400 p-4 font-medium">
                     Save
                 </button>
-                <button type="submit" name="action" value="submit" class="w-[100%] h-[45px] text-[16px] flex cursor-pointer items-center justify-center rounded bg-green-400 p-4 font-medium">
+                <button type="submit" name="action" value="submit"
+                        class="w-[100%] h-[45px] text-[16px] flex cursor-pointer items-center justify-center rounded bg-green-400 p-4 font-medium">
                     Submit
                 </button>
             </div>

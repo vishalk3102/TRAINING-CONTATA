@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
-using System.Diagnostics;
 using TaxManagementNew.Data;
 using TaxManagementNew.Models;
 using TaxManagementNew.Models.ViewModel;
@@ -129,6 +126,30 @@ namespace TaxManagementNew.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> ViewTaxForm(int TaxId)
+        {
+            try
+            {
+                var query =from taxDeclaration in _db.TaxDeclarations
+                            where taxDeclaration.TaxId == TaxId
+                            join user in _db.Users
+                            on taxDeclaration.EmpId equals user.EmpId
+                            select new
+                            {
+                                TaxDeclaration = taxDeclaration,
+                                ApplicationUser = user
+                            };
+
+
+                var model = await query.FirstOrDefaultAsync();
+                return View(model);
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Error", new { msg = e.Message });
+            }
+        }
 
         public async Task deleteChangeRequest(int TaxId)
         {

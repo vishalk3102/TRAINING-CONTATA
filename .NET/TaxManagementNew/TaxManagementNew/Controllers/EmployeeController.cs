@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using TaxManagementNew.Data;
 using TaxManagementNew.Models;
+using TaxManagementNew.Models.ViewModel;
 
 namespace TaxManagementNew.Controllers
 {
@@ -105,7 +106,7 @@ namespace TaxManagementNew.Controllers
 
         //[Authorize(Roles = "client")]
         [HttpPost]
-        public async Task<IActionResult> ProcessTaxForm(TaxDeclaration taxDeclaration, string action, string FinancialYear)
+        public async Task<IActionResult> ProcessTaxForm(TaxDeclaration taxDeclaration, string action, int  FinancialYear)
         {
             try
             {
@@ -113,14 +114,8 @@ namespace TaxManagementNew.Controllers
                 var userId = user.Id;
                 var empId = user.EmpId;
 
-                // Parse financialYear to int
-                if (!int.TryParse(FinancialYear, out int financialYearInt))
-                {
-                    return BadRequest("Invalid Financial Year");
-                }
 
-                taxDeclaration.FinancialYear = financialYearInt;
-                var existingTax = await GetTaxByFinancialYearAndEmpId(financialYearInt, empId);
+                var existingTax = await GetTaxByFinancialYearAndEmpId(FinancialYear, empId);
 
                 if (existingTax != null)
                 {
@@ -130,14 +125,14 @@ namespace TaxManagementNew.Controllers
                 switch (action.ToLower())
                 {
                     case "save":
-                        await SaveTaxDeclaration(taxDeclaration);
+                        await SaveTaxForm(taxDeclaration);
                         TempData["Message"] = "Form saved successfully";
                         return RedirectToAction("ShowTaxForm", new { FinancialYear = taxDeclaration.FinancialYear });
 
                     case "submit":
-                        await SubmitTaxDeclaration(taxDeclaration);
+                        await SubmitTaxForm(taxDeclaration);
                         TempData["Message"] = "Form submitted successfully";
-                        return RedirectToAction("ShowTaxForm", new { FinancialYear = taxDeclaration.FinancialYear });
+                        return RedirectToAction("PreviousSubmissions");
 
                     default:
                         return BadRequest("Invalid action");
@@ -149,7 +144,7 @@ namespace TaxManagementNew.Controllers
             }
         }
 
-        private async Task SaveTaxDeclaration(TaxDeclaration taxDeclaration)
+        private async Task SaveTaxForm(TaxDeclaration taxDeclaration)
         {
             taxDeclaration.isFrozen = false;
             taxDeclaration.Status = "drafted";
@@ -157,19 +152,23 @@ namespace TaxManagementNew.Controllers
             taxDeclaration.isDrafted = true;
             taxDeclaration.DateOfDeclaration = DateTime.Now.ToString("yyyy-MM-dd");
 
-            if (taxDeclaration.TaxId == 0)
+            var existingTaxForm = await _db.TaxDeclarations.FindAsync(taxDeclaration.TaxId);
+
+            if (existingTaxForm != null)
             {
-                _db.TaxDeclarations.Add(taxDeclaration);
+                // Update the existing record
+                _db.Entry(existingTaxForm).CurrentValues.SetValues(taxDeclaration);
             }
             else
             {
-                _db.TaxDeclarations.Update(taxDeclaration);
+                // If no existing record is found, add a new one
+                _db.TaxDeclarations.Add(taxDeclaration);
             }
 
             await _db.SaveChangesAsync();
         }
 
-        private async Task SubmitTaxDeclaration(TaxDeclaration taxDeclaration)
+        private async Task SubmitTaxForm(TaxDeclaration taxDeclaration)
         {
             taxDeclaration.isFrozen = true;
             taxDeclaration.Status = "submitted";
@@ -177,22 +176,27 @@ namespace TaxManagementNew.Controllers
             taxDeclaration.isDrafted = false;
             taxDeclaration.DateOfDeclaration = DateTime.Now.ToString("yyyy-MM-dd");
 
-            if (taxDeclaration.TaxId == 0)
+            var existingTaxForm = await _db.TaxDeclarations.FindAsync(taxDeclaration.TaxId);
+
+            if (existingTaxForm != null)
             {
-                _db.TaxDeclarations.Add(taxDeclaration);
+                // Update the existing record
+                _db.Entry(existingTaxForm).CurrentValues.SetValues(taxDeclaration);
             }
             else
             {
-                _db.TaxDeclarations.Update(taxDeclaration);
+                // If no existing record is found, add a new one
+                _db.TaxDeclarations.Add(taxDeclaration);
             }
 
             await _db.SaveChangesAsync();
+
         }
 
 
 
         [HttpGet]
-        private async Task<IActionResult> PreviousSubmissions()
+        public async Task<IActionResult> PreviousSubmissions()
         {
             try
             {
@@ -200,18 +204,32 @@ namespace TaxManagementNew.Controllers
                 var userId = user.Id;
                 var EmpId = user.EmpId;
 
-                var taxDeclarations = await _db.TaxDeclarations
+                var taxForms = await _db.TaxDeclarations
                   .Where(td => td.EmpId == EmpId)
                   .OrderByDescending(td => td.FinancialYear)
                   .ToListAsync();
 
-                return View(taxDeclarations);
+                List<TaxDeclarationViewModel> viewModelList = new List<TaxDeclarationViewModel>();
+
+                foreach (var taxForm in taxForms)
+                {
+                    viewModelList.Add(new TaxDeclarationViewModel
+                    {
+                        EmpId = EmpId,
+                        TaxId = taxForm.TaxId,
+                        FinancialYear = taxForm.FinancialYear,
+                        Status = taxForm.Status,
+                        DateOfSubmission = taxForm.DateOfDeclaration
+                    });
+                }
+                return View(viewModelList);
             }
             catch(Exception e)
             {
                 return RedirectToAction("Error", new { msg = e.Message });
             }
         }
+
 
         [HttpGet]
         private IActionResult ChangeRequest()
@@ -252,6 +270,12 @@ namespace TaxManagementNew.Controllers
         {
             var taxDeclaration = await _db.TaxDeclarations.FirstOrDefaultAsync(td => td.FinancialYear == financialYear && td.EmpId == empId);
             return taxDeclaration;
+        }
+
+        public IActionResult Error(string? ErrMsg)
+        {
+            ViewBag.ErrMsg = ErrMsg;
+            return View();
         }
     }
 }

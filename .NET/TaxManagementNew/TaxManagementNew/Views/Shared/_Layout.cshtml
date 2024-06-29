@@ -25,15 +25,6 @@
 
                 <div class="">
                     <ul class="flex items-center justify-evenly">
-                        <li class="text-[1rem] m-2 flex items-center justify-center p-2 font-medium capitalize hover:cursor-pointer">
-                            <a asp-controller="Admin" asp-action="Index">Home</a>
-                        </li>
-                        <li class="text-[1rem] m-2 flex items-center justify-center p-2 font-medium capitalize hover:cursor-pointer">
-                            <a asp-controller="Admin" asp-action="TaxDeclaration">Tax Declaration</a>
-                        </li>
-                        <li class="text-[1rem] m-2 flex items-center justify-center p-2 font-medium capitalize hover:cursor-pointer">
-                            <a asp-controller="Admin" asp-action="Submission">Submission</a>
-                        </li>
                         @if (SignInManager.IsSignedIn(User))
                         {
                             if(User.IsInRole("client"))

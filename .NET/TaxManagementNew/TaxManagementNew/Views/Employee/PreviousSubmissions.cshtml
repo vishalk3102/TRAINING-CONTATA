@@ -1,1 +1,103 @@
-﻿
+﻿@model List<TaxManagementNew.Models.ViewModel.TaxDeclarationViewModel>
+
+
+<section class="h-full w-full">
+    <div class="max-w-[1200px] mx-auto">
+        <h2 class="text-[2rem] p-2 text-center font-medium">Employee Tax Declaration Submissions</h2>
+        <table class="border-2 mx-auto my-5 w-full table-auto border-collapse rounded border-solid border-black">
+            <thead>
+                <tr class="border-2 w-full border-solid border-black">
+                    <th class="text-[1.1rem] border border-slate-900 bg-blue-100 py-3 text-center font-bold uppercase">
+                        Tax Id
+                    </th>
+                    <th class="text-[1.1rem] border border-slate-900 bg-blue-100 py-3 text-center font-bold uppercase">
+                        Financial Year
+                    </th>
+                    <th class="text-[1.1rem] border border-slate-900 bg-blue-100 py-3 text-center font-bold uppercase">
+                        Declaration Status
+                    </th>
+                    <th class="text-[1.1rem] border border-slate-900 bg-blue-100 py-3 text-center font-bold uppercase">
+                        Declaration Date
+                    </th>
+                    <th class="text-[1.1rem] border border-slate-900 bg-blue-100 py-3 text-center font-bold uppercase">
+                        View
+                    </th>
+                    <th class="text-[1.1rem] border border-slate-900 bg-blue-100 py-3 text-center font-bold uppercase">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr class="border border-slate-900">
+                            <td class="text-[1rem] border border-slate-900 p-1 text-center font-normal capitalize">
+                                @item.TaxId
+                            </td>
+                            <td class="text-[1rem] border border-slate-900 p-1 text-center font-normal capitalize">
+                                @item.FinancialYear
+                            </td>
+                            <td class="text-[1rem] border border-slate-900 p-1 text-center font-normal capitalize">
+                                @item.Status
+                            </td>
+                            <td class="text-[1rem] border border-slate-900 p-1 text-center font-normal capitalize">
+                                @item.DateOfSubmission
+                            </td>
+                            <td>
+                                <form asp-controller="Employee" asp-action="ShowTaxForm" method="post">
+                                    <input type="hidden" name="TaxId" value="@item.TaxId" />
+                                    <button type="submit" class="btn btn-link p-0">
+                                        <svg class="mx-auto h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </td>
+                            <td class='text-[1rem] gap-5 border border-slate-900 p-1 px-4 text-center font-normal capitalize'>
+                                @if (item.Status == "drafted")
+                                {
+                                    <form asp-controller="Admin" asp-action="UnfreezeForm" method="post" style="display: inline;">
+                                        <input type="hidden" name="TaxId" value="@item.TaxId" />
+                                        <button type="submit"
+                                                class='text-[14px] font-medium bg-red-400 outline-none py-2 px-4 rounded m-1'>
+                                            Delete
+                                        </button>
+                                    </form>
+                                }
+                                else if (item.isSubmitted == true && item.isFrozen == true)
+                                {
+                                    <form asp-controller="Admin" asp-action="UnfreezeForm" method="post" style="display: inline;">
+                                        <input type="hidden" name="TaxId" value="@item.TaxId" />
+                                        <button type="submit"
+                                                class="text-[14px] font-medium bg-blue-400 outline-none py-2 px-4 rounded m-1">
+                                            Request For Change
+                                        </button>
+                                    </form>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" class="text-center">No data available</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <!-- Placeholder for Pagination Component -->
+        <div class="pagination-controls">
+            <button onclick="previousPage()">Previous</button>
+            <span>Page 1 of X</span>
+            <button onclick="nextPage()">Next</button>
+        </div>
+    </div>
+</section>
