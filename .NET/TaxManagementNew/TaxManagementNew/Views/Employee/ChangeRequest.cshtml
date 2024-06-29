@@ -3,41 +3,46 @@
 @{
     ViewData["Title"] = "Tax Declaration Change Request Form";
 }
-
-<section class="w-full h-full">
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="relative mb-4 rounded border border-red-400 bg-red-100 px-4 py-3 text-red-500" role="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+<section class="h-full w-full">
     <div class="max-w-[1200px] mx-auto">
-        <div class="text-[1.8rem] font-medium text-center p-2 my-5">
+        <div class="text-[1.8rem] my-5 p-2 text-center font-medium">
             <h1>Tax Declaration Change Request Form</h1>
         </div>
         <div >
-            <form asp-action="ChangeRequest" method="post" class="w-[40%] flex flex-col justify-evenly items-center gap-5 bg-blue-200 mx-auto my-5 py-10 rounded-[10px]">
+            <form asp-action="ChangeRequest" method="post" class="w-[40%] rounded-[10px] mx-auto my-5 flex flex-col items-center justify-evenly gap-5 bg-blue-200 py-10">
                 <div class="w-[60%]">
                     <label for="EmpId" class="leading-7 text-sm">Employee Id</label>
                     <input type="number" id="EmpId" name="EmpId"
-                           class="w-full h-[40px] text-[14px] bg-blue-50 outline-none py-1 px-3 mt-1" value="@ViewBag.EmpId"
+                           class="h-[40px] text-[14px] mt-1 w-full bg-blue-50 px-3 py-1 outline-none" value="@ViewBag.EmpId"
                            required disabled />
                 </div>
                 <div class="w-[60%]">
                     <label for="Name" class="leading-7 text-sm">Employee Id</label>
                     <input type="text" id="Name" name="Name"
-                           class="w-full h-[40px] text-[14px] bg-blue-50 outline-none py-1 px-3 mt-1" value="@ViewBag.Name"
+                           class="h-[40px] text-[14px] mt-1 w-full bg-blue-50 px-3 py-1 outline-none" value="@ViewBag.Name"
                            required disabled />
                 </div>
                 <div class="w-[60%]">
                     <label for="TaxId" class="leading-7 text-sm">Tax Declaration Id</label>
                     <input type="number" id="TaxId" name="TaxId"
-                           class="w-full h-[40px] text-[14px] bg-blue-50 outline-none py-1 px-3 mt-1" value="@Model.TaxId"
+                           class="h-[40px] text-[14px] mt-1 w-full bg-blue-50 px-3 py-1 outline-none" value="@Model.TaxId"
                            required />
                 </div>
                 <div class="w-[60%]">
                     <label for="Reason" class="leading-7 text-sm">Reason For Change</label>
                     <textarea id="Reason" name="Reason"
-                              class="w-full h-[100px] text-[14px] bg-blue-50 outline-none py-1 px-3 mt-1"
+                              class="h-[100px] text-[14px] mt-1 w-full bg-blue-50 px-3 py-1 outline-none"
                               required>@Model.Reason</textarea>
                     <span asp-validation-for="Reason" class="text-danger"></span>
                 </div>
-                <div class="w-[80%] flex justify-center items-center mt-4">
-                    <button type="submit" class="bg-blue-500 px-6 py-3 rounded text-white">Submit Request</button>
+                <div class="w-[80%] mt-4 flex items-center justify-center">
+                    <button type="submit" class="rounded bg-blue-500 px-6 py-3 text-white">Submit Request</button>
                 </div>
             </form>
         </div>

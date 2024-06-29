@@ -5,7 +5,7 @@
 <section class="h-full w-full">
     <div class="max-w-[1200px] mx-auto">
         <h2 class="text-[2rem] p-2 text-center font-medium">Tax Declaration Listing</h2>
-        <!-- Form for filtering -->
+       
         <form method="get">
             <div class="my-4 flex items-center justify-evenly gap-5">
                 <div class="w-[30%]">
@@ -30,7 +30,9 @@
                     <input type="number" id="EmpId" name="EmpId" class="h-[40px] text-[14px] mt-1 w-full bg-blue-50 px-3 py-1 outline-none" />
                 </div>
             </div>
-            <button type="submit" class="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">Filter</button>
+            <div class='flex items-center justify-center'>
+                <button type="submit" class='text-[14px] m-1 rounded bg-blue-400 px-4 py-2 font-medium outline-none'>Filter</button>
+            </div>
         </form>
         <table class="border-2 mx-auto my-5 w-full table-auto border-collapse rounded border-solid border-black">
             <thead>
@@ -50,15 +52,15 @@
                     foreach (var item in Model)
                     {
                         <tr class="border border-slate-900">
-                            <td>@item.EmpId</td>
-                            <td>@item.Name</td>
-                            <td>@item.DateOfSubmission</td>
-                            <td>@item.Status</td>
-                            <td>@item.Reason</td>
-                            <td>
-                                <form asp-controller="Admin" asp-action="ViewTaxForm" method="post">
+                            <td class='text-[1rem] border border-slate-900 px-2 py-1 text-center font-normal capitalize'>@item.EmpId</td>
+                            <td class='text-[1rem] border border-slate-900 px-2 py-1 text-center font-normal capitalize'>@item.Name</td>
+                            <td class='text-[1rem] border border-slate-900 px-2 py-1 text-center font-normal capitalize'>@item.DateOfSubmission</td>
+                            <td class='text-[1rem] border border-slate-900 px-2 py-1 text-center font-normal capitalize'>@item.Status</td>
+                            <td class='text-[1rem] border border-slate-900 px-2 py-1 text-center font-normal capitalize'>@item.Reason</td>
+                            <td class='text-[1rem] border border-slate-900 px-2 py-1 font-normal capitalize'>
+                                <form asp-controller="Admin" asp-action="ViewTaxForm" method="post" className='flex justify-center'>
                                     <input type="hidden" name="TaxId" value="@item.TaxId" />
-                                    <button type="submit" class="btn btn-link p-0">
+                                    <button type="submit" class="btn btn-link flex justify-center p-0">
                                         <svg class="mx-auto h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -67,17 +69,24 @@
                                 </form>
                             </td>
                             <td class='text-[1rem] gap-5 border border-slate-900 p-1 px-4 text-center font-normal capitalize'>
-                                @if(item.isSubmitted==true)
+                                @if (item.isSubmitted == true)
                                 {
+
                                     @if (!string.IsNullOrEmpty(item.Reason))
                                     {
                                         <form asp-controller="Admin" asp-action="UnfreezeForm" method="post" style="display: inline;">
                                             <input type="hidden" name="TaxId" value="@item.TaxId" />
-                                            <button type="submit" class='text-[14px] m-1 rounded bg-blue-400 px-4 py-2 font-medium outline-none'>Unfreeze</button>
+                                            <button type="submit"
+                                                    class='text-[14px] m-1 rounded bg-blue-400 px-4 py-2 font-medium outline-none'>
+                                                Unfreeze
+                                            </button>
                                         </form>
                                         <form asp-controller="Admin" asp-action="AcceptForm" method="post" style="display: inline;">
                                             <input type="hidden" name="TaxId" value="@item.TaxId" />
-                                            <button type="submit" class='text-[14px] m-1 rounded bg-green-400 px-4 py-2 font-medium outline-none'>Accept</button>
+                                            <button type="submit"
+                                                    class='text-[14px] m-1 rounded bg-green-400 px-4 py-2 font-medium outline-none'>
+                                                Accept
+                                            </button>
                                         </form>
                                         <form asp-controller="Admin" asp-action="RejectForm" method="post" style="display: inline;">
                                             <input type="hidden" name="TaxId" value="@item.TaxId" />
@@ -88,11 +97,15 @@
                                     {
                                         <form asp-controller="Admin" asp-action="AcceptForm" method="post" style="display: inline;">
                                             <input type="hidden" name="TaxId" value="@item.TaxId" />
-                                            <button type="submit" class='text-[14px] m-1 rounded bg-green-400 px-4 py-2 font-medium outline-none'>Accept</button>
+                                            <button type="submit" class='text-[14px] m-1 rounded bg-green-400 px-4 py-2 font-medium outline-none'>
+                                                Accept
+                                            </button>
                                         </form>
                                         <form asp-controller="Admin" asp-action="RejectForm" method="post" style="display: inline;">
                                             <input type="hidden" name="TaxId" value="@item.TaxId" />
-                                            <button type="submit" class='text-[14px] m-1 rounded bg-red-400 px-4 py-2 font-medium outline-none'>Reject</button>
+                                            <button type="submit" class='text-[14px] m-1 rounded bg-red-400 px-4 py-2 font-medium outline-none'>
+                                                Reject
+                                            </button>
                                         </form>
                                     }
                                 }

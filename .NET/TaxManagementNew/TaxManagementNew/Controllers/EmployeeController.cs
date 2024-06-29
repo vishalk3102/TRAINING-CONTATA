@@ -69,19 +69,13 @@ namespace TaxManagementNew.Controllers
                 
                 if(taxDeclaration!=null)
                 {
-                    // If the form is already submitted and frozen
-                 /*   if (taxDeclaration.isFrozen)
-                    {
-                        return RedirectToAction("FreezedDisplay", new { id = taxDeclaration.taxId });
-                    } */
-                    // If the form is saved as draft
-                  //  if (taxDeclaration.isDrafted)
-                   /* {
-                        return RedirectToAction("UpdateForm", new { id = taxDeclaration.taxId });
-                    }
-                    */
-                    // If the form exists but is not frozen or drafted
-                    return View(taxDeclaration);
+                     ViewBag.Status = taxDeclaration.Status;
+                     ViewBag.isSubmitted= taxDeclaration.isSubmitted;
+                     ViewBag.isDrafted = taxDeclaration.isDrafted;
+                     ViewBag.isAccepted = taxDeclaration.isAccepted;
+                     ViewBag.isRejected = taxDeclaration.isRejected;
+                     ViewBag.isFrozen = taxDeclaration.isFrozen;
+                     return View(taxDeclaration);
                 }
 
                 return View(new TaxDeclaration
@@ -95,7 +89,8 @@ namespace TaxManagementNew.Controllers
                     isAccepted = false,
                     isRejected = false,
                     isFrozen = false
-                });
+
+            });
             }
             catch(Exception ex)
             {
@@ -130,9 +125,15 @@ namespace TaxManagementNew.Controllers
                         return RedirectToAction("ShowTaxForm", new { FinancialYear = taxDeclaration.FinancialYear });
 
                     case "submit":
-                        await SubmitTaxForm(taxDeclaration);
-                        TempData["Message"] = "Form submitted successfully";
-                        return RedirectToAction("PreviousSubmissions");
+                        if (await SubmitTaxForm(taxDeclaration))
+                        {
+                            TempData["Message"] = "Form submitted successfully";
+                            return RedirectToAction("PreviousSubmissions");
+                        }
+                        else
+                        {
+                            return RedirectToAction("ShowTaxForm", new { FinancialYear = taxDeclaration.FinancialYear });
+                        }
 
                     default:
                         return BadRequest("Invalid action");
@@ -168,8 +169,17 @@ namespace TaxManagementNew.Controllers
             await _db.SaveChangesAsync();
         }
 
-        private async Task SubmitTaxForm(TaxDeclaration taxDeclaration)
+        private async Task<bool> SubmitTaxForm(TaxDeclaration taxDeclaration)
         {
+            var existingDeclaration = await _db.TaxDeclarations.FirstOrDefaultAsync(td => td.EmpId == taxDeclaration.EmpId &&
+                                  td.FinancialYear == taxDeclaration.FinancialYear &&
+                                  td.isSubmitted);
+            if (existingDeclaration != null)
+            {
+                TempData["ErrorMessage"] = "A tax declaration for this financial year has already been submitted.";
+                return false;
+            }
+
             taxDeclaration.isFrozen = true;
             taxDeclaration.Status = "submitted";
             taxDeclaration.isSubmitted = true;
@@ -190,6 +200,7 @@ namespace TaxManagementNew.Controllers
             }
 
             await _db.SaveChangesAsync();
+            return true;
 
         }
 
@@ -268,6 +279,14 @@ namespace TaxManagementNew.Controllers
             {
                 try
                 {
+                    var existingRequest = await _db.ChangeRequests.FirstOrDefaultAsync(cr => cr.TaxId == changeRequest.TaxId);
+
+                    if (existingRequest != null)
+                    {
+                        TempData["ErrorMessage"] = "A change request for this Tax Declaration has already been submitted.";
+                        return View(changeRequest);
+                    }
+
                     _db.ChangeRequests.Add(changeRequest);
                     var result = await _db.SaveChangesAsync();
                     if (result > 0)
@@ -287,6 +306,7 @@ namespace TaxManagementNew.Controllers
             }
             return View(changeRequest);
         }
+
 
 
         [HttpPost]

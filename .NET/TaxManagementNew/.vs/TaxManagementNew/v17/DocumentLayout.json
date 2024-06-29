@@ -1,42 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\TRAINING\\.NET\\TaxManagementNew\\",
+  "WorkspaceRootPath": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\TaxManagementNew\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\views\\employee\\showtaxform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|e:\\contata\\training-contata\\.net\\taxmanagementnew\\taxmanagementnew\\views\\employee\\showtaxform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\views\\employee\\showtaxform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\models\\taxdeclaration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\models\\taxdeclaration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\views\\employee\\viewtaxform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\views\\employee\\viewtaxform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|e:\\contata\\training-contata\\.net\\taxmanagementnew\\taxmanagementnew\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\views\\employee\\taxform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\views\\employee\\taxform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\views\\employee\\previoussubmissions.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\views\\employee\\previoussubmissions.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|e:\\contata\\training-contata\\.net\\taxmanagementnew\\taxmanagementnew\\views\\employee\\viewtaxform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\views\\employee\\viewtaxform.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,117 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EmployeeController.cs",
+              "DocumentMoniker": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\TaxManagementNew\\TaxManagementNew\\Controllers\\EmployeeController.cs",
+              "RelativeDocumentMoniker": "TaxManagementNew\\Controllers\\EmployeeController.cs",
+              "ToolTip": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\TaxManagementNew\\TaxManagementNew\\Controllers\\EmployeeController.cs",
+              "RelativeToolTip": "TaxManagementNew\\Controllers\\EmployeeController.cs",
+              "ViewState": "AQIAAEIAAAAAAAAAAADgv1UAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T21:14:40.545Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\appsettings.json",
-              "RelativeDocumentMoniker": "TaxManagementNew\\appsettings.json",
-              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\appsettings.json",
-              "RelativeToolTip": "TaxManagementNew\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-29T11:12:55.961Z",
+              "Title": "ShowTaxForm.cshtml",
+              "DocumentMoniker": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Employee\\ShowTaxForm.cshtml",
+              "RelativeDocumentMoniker": "TaxManagementNew\\Views\\Employee\\ShowTaxForm.cshtml",
+              "ToolTip": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Employee\\ShowTaxForm.cshtml",
+              "RelativeToolTip": "TaxManagementNew\\Views\\Employee\\ShowTaxForm.cshtml",
+              "ViewState": "AQIAAL8AAAAAAAAAAAAgwNQAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-29T21:06:50.952Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "TaxManagementNew\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "TaxManagementNew\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAADYAAAAAAAAAAAAAAB0AAAA8AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T10:52:07.585Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TaxDeclaration.cs",
-              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Models\\TaxDeclaration.cs",
-              "RelativeDocumentMoniker": "TaxManagementNew\\Models\\TaxDeclaration.cs",
-              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Models\\TaxDeclaration.cs",
-              "RelativeToolTip": "TaxManagementNew\\Models\\TaxDeclaration.cs",
-              "ViewState": "AQIAADQAAAAAAAAAAADwv08AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T10:48:27.357Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "ViewTaxForm.cshtml",
-              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Employee\\ViewTaxForm.cshtml",
+              "DocumentMoniker": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Employee\\ViewTaxForm.cshtml",
               "RelativeDocumentMoniker": "TaxManagementNew\\Views\\Employee\\ViewTaxForm.cshtml",
-              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Employee\\ViewTaxForm.cshtml",
+              "ToolTip": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Employee\\ViewTaxForm.cshtml",
               "RelativeToolTip": "TaxManagementNew\\Views\\Employee\\ViewTaxForm.cshtml",
-              "ViewState": "AQIAAPwAAAAAAAAAAAAAABABAAAKAAAA",
+              "ViewState": "AQIAAKIAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T10:41:36.865Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "TaxForm.cshtml",
-              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Employee\\TaxForm.cshtml",
-              "RelativeDocumentMoniker": "TaxManagementNew\\Views\\Employee\\TaxForm.cshtml",
-              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Employee\\TaxForm.cshtml",
-              "RelativeToolTip": "TaxManagementNew\\Views\\Employee\\TaxForm.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T10:41:34.217Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ShowTaxForm.cshtml",
-              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Employee\\ShowTaxForm.cshtml",
-              "RelativeDocumentMoniker": "TaxManagementNew\\Views\\Employee\\ShowTaxForm.cshtml",
-              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Employee\\ShowTaxForm.cshtml",
-              "RelativeToolTip": "TaxManagementNew\\Views\\Employee\\ShowTaxForm.cshtml",
-              "ViewState": "AQIAALsAAAAAAAAAAAASwMoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T10:36:30.282Z",
+              "WhenOpened": "2024-06-29T21:06:49.143Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "TaxManagementNew\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "TaxManagementNew\\Controllers\\AdminController.cs",
-              "ViewState": "AQIAAIoAAAAAAAAAAAAmwLEAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T08:47:17.897Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EmployeeController.cs",
-              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Controllers\\EmployeeController.cs",
-              "RelativeDocumentMoniker": "TaxManagementNew\\Controllers\\EmployeeController.cs",
-              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Controllers\\EmployeeController.cs",
-              "RelativeToolTip": "TaxManagementNew\\Controllers\\EmployeeController.cs",
-              "ViewState": "AQIAANkAAAAAAAAAAAA9wCQBAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T04:51:25.122Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PreviousSubmissions.cshtml",
-              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Employee\\PreviousSubmissions.cshtml",
-              "RelativeDocumentMoniker": "TaxManagementNew\\Views\\Employee\\PreviousSubmissions.cshtml",
-              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Employee\\PreviousSubmissions.cshtml",
-              "RelativeToolTip": "TaxManagementNew\\Views\\Employee\\PreviousSubmissions.cshtml",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAiwDAAAABXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T08:41:31.641Z"
             }
           ]
         }

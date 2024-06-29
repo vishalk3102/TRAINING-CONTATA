@@ -49,7 +49,12 @@ namespace TaxManagementNew.Controllers
                                 DateOfSubmission = td.DateOfDeclaration,
                                 Status = td.Status,
                                 Reason = cr != null ? cr.Reason : "",
-                                TaxId = td.TaxId
+                                TaxId = td.TaxId,
+                                isFrozen=td.isFrozen,
+                                isSubmitted=td.isSubmitted,
+                                isDrafted=td.isDrafted,
+                                isAccepted=td.isAccepted,
+                                isRejected=td.isRejected,
                             };
 
                 if (FinancialYear.HasValue)

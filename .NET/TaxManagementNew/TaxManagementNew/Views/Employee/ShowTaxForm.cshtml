@@ -1,6 +1,12 @@
 ﻿@model TaxDeclaration
 @using TaxManagementNew.Models
-
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 <section className='w-full h-full'>
     <div className='max-w-[1200px] mx-auto  my-20'>
             <div class="border-2 my-2 flex items-center justify-between border-solid border-black py-2">
@@ -188,14 +194,33 @@
                 </div>
             </div>
             <div class="w-[50%] mx-auto mb-20 flex justify-end gap-5 py-2">
-                <button type="submit" name="action" value="save"
-                        class="w-[100%] h-[45px] text-[16px] flex cursor-pointer items-center justify-center rounded bg-green-400 p-4 font-medium">
-                    Save
-                </button>
-                <button type="submit" name="action" value="submit"
-                        class="w-[100%] h-[45px] text-[16px] flex cursor-pointer items-center justify-center rounded bg-green-400 p-4 font-medium">
-                    Submit
-                </button>
+                @{
+                    var isDrafted = ViewBag.isDrafted ?? false;
+                    var isRejected = ViewBag.isRejected ?? false;
+                    var Status = ViewBag.Status ?? "pending";
+                }
+                @if (isDrafted || isRejected)
+                {
+                    <button type="submit" name="action" value="save"
+                            class="w-[100%] h-[45px] text-[16px] flex cursor-pointer items-center justify-center rounded bg-green-400 p-4 font-medium">
+                        Save
+                    </button>
+                    <button type="submit" name="action" value="submit"
+                            class="w-[100%] h-[45px] text-[16px] flex cursor-pointer items-center justify-center rounded bg-green-400 p-4 font-medium">
+                        Submit
+                    </button>
+                }
+                else if (Status == "pending")
+                {
+                    <button type="submit" name="action" value="save"
+                            class="w-[100%] h-[45px] text-[16px] flex cursor-pointer items-center justify-center rounded bg-green-400 p-4 font-medium">
+                        Save
+                    </button>
+                    <button type="submit" name="action" value="submit"
+                            class="w-[100%] h-[45px] text-[16px] flex cursor-pointer items-center justify-center rounded bg-green-400 p-4 font-medium">
+                        Submit
+                    </button>
+                }
             </div>
         </form>
     </div>

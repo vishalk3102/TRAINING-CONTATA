@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\TaxManagementNew.csproj": {}
+    "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\TaxManagementNew\\TaxManagementNew\\TaxManagementNew.csproj": {}
   },
   "projects": {
-    "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\TaxManagementNew.csproj": {
+    "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\TaxManagementNew\\TaxManagementNew\\TaxManagementNew.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\TaxManagementNew.csproj",
+        "projectUniqueName": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\TaxManagementNew\\TaxManagementNew\\TaxManagementNew.csproj",
         "projectName": "TaxManagementNew",
-        "projectPath": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\TaxManagementNew.csproj",
-        "packagesPath": "C:\\Users\\vishalk\\.nuget\\packages\\",
-        "outputPath": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\obj\\",
+        "projectPath": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\TaxManagementNew\\TaxManagementNew\\TaxManagementNew.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\TaxManagementNew\\TaxManagementNew\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\vishalk\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -101,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
