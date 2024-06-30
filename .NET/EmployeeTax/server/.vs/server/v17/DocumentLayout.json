@@ -38,8 +38,7 @@
               "RelativeToolTip": "server\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-28T18:24:25.886Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-28T18:24:25.886Z"
             },
             {
               "$type": "Document",
@@ -61,7 +60,7 @@
               "RelativeDocumentMoniker": "server\\Controllers\\TaxDeclarationController.cs",
               "ToolTip": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\EmployeeTax\\server\\server\\Controllers\\TaxDeclarationController.cs",
               "RelativeToolTip": "server\\Controllers\\TaxDeclarationController.cs",
-              "ViewState": "AQIAAL0AAAAAAAAAAAAWwLcAAABBAAAA",
+              "ViewState": "AQIAAIMAAAAAAAAAAAD4v7cAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-15T06:27:57.436Z",
               "EditorCaption": ""
@@ -74,7 +73,7 @@
               "RelativeDocumentMoniker": "server\\Services\\TaxDeclarationService.cs",
               "ToolTip": "E:\\CONTATA\\TRAINING-CONTATA\\.NET\\EmployeeTax\\server\\server\\Services\\TaxDeclarationService.cs",
               "RelativeToolTip": "server\\Services\\TaxDeclarationService.cs",
-              "ViewState": "AQIAAMwAAAAAAAAAAAAlwLQAAAAuAAAA",
+              "ViewState": "AQIAAI0AAAAAAAAAAAAIwIgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-15T06:28:01.429Z",
               "EditorCaption": ""

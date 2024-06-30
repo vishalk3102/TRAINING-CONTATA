@@ -80,6 +80,30 @@ namespace TaxManagementNew.Areas.Identity.Pages.Account
             returnUrl ??= Url.Content("~/");
             if (ModelState.IsValid)
             {
+                if (Input.PanNo.Length >= 5 && !string.IsNullOrEmpty(Input.Name))
+                {
+                    var nameParts = Input.Name.Split(' ');
+                    if (nameParts.Length > 1)
+                    {
+                        var surnameInitial = char.ToUpper(nameParts[^1][0]); 
+                        if (Input.PanNo[4] != surnameInitial)
+                        {
+                            ModelState.AddModelError(nameof(Input.PanNo), "Invalid Pan Card Number");
+                            return Page();
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(nameof(Input.Name), "Please enter the full name with at least a surname.");
+                        return Page();
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(nameof(Input.PanNo), "PAN number or Name is not in the correct format.");
+                    return Page();
+                }
+
                 var user = new ApplicationUser
                 {
                     UserName = Input.EmpId.ToString(),

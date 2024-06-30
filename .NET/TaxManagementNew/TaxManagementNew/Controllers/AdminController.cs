@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing.Printing;
 using TaxManagementNew.Data;
 using TaxManagementNew.Models;
 using TaxManagementNew.Models.ViewModel;
@@ -33,7 +34,7 @@ namespace TaxManagementNew.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> TaxDeclaration(int? FinancialYear, string Name, int? EmpId)
+        public async Task<IActionResult> TaxDeclaration(int? FinancialYear, string Name, int? EmpId, int page = 1, int pageSize = 2)
         {
             try
             {
@@ -72,9 +73,27 @@ namespace TaxManagementNew.Controllers
                     query = query.Where(x => x.EmpId == EmpId.Value);
                 }
 
-                var model = await query.ToListAsync();
+                var totalCountQuery = query.AsQueryable().Count();
+                int totalItems = totalCountQuery;
+                int totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
 
-                return View(model);
+                var taxForms = await query
+                .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToListAsync();
+
+                var viewModel = new TaxPaginationViewModel
+                {
+                    TaxForms = taxForms,
+                    CurrentPage = page,
+                    TotalPages = totalPages,
+                    FinancialYear= FinancialYear ?? null,
+                    Name = Name,
+                    EmpId = EmpId ?? null,
+                    PageSize = pageSize
+                };
+
+                return View(viewModel);
             }
             catch (Exception e)
             {
@@ -84,7 +103,7 @@ namespace TaxManagementNew.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Submission(int? FinancialYear, string Name, int? EmpId, string Status)
+        public async Task<IActionResult> Submission(int? FinancialYear, string Name, int? EmpId, string Status, int page = 1, int pageSize = 2)
         {
 
             try
@@ -120,9 +139,28 @@ namespace TaxManagementNew.Controllers
                 {
                     query = query.Where(x => x.Status.ToLower() == Status.ToLower());
                 }
-                var model = await query.ToListAsync();
 
-                return View(model);
+                var totalCountQuery = query.AsQueryable().Count();
+                int totalItems = totalCountQuery;
+                int totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+
+                var taxForms = await query
+                .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToListAsync();
+
+                var viewModel = new TaxPaginationViewModel
+                {
+                    TaxForms = taxForms,
+                    CurrentPage = page,
+                    TotalPages = totalPages,
+                    FinancialYear = FinancialYear ?? null,
+                    Name = Name,
+                    EmpId = EmpId ?? null,
+                    PageSize = pageSize
+                };
+
+                return View(viewModel);
             }
             catch (Exception e)
             {
@@ -174,8 +212,10 @@ namespace TaxManagementNew.Controllers
             {
                 return NotFound();  
             }
-
+            taxForm.Status = "drafted";
             taxForm.isFrozen = false;
+            taxForm.isSubmitted = false;
+            taxForm.isDrafted = true;
             await deleteChangeRequest(TaxId);
             await _db.SaveChangesAsync();
             return RedirectToAction("TaxDeclaration");
@@ -198,6 +238,7 @@ namespace TaxManagementNew.Controllers
             taxForm.isAccepted = true;
             taxForm.isDrafted = false;
             taxForm.isRejected = false;
+            taxForm.isFrozen = true;
             await _db.SaveChangesAsync();
             return RedirectToAction("TaxDeclaration");
 
@@ -215,7 +256,9 @@ namespace TaxManagementNew.Controllers
             taxForm.Status = "rejected";
             taxForm.isSubmitted = false;
             taxForm.isRejected = true;
+            taxForm.isFrozen = false;
             await _db.SaveChangesAsync();
+            await deleteChangeRequest(taxForm.TaxId);
             return RedirectToAction("TaxDeclaration");
 
         }

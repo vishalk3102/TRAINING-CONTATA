@@ -157,7 +157,21 @@ namespace TaxManagementNew.Controllers
 
             if (existingTaxForm != null)
             {
-                // Update the existing record
+                if (existingTaxForm.isRejected == true)
+                {
+                    existingTaxForm.Status = "rejected";
+                    existingTaxForm.isFrozen = false;
+                    existingTaxForm.isRejected = true;
+                    existingTaxForm.isSubmitted = false;
+                    existingTaxForm.isDrafted = true;
+                }
+                else
+                {
+                    existingTaxForm.isFrozen = false;
+                    existingTaxForm.Status = "drafted";
+                    existingTaxForm.isSubmitted = false;
+                    existingTaxForm.isDrafted = true;
+                }
                 _db.Entry(existingTaxForm).CurrentValues.SetValues(taxDeclaration);
             }
             else
@@ -190,7 +204,21 @@ namespace TaxManagementNew.Controllers
 
             if (existingTaxForm != null)
             {
-                // Update the existing record
+                if (existingTaxForm.isRejected == true)
+                {
+                    existingTaxForm.Status = "submitted";
+                    existingTaxForm.isFrozen = true;
+                    existingTaxForm.isRejected = false;
+                    existingTaxForm.isSubmitted = true;
+                    existingTaxForm.isDrafted = false;
+                }
+                else
+                {
+                    existingTaxForm.isFrozen = true;
+                    existingTaxForm.Status = "submitted";
+                    existingTaxForm.isSubmitted = true;
+                    existingTaxForm.isDrafted = false;
+                }
                 _db.Entry(existingTaxForm).CurrentValues.SetValues(taxDeclaration);
             }
             else

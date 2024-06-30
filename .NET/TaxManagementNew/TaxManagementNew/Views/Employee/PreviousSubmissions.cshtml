@@ -40,7 +40,22 @@
                                 @item.FinancialYear
                             </td>
                             <td class="text-[1rem] border border-slate-900 p-1 text-center font-normal capitalize">
-                                @item.Status
+                                @if(item.isDrafted && item.isRejected)
+                                {
+                                    <span>Drafted</span>
+                                }
+                                else if (item.isSubmitted && item.isRejected)
+                                {
+                                    <span>Drafted</span>
+                                }
+                                else if(item.isDrafted)
+                                {
+                                    <span>Drafted</span>
+                                }
+                                else
+                                {
+                                    @item.Status
+                                }
                             </td>
                             <td class="text-[1rem] border border-slate-900 p-1 text-center font-normal capitalize">
                                 @item.DateOfSubmission
@@ -67,7 +82,7 @@
                                     <form asp-controller="Employee" asp-action="DeleteTaxForm" method="post" style="display: inline;">
                                         <input type="hidden" name="TaxId" value="@item.TaxId" />
                                         <button type="submit"
-                                                class="text-[14px] font-medium bg-red-400 outline-none py-2 px-4 rounded m-1">
+                                                class="text-[14px] m-1 rounded bg-red-400 px-4 py-2 font-medium outline-none">
                                             Delete
                                         </button>
                                     </form>
@@ -77,7 +92,7 @@
                                     <form asp-controller="Employee" asp-action="ChangeRequest" method="get" style="display: inline;">
                                         <input type="hidden" name="TaxId" value="@item.TaxId" />
                                         <button type="submit"
-                                                class="text-[14px] font-medium bg-blue-400 outline-none py-2 px-4 rounded m-1">
+                                                class="text-[14px] m-1 rounded bg-blue-400 px-4 py-2 font-medium outline-none">
                                             Request For Change
                                         </button>
                                     </form>
@@ -94,11 +109,5 @@
                 }
             </tbody>
         </table>
-        <!-- Placeholder for Pagination Component -->
-        <div class="pagination-controls">
-            <button onclick="previousPage()">Previous</button>
-            <span>Page 1 of X</span>
-            <button onclick="nextPage()">Next</button>
-        </div>
     </div>
 </section>
