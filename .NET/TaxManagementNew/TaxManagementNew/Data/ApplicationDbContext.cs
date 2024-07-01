@@ -29,6 +29,10 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
         builder.Entity<IdentityRole>().HasData(admin, client);
 
+        builder.Entity<ApplicationUser>()
+                 .HasIndex(u => u.PanNo)
+                 .IsUnique();
+
         builder.Entity<ApplicationUser>().HasData(
              new ApplicationUser
              {

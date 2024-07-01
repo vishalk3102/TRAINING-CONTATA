@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Drawing.Printing;
@@ -20,6 +21,8 @@ namespace TaxManagementNew.Controllers
         }
         private Task<ApplicationUser> GetCurrentUser() => _userManager.GetUserAsync(HttpContext.User);
 
+
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Index()
         {
             ApplicationUser user = await GetCurrentUser();
@@ -33,6 +36,9 @@ namespace TaxManagementNew.Controllers
             return View();
         }
 
+
+
+        [Authorize(Roles = "admin")]
         [HttpGet]
         public async Task<IActionResult> TaxDeclaration(int? FinancialYear, string Name, int? EmpId, int page = 1, int pageSize = 5)
         {
@@ -103,6 +109,8 @@ namespace TaxManagementNew.Controllers
         }
 
 
+        [Authorize(Roles = "admin")]
+
         [HttpGet]
         public async Task<IActionResult> Submission(int? FinancialYear, string Name, int? EmpId, string Status, int page = 1, int pageSize = 5)
         {
@@ -170,6 +178,8 @@ namespace TaxManagementNew.Controllers
         }
 
 
+        [Authorize(Roles = "admin")]
+
         [HttpPost]
         public async Task<IActionResult> ViewTaxForm(int TaxId)
         {
@@ -195,6 +205,7 @@ namespace TaxManagementNew.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         public async Task deleteChangeRequest(int TaxId)
         {
             var changeRequest = await _db.ChangeRequests.FirstOrDefaultAsync(td => td.TaxId == TaxId);
@@ -205,6 +216,8 @@ namespace TaxManagementNew.Controllers
                 await _db.SaveChangesAsync();
             }
         }
+
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> UnfreezeForm(int TaxId)
         {
             var taxForm = await _db.TaxDeclarations.FindAsync(TaxId);
@@ -224,6 +237,7 @@ namespace TaxManagementNew.Controllers
         }
 
 
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public async Task<IActionResult> AcceptForm(int TaxId)
         {
@@ -243,8 +257,10 @@ namespace TaxManagementNew.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction("TaxDeclaration");
 
-        } 
-        
+        }
+
+        [Authorize(Roles = "admin")]
+
         public async Task<IActionResult> RejectForm(int TaxId)
         {
             var taxForm = await _db.TaxDeclarations.FindAsync(TaxId);

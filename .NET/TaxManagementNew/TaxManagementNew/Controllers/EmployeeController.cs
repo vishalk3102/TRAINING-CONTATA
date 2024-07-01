@@ -20,7 +20,7 @@ namespace TaxManagementNew.Controllers
             _userManager = userManager;
         }
 
-
+        [Authorize(Roles = "client")]
         public async Task<IActionResult> Index()
         {
             ApplicationUser user = await GetCurrentUser();
@@ -34,13 +34,13 @@ namespace TaxManagementNew.Controllers
             return View();
         }
 
-        // [Authorize(Roles ="client")]
+        [Authorize(Roles ="client")]
         public  IActionResult TaxForm()
         {
             return View();
         }
 
-        //[Authorize(Roles = "client")]
+        [Authorize(Roles = "client")]
         [HttpGet]
         public async Task<IActionResult> ShowTaxForm(string FinancialYear)
         {
@@ -99,7 +99,7 @@ namespace TaxManagementNew.Controllers
         }
 
 
-        //[Authorize(Roles = "client")]
+        [Authorize(Roles = "client")]
         [HttpPost]
         public async Task<IActionResult> ProcessTaxForm(TaxDeclaration taxDeclaration, string action, int  FinancialYear)
         {
@@ -145,6 +145,7 @@ namespace TaxManagementNew.Controllers
             }
         }
 
+        [Authorize(Roles = "client")]
         private async Task SaveTaxForm(TaxDeclaration taxDeclaration)
         {
             taxDeclaration.isFrozen = false;
@@ -197,6 +198,7 @@ namespace TaxManagementNew.Controllers
             await _db.SaveChangesAsync();
         }
 
+        [Authorize(Roles = "client")]
         private async Task<bool> SubmitTaxForm(TaxDeclaration taxDeclaration)
         {
             var existingDeclaration = await _db.TaxDeclarations.FirstOrDefaultAsync(td => td.EmpId == taxDeclaration.EmpId &&
@@ -261,6 +263,7 @@ namespace TaxManagementNew.Controllers
         }
 
 
+        [Authorize(Roles = "client")]
         public async Task<IActionResult> DeleteTaxForm(int TaxID)
         {
             try
@@ -281,6 +284,8 @@ namespace TaxManagementNew.Controllers
 
         }
 
+
+        [Authorize(Roles = "client")]
         [HttpGet]
         public async Task<IActionResult> PreviousSubmissions()
         {
@@ -322,6 +327,8 @@ namespace TaxManagementNew.Controllers
         }
 
 
+
+        [Authorize(Roles = "client")]
         [HttpGet]
         public async Task<IActionResult> ChangeRequest(int TaxId)
         {
@@ -333,6 +340,8 @@ namespace TaxManagementNew.Controllers
             return View(model);
         }
 
+
+        [Authorize(Roles = "client")]
         [HttpPost]
         public async Task<IActionResult>  ChangeRequest(ChangeRequest changeRequest)
         {
@@ -369,6 +378,7 @@ namespace TaxManagementNew.Controllers
         }
 
 
+        [Authorize(Roles = "client")]
 
         [HttpPost]
         public async Task<IActionResult> ViewTaxForm(int TaxId)
