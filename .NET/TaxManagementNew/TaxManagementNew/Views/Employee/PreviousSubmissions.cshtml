@@ -40,15 +40,15 @@
                                 @item.FinancialYear
                             </td>
                             <td class="text-[1rem] border border-slate-900 p-1 text-center font-normal capitalize">
-                                @if(item.isDrafted && item.isRejected)
+                                @if(item.isDrafted==true && item.isRejected==true)
                                 {
                                     <span>Drafted</span>
                                 }
-                                else if (item.isSubmitted && item.isRejected)
+                                else if (item.isSubmitted==true  && item.isRejected==true)
                                 {
-                                    <span>Drafted</span>
+                                    <span>Submitted</span>
                                 }
-                                else if(item.isDrafted)
+                                else if(item.isDrafted==true)
                                 {
                                     <span>Drafted</span>
                                 }

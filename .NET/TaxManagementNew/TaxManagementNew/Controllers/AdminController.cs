@@ -34,7 +34,7 @@ namespace TaxManagementNew.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> TaxDeclaration(int? FinancialYear, string Name, int? EmpId, int page = 1, int pageSize = 2)
+        public async Task<IActionResult> TaxDeclaration(int? FinancialYear, string Name, int? EmpId, int page = 1, int pageSize = 5)
         {
             try
             {
@@ -42,6 +42,7 @@ namespace TaxManagementNew.Controllers
                             join u in _db.Users on td.EmpId equals u.EmpId
                             join cr in _db.ChangeRequests on td.TaxId equals cr.TaxId into crGroup
                             from cr in crGroup.DefaultIfEmpty()
+                            where td.Status != "drafted"
                             select new TaxDeclarationViewModel
                             {
                                 EmpId = td.EmpId,
@@ -103,7 +104,7 @@ namespace TaxManagementNew.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Submission(int? FinancialYear, string Name, int? EmpId, string Status, int page = 1, int pageSize = 2)
+        public async Task<IActionResult> Submission(int? FinancialYear, string Name, int? EmpId, string Status, int page = 1, int pageSize = 5)
         {
 
             try

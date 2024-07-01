@@ -172,7 +172,21 @@ namespace TaxManagementNew.Controllers
                     existingTaxForm.isSubmitted = false;
                     existingTaxForm.isDrafted = true;
                 }
-                _db.Entry(existingTaxForm).CurrentValues.SetValues(taxDeclaration);
+                existingTaxForm.AnyOtherIncome = taxDeclaration.AnyOtherIncome;
+                existingTaxForm.SukanyaSamriddhiAccount = taxDeclaration.SukanyaSamriddhiAccount;
+                existingTaxForm.PPF = taxDeclaration.PPF;
+                existingTaxForm.LifeInsurancePremium = taxDeclaration.LifeInsurancePremium;
+                existingTaxForm.TuitionFee = taxDeclaration.TuitionFee;
+                existingTaxForm.BankFixedDeposit = taxDeclaration.BankFixedDeposit;
+                existingTaxForm.PrincipalHousingLoan = taxDeclaration.PrincipalHousingLoan;
+                existingTaxForm.NPS = taxDeclaration.NPS;
+                existingTaxForm.HigherEducationLoanInterest = taxDeclaration.HigherEducationLoanInterest;
+                existingTaxForm.HouseRent = taxDeclaration.HouseRent;
+                existingTaxForm.TDS = taxDeclaration.TDS;
+                existingTaxForm.MediClaim = taxDeclaration.MediClaim;
+                existingTaxForm.PreventiveHealthCheckUp = taxDeclaration.PreventiveHealthCheckUp;
+                existingTaxForm.LTA = taxDeclaration.LTA;
+                existingTaxForm.DateOfDeclaration = taxDeclaration.DateOfDeclaration;
             }
             else
             {
@@ -219,7 +233,21 @@ namespace TaxManagementNew.Controllers
                     existingTaxForm.isSubmitted = true;
                     existingTaxForm.isDrafted = false;
                 }
-                _db.Entry(existingTaxForm).CurrentValues.SetValues(taxDeclaration);
+                existingTaxForm.AnyOtherIncome = taxDeclaration.AnyOtherIncome;
+                existingTaxForm.SukanyaSamriddhiAccount = taxDeclaration.SukanyaSamriddhiAccount;
+                existingTaxForm.PPF = taxDeclaration.PPF;
+                existingTaxForm.LifeInsurancePremium = taxDeclaration.LifeInsurancePremium;
+                existingTaxForm.TuitionFee = taxDeclaration.TuitionFee;
+                existingTaxForm.BankFixedDeposit = taxDeclaration.BankFixedDeposit;
+                existingTaxForm.PrincipalHousingLoan = taxDeclaration.PrincipalHousingLoan;
+                existingTaxForm.NPS = taxDeclaration.NPS;
+                existingTaxForm.HigherEducationLoanInterest = taxDeclaration.HigherEducationLoanInterest;
+                existingTaxForm.HouseRent = taxDeclaration.HouseRent;
+                existingTaxForm.TDS = taxDeclaration.TDS;
+                existingTaxForm.MediClaim = taxDeclaration.MediClaim;
+                existingTaxForm.PreventiveHealthCheckUp = taxDeclaration.PreventiveHealthCheckUp;
+                existingTaxForm.LTA = taxDeclaration.LTA;
+                existingTaxForm.DateOfDeclaration = taxDeclaration.DateOfDeclaration;
             }
             else
             {
@@ -277,8 +305,13 @@ namespace TaxManagementNew.Controllers
                         TaxId = taxForm.TaxId,
                         FinancialYear = taxForm.FinancialYear,
                         Status = taxForm.Status,
-                        DateOfSubmission = taxForm.DateOfDeclaration
-                    });
+                        DateOfSubmission = taxForm.DateOfDeclaration,
+                        isFrozen = taxForm.isFrozen,
+                        isRejected = taxForm.isRejected,
+                        isSubmitted = taxForm.isSubmitted,
+                        isDrafted = taxForm.isDrafted,
+                        isAccepted = taxForm.isAccepted,
+                });
                 }
                 return View(viewModelList);
             }
