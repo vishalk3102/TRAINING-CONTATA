@@ -121,13 +121,12 @@ namespace TaxManagementNew.Controllers
                 {
                     case "save":
                         await SaveTaxForm(taxDeclaration);
-                        TempData["Message"] = "Form saved successfully";
                         return RedirectToAction("ShowTaxForm", new { FinancialYear = taxDeclaration.FinancialYear });
 
                     case "submit":
                         if (await SubmitTaxForm(taxDeclaration))
                         {
-                            TempData["Message"] = "Form submitted successfully";
+                            TempData["SuccessMessage"] = "Form submitted successfully!";
                             return RedirectToAction("PreviousSubmissions");
                         }
                         else
@@ -196,6 +195,7 @@ namespace TaxManagementNew.Controllers
             }
 
             await _db.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Form saved successfully!";
         }
 
         [Authorize(Roles = "client")]
@@ -361,7 +361,7 @@ namespace TaxManagementNew.Controllers
                     var result = await _db.SaveChangesAsync();
                     if (result > 0)
                     {
-                        TempData["SuccessMessage"] = "Request for change submitted successfully.";
+                        TempData["SuccessMessage"] = "Your change request has been submitted successfully!";
                         return RedirectToAction("PreviousSubmissions", "Employee"); 
                     }
                     else

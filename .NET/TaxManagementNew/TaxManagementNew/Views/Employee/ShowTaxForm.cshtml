@@ -7,6 +7,14 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 <section className='w-full h-full'>
     <div className='max-w-[1200px] mx-auto  my-20'>
         <div class="border-2 my-2 flex items-center justify-between border-solid border-black py-2">
