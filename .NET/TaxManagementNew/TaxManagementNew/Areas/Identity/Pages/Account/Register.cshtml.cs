@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using TaxManagementNew.Models;
 
@@ -88,7 +89,7 @@ namespace TaxManagementNew.Areas.Identity.Pages.Account
                         var surnameInitial = char.ToUpper(nameParts[^1][0]); 
                         if (Input.PanNo[4] != surnameInitial)
                         {
-                            ModelState.AddModelError(nameof(Input.PanNo), "Invalid Pan Card Number");
+                            ModelState.AddModelError(nameof(Input.PanNo), "Invalid Pan Card.");
                             return Page();
                         }
                     }
@@ -100,39 +101,71 @@ namespace TaxManagementNew.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(nameof(Input.PanNo), "PAN number or Name is not in the correct format.");
+                    ModelState.AddModelError(string.Empty, "PAN number or Name is not in the correct format.");
+                }
+
+                var existingUser = await _userManager.Users.FirstOrDefaultAsync(u => u.PanNo == Input.PanNo);
+                if (existingUser != null)
+                {
+                    ModelState.AddModelError(nameof(Input.PanNo), "This PAN number is already in use. Please use a different PAN number.");
                     return Page();
                 }
+
+                int age = CalculateAge(Input.DateOfBirth);
 
                 var user = new ApplicationUser
                 {
                     UserName = Input.EmpId.ToString(),
                     EmpId = Input.EmpId,
                     Name = Input.Name,
-                    Age = Input.Age,
+                    Age = age,
                     DateOfBirth = Input.DateOfBirth,
                     PhoneNumber = Input.PhoneNumber,
                     PanNo = Input.PanNo,
                     Address = Input.Address
                 };
 
-                var result = await _userManager.CreateAsync(user, Input.Password);
+                try
+                {
+                    var result = await _userManager.CreateAsync(user, Input.Password);
 
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User created a new account with password.");
-                    await _userManager.AddToRoleAsync(user, "client");
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect(returnUrl);
+                    if (result.Succeeded)
+                    {
+                        _logger.LogInformation("User created a new account with password.");
+                        await _userManager.AddToRoleAsync(user, "client");
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        return LocalRedirect(returnUrl);
+                    }
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
                 }
-                foreach (var error in result.Errors)
+                catch (Microsoft.EntityFrameworkCore.DbUpdateException ex)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    // Check if the exception is due to duplicate PAN
+                    if (ex.InnerException is Microsoft.Data.SqlClient.SqlException sqlEx &&
+                        (sqlEx.Number == 2601 || sqlEx.Number == 2627) &&
+                        sqlEx.Message.Contains("IX_AspNetUsers_PanNo"))
+                    {
+                        ModelState.AddModelError(nameof(Input.PanNo), "This PAN number is already in use. Please use a different PAN number.");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "An error occurred while creating your account. Please try again later.");
+                    }
                 }
             }
 
             // If we got this far, something failed, redisplay form
             return Page();
+        }
+        private int CalculateAge(DateTime dateOfBirth)
+        {
+            DateTime today = DateTime.Today;
+            int age = today.Year - dateOfBirth.Year;
+            if (dateOfBirth.Date > today.AddYears(-age)) age--;
+            return age;
         }
     }
 }

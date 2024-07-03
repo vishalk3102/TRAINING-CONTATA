@@ -3,8 +3,36 @@
   "WorkspaceRootPath": "C:\\TRAINING\\.NET\\TaxManagementNew\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\areas\\identity\\pages\\account\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\areas\\identity\\pages\\account\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\models\\taxdeclaration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|solutionrelative:taxmanagementnew\\models\\taxdeclaration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0D643CAA-C304-4743-9BFD-B541411D2ED4}|TaxManagementNew\\TaxManagementNew.csproj|c:\\training\\.net\\taxmanagementnew\\taxmanagementnew\\views\\employee\\changerequest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -18,11 +46,102 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "TaxManagementNew\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "TaxManagementNew\\Views\\_ViewImports.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-03T09:39:31.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "TaxManagementNew\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "TaxManagementNew\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-03T09:21:50.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "TaxManagementNew\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "TaxManagementNew\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-03T09:18:05.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Register.cshtml.cs",
+              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeDocumentMoniker": "TaxManagementNew\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeToolTip": "TaxManagementNew\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ViewState": "AQIAAFkAAAAAAAAAAAAnwHMAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T09:06:21.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Login.cshtml.cs",
+              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "RelativeDocumentMoniker": "TaxManagementNew\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "RelativeToolTip": "TaxManagementNew\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "ViewState": "AQIAAE0AAAAAAAAAAAAuwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T09:06:04.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "TaxManagementNew\\Models\\ApplicationUser.cs",
+              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "TaxManagementNew\\Models\\ApplicationUser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T09:03:53.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TaxDeclaration.cs",
+              "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Models\\TaxDeclaration.cs",
+              "RelativeDocumentMoniker": "TaxManagementNew\\Models\\TaxDeclaration.cs",
+              "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Models\\TaxDeclaration.cs",
+              "RelativeToolTip": "TaxManagementNew\\Models\\TaxDeclaration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T09:03:48.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "ChangeRequest.cshtml",
               "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Views\\Employee\\ChangeRequest.cshtml",
               "RelativeDocumentMoniker": "TaxManagementNew\\Views\\Employee\\ChangeRequest.cshtml",
@@ -30,18 +149,17 @@
               "RelativeToolTip": "TaxManagementNew\\Views\\Employee\\ChangeRequest.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-02T11:54:34.737Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-02T11:54:34.737Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "EmployeeController.cs",
               "DocumentMoniker": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Controllers\\EmployeeController.cs",
               "RelativeDocumentMoniker": "TaxManagementNew\\Controllers\\EmployeeController.cs",
               "ToolTip": "C:\\TRAINING\\.NET\\TaxManagementNew\\TaxManagementNew\\Controllers\\EmployeeController.cs",
               "RelativeToolTip": "TaxManagementNew\\Controllers\\EmployeeController.cs",
-              "ViewState": "AQIAAFkBAAAAAAAAAAAkwGwBAABUAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-02T11:54:24.728Z",
               "EditorCaption": ""
