@@ -1,18 +1,15 @@
 package com.example.securityCrud.dto;
 
+import com.example.securityCrud.entity.Role;
 
-public class UserDto {
+public class EmployeeDto {
     private  String firstName;
     private String lastName;
     private String email;
     private String password;
+    private Role role;
 
-
-    public UserDto(String firstName, String lastName, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
+    public EmployeeDto() {
     }
 
     public String getFirstName() {
@@ -45,5 +42,13 @@ public class UserDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

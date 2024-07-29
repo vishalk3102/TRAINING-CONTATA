@@ -1,5 +1,6 @@
 package com.example.securityCrud.controller;
 
+import com.example.securityCrud.dto.EmployeeDto;
 import com.example.securityCrud.entity.Employee;
 import com.example.securityCrud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,31 +10,30 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/employee")
 public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping
+    @GetMapping("/")
     public List<Employee> getAllEmployee()
     {
         return employeeService.getAllEmployees();
     }
 
-    @GetMapping("/employee/{id}")
+    @GetMapping("/{id}")
     public Employee getEmployeeById(@PathVariable int Id)
     {
         return employeeService.getEmployeeById(Id);
     }
 
-
-    @PostMapping("/add")
-    public void createEmployee(@RequestBody Employee employee)
+    @PostMapping("/register")
+    public void createEmployee(@RequestBody EmployeeDto employeeDto)
     {
-        employeeService.saveEmployee(employee);
+        employeeService.save(employeeDto);
     }
-    @DeleteMapping("/employee/{id}")
+    @DeleteMapping("/{id}")
     public void deleteEmployee(@PathVariable int Id)
     {
       employeeService.deleteEmployee(Id);

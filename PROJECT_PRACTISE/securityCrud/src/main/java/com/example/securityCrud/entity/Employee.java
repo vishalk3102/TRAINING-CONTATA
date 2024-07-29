@@ -1,7 +1,9 @@
 package com.example.securityCrud.entity;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
+
+import java.util.Collection;
+import java.util.Collections;
 
 
 @Entity
@@ -22,20 +24,18 @@ public class Employee {
     @Column(name = "email")
     private String email ;
 
+    @Column(name = "password")
+    private String password;
 
-    public Employee(int id, String firstName, String lastName, String email) {
-        this.id = id;
+    @Enumerated
+    private Role role;
+
+    public Employee(String firstName, String lastName, String email, String password, Role role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.password = password;
+        this.role = role;
     }
 
     public String getFirstName() {
@@ -60,5 +60,21 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Collection<Role> getRole() {
+        return Collections.singleton(role);
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
