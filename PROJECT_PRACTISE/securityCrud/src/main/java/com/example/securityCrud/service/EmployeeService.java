@@ -9,6 +9,6 @@ import java.util.List;
 public interface EmployeeService extends UserDetailsService {
     List<Employee> getAllEmployees();
     Employee getEmployeeById(int Id);
-    Employee save(EmployeeDto employeeDto);
+    void save(EmployeeDto employeeDto);
     void deleteEmployee(int Id);
 }

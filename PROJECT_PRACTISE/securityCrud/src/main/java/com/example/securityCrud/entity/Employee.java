@@ -30,6 +30,9 @@ public class Employee {
     @Enumerated
     private Role role;
 
+    public Employee() {
+    }
+
     public Employee(String firstName, String lastName, String email, String password, Role role) {
         this.firstName = firstName;
         this.lastName = lastName;

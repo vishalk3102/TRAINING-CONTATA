@@ -6,6 +6,7 @@ import com.example.securityCrud.entity.Role;
 import com.example.securityCrud.repository.EmployeeRepository;
 import com.example.securityCrud.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -33,6 +34,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
+
+    @Autowired
+    public void setPasswordEncoder(@Lazy BCryptPasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
+
     @Override
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
@@ -51,10 +58,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee save(EmployeeDto employeeDto) {
+    public void save(EmployeeDto employeeDto) {
         Employee employee = new Employee(employeeDto.getFirstName(), employeeDto.getLastName(), employeeDto.getEmail(), passwordEncoder.encode(employeeDto.getPassword()), (employeeDto.getRole() != null) ? employeeDto.getRole() : Role.EMPLOYEE);
-
-        return employeeRepository.save(employee);
+        employeeRepository.save(employee);
     }
 
     @Override
@@ -76,6 +82,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
         return roles.stream()
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
+
                 .collect(Collectors.toList());
     }
 
