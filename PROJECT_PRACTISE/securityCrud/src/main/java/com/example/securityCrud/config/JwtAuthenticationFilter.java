@@ -43,6 +43,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (requestHeader != null && requestHeader.startsWith("Bearer")) {
             token = requestHeader.substring(7);
 
+//            token = requestHeader.substring("Bearer ".length()).trim();
+            logger.debug("Authorization header detected: {}", requestHeader);
+
             try {
                 username = jwtHelper.getUsernameFromToken(token);
             } catch (IllegalArgumentException e) {
