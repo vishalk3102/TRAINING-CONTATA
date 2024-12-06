@@ -18,9 +18,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Employees API", version = "1.0", description = "Employees Information"),security = @SecurityRequirement(name="bearerAuth"))
+@OpenAPIDefinition(
+        info = @Info(title = "Employees API", version = "1.0", description = "Employees Information"),
+        security = @SecurityRequirement(name = "bearerAuth")
+)
 @SecurityScheme(
-        name = "jwtAuthentication",
+        name = "bearerAuth",
         type = SecuritySchemeType.HTTP,
         scheme = "bearer",
         bearerFormat = "JWT"

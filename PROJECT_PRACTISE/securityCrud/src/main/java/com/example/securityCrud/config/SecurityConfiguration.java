@@ -76,6 +76,7 @@ public class SecurityConfiguration {
     private static final String[] AuthUrl={
             "/v3/api-docs/**",
             "/v3/api-docs.yaml",
+
             "/swagger-ui/**",
             "/swagger-ui.html",
     };

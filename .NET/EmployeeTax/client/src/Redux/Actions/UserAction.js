@@ -12,7 +12,7 @@ export const loginUser = (employeeID, password, navigate) => async dispatch => {
 
     const { data } = await axios.post(
       `${server}/login`,
-      { empId: employeeID, password },
+      { username: employeeID, password },
       config
     )
 
